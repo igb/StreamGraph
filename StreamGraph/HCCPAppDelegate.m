@@ -15,4 +15,11 @@
     // Insert code here to initialize your application
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)item 
+{
+    NSLog(@"validating UI %@", item);
+    return YES;
+}
+
+
 @end

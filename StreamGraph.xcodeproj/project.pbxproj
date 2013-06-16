@@ -17,6 +17,7 @@
 		108022D8176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
 		108022E0176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022DE176B61B7004D45A9 /* InfoPlist.strings */; };
 		108022E3176B61B7004D45A9 /* StreamGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022E2176B61B7004D45A9 /* StreamGraphTests.m */; };
+		108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022F3176D112D004D45A9 /* HCCPTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		108022DF176B61B7004D45A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		108022E1176B61B7004D45A9 /* StreamGraphTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamGraphTests.h; sourceTree = "<group>"; };
 		108022E2176B61B7004D45A9 /* StreamGraphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamGraphTests.m; sourceTree = "<group>"; };
+		108022F2176D112D004D45A9 /* HCCPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTableView.h; sourceTree = "<group>"; };
+		108022F3176D112D004D45A9 /* HCCPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				108022CB176B61B7004D45A9 /* HCCPAppDelegate.m */,
 				108022CD176B61B7004D45A9 /* MainMenu.xib */,
 				108022BF176B61B7004D45A9 /* Supporting Files */,
+				108022F2176D112D004D45A9 /* HCCPTableView.h */,
+				108022F3176D112D004D45A9 /* HCCPTableView.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			files = (
 				108022C5176B61B7004D45A9 /* main.m in Sources */,
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
+				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
