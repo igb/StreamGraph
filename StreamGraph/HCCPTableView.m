@@ -52,13 +52,16 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
      NSLog(@"cell? %@",  [tableColumn dataCellForRow:row] );
     
-    NSTextFieldCell* cell = [tableColumn dataCellForRow:row];
-    [cell setDrawsBackground:true];
-    float colorFloat = (row * (255/[rows count]));
-    NSColor* cellColor=[NSColor colorWithCalibratedRed:(50/255.0f) green:(50/255.0f) blue:(colorFloat/255.0f) alpha:1.0];
-    [cellColor set];
-    [cell setBackgroundColor:cellColor];
-     return @"foo";
+    if ([[tableColumn identifier] intValue] == 0) {
+        
+        NSTextFieldCell* cell = [tableColumn dataCellForRow:row];
+        [cell setDrawsBackground:true];
+        float colorFloat = (row * (255/[rows count]));
+        NSColor* cellColor=[NSColor colorWithCalibratedRed:(50/255.0f) green:(50/255.0f) blue:(colorFloat/255.0f) alpha:1.0];
+        [cellColor set];
+        [cell setBackgroundColor:cellColor];
+    }
+    return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
 }
 
 
@@ -92,6 +95,17 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
         [myTableView removeTableColumn:[tableCols objectAtIndex:x]];
     }
+    
+    if ([rows count] > 0) {
+        NSArray* headers = [rows objectAtIndex:0];
+        NSUInteger columnCount = [headers count];
+         for (int x=0; x < columnCount; x++) {
+             NSTableColumn* column = [[NSTableColumn alloc] initWithIdentifier: [NSString stringWithFormat:@"%i", x]];
+             [[column headerCell] setStringValue:[headers objectAtIndex:x]];
+             [myTableView addTableColumn:column];
+         }
+    }
+    
     
     NSLog(@"rows size is: %ld", [rows count]);
     [myTableView reloadData];
