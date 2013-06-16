@@ -18,6 +18,7 @@
 		108022E0176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022DE176B61B7004D45A9 /* InfoPlist.strings */; };
 		108022E3176B61B7004D45A9 /* StreamGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022E2176B61B7004D45A9 /* StreamGraphTests.m */; };
 		108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022F3176D112D004D45A9 /* HCCPTableView.m */; };
+		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		108022E2176B61B7004D45A9 /* StreamGraphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamGraphTests.m; sourceTree = "<group>"; };
 		108022F2176D112D004D45A9 /* HCCPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTableView.h; sourceTree = "<group>"; };
 		108022F3176D112D004D45A9 /* HCCPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTableView.m; sourceTree = "<group>"; };
+		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
+		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				108022BF176B61B7004D45A9 /* Supporting Files */,
 				108022F2176D112D004D45A9 /* HCCPTableView.h */,
 				108022F3176D112D004D45A9 /* HCCPTableView.m */,
+				10D4C6FC176E4309009A862F /* HCCPColorStack.h */,
+				10D4C6FD176E4309009A862F /* HCCPColorStack.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				108022C5176B61B7004D45A9 /* main.m in Sources */,
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
+				10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +459,7 @@
 				108022E8176B61B7004D45A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		108022E9176B61B7004D45A9 /* Build configuration list for PBXNativeTarget "StreamGraphTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +468,7 @@
 				108022EB176B61B7004D45A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

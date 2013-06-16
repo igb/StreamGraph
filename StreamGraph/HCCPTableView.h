@@ -7,12 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "HCCPColorStack.h"
+
 
 @interface HCCPTableView : NSTableView
 {
 
     NSMutableArray *rows;
+    NSMutableArray *colors;
     NSTableView *myTableView;
+    HCCPColorStack *colorStack;
 }
 
 
