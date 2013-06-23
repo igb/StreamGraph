@@ -19,6 +19,9 @@
 		108022E3176B61B7004D45A9 /* StreamGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022E2176B61B7004D45A9 /* StreamGraphTests.m */; };
 		108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022F3176D112D004D45A9 /* HCCPTableView.m */; };
 		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
+		10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */; };
+		10D4C704176E8A98009A862F /* d3resources.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C703176E8A98009A862F /* d3resources.strings */; };
+		10D4C70C176EC403009A862F /* d3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C70B176EC403009A862F /* d3.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,10 @@
 		108022F3176D112D004D45A9 /* HCCPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTableView.m; sourceTree = "<group>"; };
 		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
 		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
+		10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPStreamGraphWriter.h; sourceTree = "<group>"; };
+		10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPStreamGraphWriter.m; sourceTree = "<group>"; };
+		10D4C703176E8A98009A862F /* d3resources.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = d3resources.strings; sourceTree = "<group>"; };
+		10D4C70B176EC403009A862F /* d3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = d3.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +135,8 @@
 				108022F3176D112D004D45A9 /* HCCPTableView.m */,
 				10D4C6FC176E4309009A862F /* HCCPColorStack.h */,
 				10D4C6FD176E4309009A862F /* HCCPColorStack.m */,
+				10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */,
+				10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -140,6 +149,8 @@
 				108022C4176B61B7004D45A9 /* main.m */,
 				108022C6176B61B7004D45A9 /* StreamGraph-Prefix.pch */,
 				108022C7176B61B7004D45A9 /* Credits.rtf */,
+				10D4C703176E8A98009A862F /* d3resources.strings */,
+				10D4C70B176EC403009A862F /* d3.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -238,6 +249,8 @@
 				108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */,
 				108022C9176B61B7004D45A9 /* Credits.rtf in Resources */,
 				108022CF176B61B7004D45A9 /* MainMenu.xib in Resources */,
+				10D4C704176E8A98009A862F /* d3resources.strings in Resources */,
+				10D4C70C176EC403009A862F /* d3.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +289,7 @@
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
 				10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */,
+				10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

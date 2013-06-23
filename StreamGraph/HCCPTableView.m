@@ -7,11 +7,15 @@
 //
 
 #import "HCCPTableView.h"
+#import "HCCPStreamGraphWriter.h"
 
 @implementation HCCPTableView
 
 
-
+- (IBAction)createGraph:(id)pId {
+   HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+    [writer writeToHtml:rows:colors];
+}
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -20,6 +24,7 @@
         rows = [[NSMutableArray alloc] init];
         colors = [[NSMutableArray alloc] init];
         colorStack = [[HCCPColorStack alloc] init];
+        
         
         //pinks
         [colorStack add:[NSColor colorWithCalibratedRed:(255/255.0f) green:(247/255.0f) blue:(243/255.0f) alpha:1.0]];

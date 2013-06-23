@@ -17,7 +17,11 @@
     NSMutableArray *colors;
     NSTableView *myTableView;
     HCCPColorStack *colorStack;
+   
+    
 }
+
+ - (IBAction)createGraph:(id)pId;
 
 
 @end
