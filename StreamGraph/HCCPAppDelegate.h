@@ -12,5 +12,10 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (IBAction)createGraph2:(id)pId;
+
+@property (assign) IBOutlet NSView* mainView;
+@property (strong) NSViewController* currentViewController;
+
 
 @end

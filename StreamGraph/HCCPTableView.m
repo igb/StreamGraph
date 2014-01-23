@@ -8,13 +8,27 @@
 
 #import "HCCPTableView.h"
 #import "HCCPStreamGraphWriter.h"
+#import "HCCPAppDelegate.h"
+
 
 @implementation HCCPTableView
 
 
 - (IBAction)createGraph:(id)pId {
+    
+  //  [myTableView removeFromSuperview];
    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
     [writer writeToHtml:rows:colors];
+    HCCPAppDelegate* _delegate = [[NSApplication sharedApplication] delegate];
+//    [[_delegate window] setIsVisible:FALSE];
+    NSView* view = [[NSView alloc] init];
+    NSArray* subviews = [[[self superview] superview] subviews];
+    for (NSView* view in subviews) {
+        NSLog(@"%@", [view className]);
+    }
+    
+    
+    
 }
 - (id)initWithFrame:(NSRect)frame
 {

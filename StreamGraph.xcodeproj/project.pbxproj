@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1031EF7C1780038200DFEE46 /* D3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1031EF7B1780038200DFEE46 /* D3View.xib */; };
 		108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
 		108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022C1176B61B7004D45A9 /* InfoPlist.strings */; };
 		108022C5176B61B7004D45A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022C4176B61B7004D45A9 /* main.m */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1031EF7B1780038200DFEE46 /* D3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = D3View.xib; sourceTree = "<group>"; };
 		108022B4176B61B7004D45A9 /* StreamGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108022B8176B61B7004D45A9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		108022BB176B61B7004D45A9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 				10D4C6FD176E4309009A862F /* HCCPColorStack.m */,
 				10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */,
 				10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */,
+				1031EF7B1780038200DFEE46 /* D3View.xib */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				108022CF176B61B7004D45A9 /* MainMenu.xib in Resources */,
 				10D4C704176E8A98009A862F /* d3resources.strings in Resources */,
 				10D4C70C176EC403009A862F /* d3.txt in Resources */,
+				1031EF7C1780038200DFEE46 /* D3View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

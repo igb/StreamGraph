@@ -33,7 +33,7 @@ body {
 ";
 
 
-"section1" = "stack = d3.layout.stack().offset(\"wiggle\"),
+"section1" = "stack = d3.layout.stack().offset(\"silhouette\"),
 
 layers1=stack(  data.map(function(foo) { return foo.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });   })  );
 
