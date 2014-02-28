@@ -29,17 +29,26 @@ HCCPAppDelegate* delegate;
     delegate = [[NSApplication sharedApplication] delegate];
     [delegate setTabView:self];
     
+
 }
 
 - (void)selectLastTabViewItem:(id)sender {
+    
+    NSLog(@"tag %d", [sender tag]);
+
+    
+    // draw the graph...
+    [delegate createGraph:sender];
+   
     NSLog(@"selecting last tab item...yes?");
     [super selectLastTabViewItem:sender];
     WebView  *webview = [WebView alloc];
     webview =  [[[[self selectedTabViewItem] view] subviews]objectAtIndex:0];
-    [self.window setContentView:webview];
+    //[[self.tabViewItems]
+    //[self.window  setContentView:webview];
     
     [[[webview mainFrame] frameView] setAllowsScrolling:YES];
-//    [[[webview mainFrame] frameView] setFrameSize:NSMakeSize(800, 800)];
+    //[[[webview mainFrame] frameView] setFrameSize:NSMakeSize(100, 100)];
 
     [[webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[delegate getCurrentGraphUrl]]];
     

@@ -27,7 +27,7 @@
 @property (assign) IBOutlet WebView *display;
 
 
--(IBAction)createGraph2:(id)pId;
+-(IBAction)createGraph:(id)pId;
 -(IBAction)showView1:(id)sender;
 - (void)setTableView:(HCCPTableView*)tableView;
 - (void)setTabView:(HCCPTabView*)tabView;

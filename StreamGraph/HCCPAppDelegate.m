@@ -19,6 +19,19 @@
     
    currentGraphId = [[NSProcessInfo processInfo] globallyUniqueString];
     // Insert code here to initialize your application
+    
+    
+    
+    NSString* silImagePath = [[NSBundle mainBundle] pathForResource:@"sil-graph"
+                                                             ofType:@"gif"];
+    NSLog(silImagePath);
+    NSButton* silButton = [self.window.contentView viewWithTag:5];
+    
+    NSLog(@"%@", silButton);
+    
+    
+    NSImage* silImage = [[NSImage alloc] initWithContentsOfFile:silImagePath];
+    [silButton setImage:silImage];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item 
@@ -38,9 +51,8 @@
 
 
 - (IBAction)createGraph:(id)pId {
-    //  [myTableView removeFromSuperview];
-    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-  //  [writer writeToHtml:rows:colors];
+    
+    [myTableView createGraph:pId];
     
 
 }
@@ -49,6 +61,11 @@
     myTableView=tableView;
     NSLog(@"setting table view: %@", myTableView);
 }
+
+- (void)setTabView:(HCCPTabView*)tabView {
+    myTabView = tabView;
+}
+
 
 
 -(NSString*)getCurrentGraphId {
