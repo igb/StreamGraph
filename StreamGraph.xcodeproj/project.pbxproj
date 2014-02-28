@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1031EF7C1780038200DFEE46 /* D3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1031EF7B1780038200DFEE46 /* D3View.xib */; };
+		10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10279A7A18C1513D00D93A08 /* sil-graph.gif */; };
+		102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 102F94CD18957920008B4FD2 /* HCCPTabView.m */; };
 		108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
 		108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022C1176B61B7004D45A9 /* InfoPlist.strings */; };
 		108022C5176B61B7004D45A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022C4176B61B7004D45A9 /* main.m */; };
@@ -19,6 +20,8 @@
 		108022E0176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022DE176B61B7004D45A9 /* InfoPlist.strings */; };
 		108022E3176B61B7004D45A9 /* StreamGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022E2176B61B7004D45A9 /* StreamGraphTests.m */; };
 		108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022F3176D112D004D45A9 /* HCCPTableView.m */; };
+		108AE5971896B212000CD894 /* HCCPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108AE5961896B212000CD894 /* HCCPWebView.m */; };
+		108AE5991896B308000CD894 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108AE5981896B308000CD894 /* WebKit.framework */; };
 		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
 		10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */; };
 		10D4C704176E8A98009A862F /* d3resources.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C703176E8A98009A862F /* d3resources.strings */; };
@@ -36,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1031EF7B1780038200DFEE46 /* D3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = D3View.xib; sourceTree = "<group>"; };
+		10279A7A18C1513D00D93A08 /* sil-graph.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "sil-graph.gif"; sourceTree = "<group>"; };
+		102F94CC18957920008B4FD2 /* HCCPTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTabView.h; sourceTree = "<group>"; };
+		102F94CD18957920008B4FD2 /* HCCPTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTabView.m; sourceTree = "<group>"; };
 		108022B4176B61B7004D45A9 /* StreamGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108022B8176B61B7004D45A9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		108022BB176B61B7004D45A9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -58,6 +63,9 @@
 		108022E2176B61B7004D45A9 /* StreamGraphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamGraphTests.m; sourceTree = "<group>"; };
 		108022F2176D112D004D45A9 /* HCCPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTableView.h; sourceTree = "<group>"; };
 		108022F3176D112D004D45A9 /* HCCPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTableView.m; sourceTree = "<group>"; };
+		108AE5951896B212000CD894 /* HCCPWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPWebView.h; sourceTree = "<group>"; };
+		108AE5961896B212000CD894 /* HCCPWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPWebView.m; sourceTree = "<group>"; };
+		108AE5981896B308000CD894 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
 		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
 		10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPStreamGraphWriter.h; sourceTree = "<group>"; };
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108AE5991896B308000CD894 /* WebKit.framework in Frameworks */,
 				108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +99,7 @@
 		108022A9176B61B7004D45A9 = {
 			isa = PBXGroup;
 			children = (
+				108AE5981896B308000CD894 /* WebKit.framework */,
 				108022BE176B61B7004D45A9 /* StreamGraph */,
 				108022DB176B61B7004D45A9 /* StreamGraphTests */,
 				108022B7176B61B7004D45A9 /* Frameworks */,
@@ -132,6 +142,8 @@
 				108022CA176B61B7004D45A9 /* HCCPAppDelegate.h */,
 				108022CB176B61B7004D45A9 /* HCCPAppDelegate.m */,
 				108022CD176B61B7004D45A9 /* MainMenu.xib */,
+				108AE5951896B212000CD894 /* HCCPWebView.h */,
+				108AE5961896B212000CD894 /* HCCPWebView.m */,
 				108022BF176B61B7004D45A9 /* Supporting Files */,
 				108022F2176D112D004D45A9 /* HCCPTableView.h */,
 				108022F3176D112D004D45A9 /* HCCPTableView.m */,
@@ -139,7 +151,8 @@
 				10D4C6FD176E4309009A862F /* HCCPColorStack.m */,
 				10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */,
 				10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */,
-				1031EF7B1780038200DFEE46 /* D3View.xib */,
+				102F94CC18957920008B4FD2 /* HCCPTabView.h */,
+				102F94CD18957920008B4FD2 /* HCCPTabView.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -149,6 +162,7 @@
 			children = (
 				108022C0176B61B7004D45A9 /* StreamGraph-Info.plist */,
 				108022C1176B61B7004D45A9 /* InfoPlist.strings */,
+				10279A7A18C1513D00D93A08 /* sil-graph.gif */,
 				108022C4176B61B7004D45A9 /* main.m */,
 				108022C6176B61B7004D45A9 /* StreamGraph-Prefix.pch */,
 				108022C7176B61B7004D45A9 /* Credits.rtf */,
@@ -254,7 +268,7 @@
 				108022CF176B61B7004D45A9 /* MainMenu.xib in Resources */,
 				10D4C704176E8A98009A862F /* d3resources.strings in Resources */,
 				10D4C70C176EC403009A862F /* d3.txt in Resources */,
-				1031EF7C1780038200DFEE46 /* D3View.xib in Resources */,
+				10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +308,8 @@
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
 				10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */,
 				10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */,
+				102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */,
+				108AE5971896B212000CD894 /* HCCPWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
