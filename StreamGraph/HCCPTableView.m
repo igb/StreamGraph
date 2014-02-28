@@ -15,25 +15,42 @@
 
 
 - (IBAction)createGraph:(id)pId {
-    
-  //  [myTableView removeFromSuperview];
-   HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:rows:colors];
-    HCCPAppDelegate* _delegate = [[NSApplication sharedApplication] delegate];
-//    [[_delegate window] setIsVisible:FALSE];
-    NSView* view = [[NSView alloc] init];
-    NSArray* subviews = [[[self superview] superview] subviews];
-    for (NSView* view in subviews) {
-        NSLog(@"%@", [view className]);
+    NSLog(@"Super %@", [[pId superview] className]);
+    for (NSView *subview in [pId subviews]) {
+        NSLog(@"subview: %@", [subview className]);
     }
+
+    HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
     
+
     
-    
+    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]];
 }
+
+
+-(void) awakeFromNib {
+    NSLog(@"awake!");
+    HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
+    [delegate setTableView:self];
+}
+
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        //let's register with the app delegate
+        NSLog(@"resistering with delegate");
+        
+          HCCPAppDelegate* my_delegate = [[NSApplication sharedApplication] delegate];
+        
+        [my_delegate setTableView:self];
+
+        
+        
+        
         // Initialization code here.
         rows = [[NSMutableArray alloc] init];
         colors = [[NSMutableArray alloc] init];
@@ -159,17 +176,34 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 20; //make this dynamic based off of font
+}
                                
                                
-                               
-- (IBAction)openCsvFile:(id)sender;
+- (IBAction)openCsvFile:(id)sender
 {
     NSOpenPanel *openPanel  = [NSOpenPanel openPanel];
     NSArray *fileTypes = [NSArray arrayWithObjects:@"csv",nil];
+    
     NSInteger result  = [openPanel runModalForDirectory:NSHomeDirectory() file:nil types:fileTypes ];
+    
     if(result == NSOKButton){
-        rows = [[NSMutableArray alloc] init];
-        NSString* fileContents = [NSString stringWithContentsOfURL:[openPanel URL]];
+        NSURL *fileUrl = [openPanel URL];
+        [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:fileUrl];
+        [self handleFile: fileUrl];
+    }
+}
+
+-(void)handleFile:(NSURL*)fileUrl {
+    NSLog(@"starting handle of file");
+
+    NSLog(@"%@", fileUrl);
+    rows = [[NSMutableArray alloc] init];
+    
+    // add selected document to open recently
+       
+        NSString* fileContents = [NSString stringWithContentsOfURL:fileUrl];
         
         // http://stackoverflow.com/questions/5140391/for-loop-in-objective-c
         NSArray* fileRows = [fileContents componentsSeparatedByString:@"\n"];
@@ -182,7 +216,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
         
         
-    }
+    
     
     NSArray* tableCols = [myTableView tableColumns];
     for (int x=0; x < [tableCols count]; x++) {

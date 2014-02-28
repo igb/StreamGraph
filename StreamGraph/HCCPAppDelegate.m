@@ -15,6 +15,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    
+    
+   currentGraphId = [[NSProcessInfo processInfo] globallyUniqueString];
     // Insert code here to initialize your application
 }
 
@@ -24,24 +27,48 @@
     return YES;
 }
 
+
+-(NSURL*)getCurrentGraphUrl {
+    
+    NSString* graphFile = [[@"file:///tmp/" stringByAppendingString: [self getCurrentGraphId]] stringByAppendingString:@".html"];
+    
+    NSURL *baseURL = [NSURL URLWithString:graphFile];
+    return baseURL;
+}
+
+
 - (IBAction)createGraph:(id)pId {
     //  [myTableView removeFromSuperview];
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
   //  [writer writeToHtml:rows:colors];
     
+
+}
+
+- (void)setTableView:(HCCPTableView*)tableView {
+    myTableView=tableView;
+    NSLog(@"setting table view: %@", myTableView);
 }
 
 
--(IBAction)showView1:(id)sender
-{
-   // View1Controller * controller = [[View1Controller alloc]init];
-  //  [self setMainViewTo:controller];
+-(NSString*)getCurrentGraphId {
+    return currentGraphId;
 }
--(IBAction)showView2:(id)sender
+
+
+-(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
-  //  View2Controller * controller = [[View2Controller alloc]init];
-   // [self setMainViewTo:controller];
+    if ([filenames count] == 1) {
+        NSLog(@"here...");
+        NSURL* url = [NSURL URLWithString: [@"file://" stringByAppendingString:[filenames objectAtIndex:0]]];
+        NSLog(@"%@", url);
+        
+        [myTableView handleFile:url];
+        NSLog(@"there...");
+    }
+    
 }
+
 
 
 @end

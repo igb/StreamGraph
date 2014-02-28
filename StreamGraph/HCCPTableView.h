@@ -10,6 +10,7 @@
 #import "HCCPColorStack.h"
 
 
+
 @interface HCCPTableView : NSTableView
 {
 
@@ -22,6 +23,7 @@
 }
 
  - (IBAction)createGraph:(id)pId;
+ - (void)handleFile:(NSURL*)fileUrl;
 
 
 @end

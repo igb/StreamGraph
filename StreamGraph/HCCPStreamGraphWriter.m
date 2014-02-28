@@ -15,9 +15,9 @@
     [stream write:(uint8_t *)[strData bytes] maxLength:[strData length]];
 }
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl {
     
-    NSOutputStream *stream = [[NSOutputStream alloc] initToFileAtPath:@"/tmp/strgrph.html" append:YES];
+    NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
     
     
