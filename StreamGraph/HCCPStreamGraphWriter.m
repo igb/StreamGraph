@@ -10,12 +10,18 @@
 
 @implementation HCCPStreamGraphWriter
 
--(void)writeStringToStream:(NSOutputStream*)stream :(NSString*)string {
+-(void)writeStringToStream:(NSOutputStream*)stream :(NSString*)string  {
      NSData *strData = [string dataUsingEncoding:NSUTF8StringEncoding];
     [stream write:(uint8_t *)[strData bytes] maxLength:[strData length]];
 }
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl {
+-(NSArray*)interpolate:(NSArray*)data {
+    
+}
+
+
+
+-(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -68,6 +74,13 @@
     [document appendString:@",\nm = "];
     [document appendString:[NSString stringWithFormat:@"%li",[[data objectAtIndex:0] count]]]; // number of samples per layer
 	[document appendString:@",\n"];
+    
+    [document appendString:@"stack = d3.layout.stack().offset(\""],
+    
+    [document appendString:graphType];
+    
+    [document appendString:@"\"),"];
+
     
     [document appendString:NSLocalizedStringFromTable (@"section1", @"d3resources", @"A comment")];
     [document appendString:@"var colors = ["];

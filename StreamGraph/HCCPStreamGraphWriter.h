@@ -10,6 +10,7 @@
 
 @interface HCCPStreamGraphWriter : NSObject
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl;
+-(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType;
+-(NSArray*)interpolate:(NSArray*)data;
 
 @end

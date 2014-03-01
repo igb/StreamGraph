@@ -17,7 +17,6 @@ body {
     font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;
     margin: auto;
     position: relative;
-    width: 960px;
 }
 
 </style>";
@@ -25,7 +24,7 @@ body {
 "section0" = "
 
 </head>
-<body bgcolor=\"black\">
+<body bgcolor=\"black\" onresize=\"location.reload();\">
 
 <script>
 
@@ -33,12 +32,13 @@ body {
 ";
 
 
-"section1" = "stack = d3.layout.stack().offset(\"silhouette\"),
+
+"section1" = "
 
 layers1=stack(  data.map(function(foo) { return foo.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });   })  );
 
-var width = 1300,
-height = 600;
+var width = document.width,
+height = document.height;
 
 var x = d3.scale.linear()
 .domain([0, m - 1])

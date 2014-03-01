@@ -20,12 +20,50 @@
         NSLog(@"subview: %@", [subview className]);
     }
 
+    
+    NSString* graphType = [[NSString alloc] init];
+    switch ([pId tag])
+    
+    {
+        case 6:
+            
+            graphType = @"silhouette";
+            
+            break;
+            
+        case 5:
+            
+             graphType = @"wiggle";
+            
+            break;
+            
+        case 4:
+            
+            graphType = @"expand";
+            
+            break;
+            
+        case 3:
+            
+            graphType = @"zero";
+            
+            break;
+            
+        default:
+            
+            graphType = @"silhouette";
+
+            
+            break;
+            
+    }
+    
     HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
     
 
     
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]];
+    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]:graphType];
 }
 
 
@@ -114,22 +152,6 @@
         [colorStack add:[NSColor colorWithCalibratedRed:(217/255.0f) green:(72/255.0f) blue:(1/255.0f) alpha:1.0]];
         [colorStack add:[NSColor colorWithCalibratedRed:(166/255.0f) green:(54/255.0f) blue:(3/255.0f) alpha:1.0]];
         [colorStack add:[NSColor colorWithCalibratedRed:(127/255.0f) green:(39/255.0f) blue:(4/255.0f) alpha:1.0]];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

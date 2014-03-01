@@ -34,7 +34,6 @@ HCCPAppDelegate* delegate;
 
 - (void)selectLastTabViewItem:(id)sender {
     
-    NSLog(@"tag %d", [sender tag]);
 
     
     // draw the graph...
