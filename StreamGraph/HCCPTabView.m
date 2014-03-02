@@ -51,6 +51,8 @@ HCCPAppDelegate* delegate;
 
     [[webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[delegate getCurrentGraphUrl]]];
     
+    [delegate setWebView:webview];
+
     NSString *scrollHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
     NSLog(@"height %@",  scrollHeight);
     

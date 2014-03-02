@@ -63,7 +63,7 @@
 
     
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]:graphType];
+    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
 }
 
 

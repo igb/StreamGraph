@@ -21,6 +21,9 @@
     HCCPTabView* myTabView;
 
     NSString* currentGraphId;
+    NSString* currentGraphBackground;
+    WebView* myWebView;
+
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -29,11 +32,18 @@
 
 -(IBAction)createGraph:(id)pId;
 -(IBAction)showView1:(id)sender;
+-(IBAction)selectChartBackgroundColor:(id)sender;
+-(IBAction)captureImage:(id)sender;
+
 - (void)setTableView:(HCCPTableView*)tableView;
 - (void)setTabView:(HCCPTabView*)tabView;
+- (void)setWebView:(WebView*)webView;
+
 
 
 -(NSString*)getCurrentGraphId;
+-(NSString*)getCurrentGraphBackground;
+
 -(NSURL*)getCurrentGraphUrl;
 
 

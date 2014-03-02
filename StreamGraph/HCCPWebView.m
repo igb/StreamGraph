@@ -40,6 +40,7 @@
 }
 -(BOOL)webViewIsResizable:(WebView *)sender {
     return FALSE;
+    
 }
 
 

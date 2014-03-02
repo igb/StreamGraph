@@ -12,6 +12,7 @@
     NSMutableArray *colors;
     int head;
 }
+- (NSString*)colorToHexString:(NSColor*)color;
 - (void)add:(NSColor*)color;
 - (id)pop;
 @end

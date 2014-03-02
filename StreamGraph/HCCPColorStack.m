@@ -26,6 +26,15 @@
     }
 }
 
+
+- (NSString*)colorToHexString:(NSColor*)color {
+    return  [NSString stringWithFormat:@"%02X%02X%02X",
+             (int) (color.redComponent * 0xFF), (int) (color.greenComponent * 0xFF),
+             (int) (color.blueComponent * 0xFF)];
+}
+
+
+
 - (id)pop {
      @synchronized(self) {
          NSColor* color = [colors objectAtIndex:head];

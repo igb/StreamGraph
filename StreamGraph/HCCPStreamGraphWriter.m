@@ -21,7 +21,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -40,16 +40,20 @@
         
     NSString* section0 = NSLocalizedStringFromTable (@"section0", @"d3resources", @"A comment");
     
+    NSString* section0_1 = NSLocalizedStringFromTable (@"section01", @"d3resources", @"A comment");
+    
     [self writeStringToStream:stream :header];
     [self writeStringToStream:stream :@"<script>"];
     [self writeStringToStream:stream :d3];
     [self writeStringToStream:stream :@"</script>"];
     [self writeStringToStream:stream :section0];
+    [self writeStringToStream:stream :graphBackground];
+    [self writeStringToStream:stream :section0_1];
 
 
     [document appendString:@"\ndata=[\n"];
     
-    // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SIP HEADERS AND ROW LABELS
+    // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SKIP HEADERS AND ROW LABELS
     for (int i = 1; i < [data count]; i++) {
         [document appendString:@"[\n"];
         NSArray* record = [data objectAtIndex:i];

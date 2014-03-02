@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10279A7A18C1513D00D93A08 /* sil-graph.gif */; };
+		10279A7D18C2B4A800D93A08 /* expand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10279A7C18C2B4A800D93A08 /* expand.gif */; };
 		102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 102F94CD18957920008B4FD2 /* HCCPTabView.m */; };
 		108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
 		108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 108022C1176B61B7004D45A9 /* InfoPlist.strings */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		10279A7A18C1513D00D93A08 /* sil-graph.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "sil-graph.gif"; sourceTree = "<group>"; };
+		10279A7C18C2B4A800D93A08 /* expand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = expand.gif; sourceTree = "<group>"; };
 		102F94CC18957920008B4FD2 /* HCCPTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTabView.h; sourceTree = "<group>"; };
 		102F94CD18957920008B4FD2 /* HCCPTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTabView.m; sourceTree = "<group>"; };
 		108022B4176B61B7004D45A9 /* StreamGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				108022C0176B61B7004D45A9 /* StreamGraph-Info.plist */,
 				108022C1176B61B7004D45A9 /* InfoPlist.strings */,
 				10279A7A18C1513D00D93A08 /* sil-graph.gif */,
+				10279A7C18C2B4A800D93A08 /* expand.gif */,
 				108022C4176B61B7004D45A9 /* main.m */,
 				108022C6176B61B7004D45A9 /* StreamGraph-Prefix.pch */,
 				108022C7176B61B7004D45A9 /* Credits.rtf */,
@@ -269,6 +272,7 @@
 				10D4C704176E8A98009A862F /* d3resources.strings in Resources */,
 				10D4C70C176EC403009A862F /* d3.txt in Resources */,
 				10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */,
+				10279A7D18C2B4A800D93A08 /* expand.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,11 @@ body {
 "section0" = "
 
 </head>
-<body bgcolor=\"black\" onresize=\"location.reload();\">
+<body bgcolor=\"";
+
+
+
+"section01" = "\" onresize=\"location.reload();\">
 
 <script>
 
