@@ -24,6 +24,7 @@
 
  - (IBAction)createGraph:(id)pId;
  - (void)handleFile:(NSURL*)fileUrl;
+- (NSArray*)getData;
 
 
 @end

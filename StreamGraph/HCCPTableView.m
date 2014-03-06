@@ -14,6 +14,12 @@
 @implementation HCCPTableView
 
 
+- (void) myAction: (NSButtonCell*)button{
+    NSLog(@"in my action...%@", [button tag]);
+    NSColorPanel* colorPanel = [[NSColorPanel alloc] init];
+    
+}
+
 - (IBAction)createGraph:(id)pId {
     NSLog(@"Super %@", [[pId superview] className]);
     for (NSView *subview in [pId subviews]) {
@@ -175,9 +181,25 @@
 
 
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex {
-    NSLog(@"foo %@", anObject);
+    NSLog(@"cell edit operation recieved");
+    NSLog(@"column %@", [aTableColumn identifier]);
+    NSLog(@"row %d", rowIndex);
+    NSMutableArray* row = [rows objectAtIndex:rowIndex];
+    NSUInteger* column = [[aTableColumn identifier] intValue];
+   
+    
+    NSLog(@"proposed value %@", anObject);
+    NSLog(@"prev value %@",  [row objectAtIndex:column]);
+    [row replaceObjectAtIndex:column withObject:anObject];
+
+    
+    
 }
 
+
+- (NSArray*)getData {
+    return rows;
+}
 
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
@@ -186,15 +208,32 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [tableView setGridStyleMask:(NSTableViewSolidVerticalGridLineMask | NSTableViewSolidHorizontalGridLineMask)];
     
     if ([[tableColumn identifier] intValue] == 0) {
-        
         NSTextFieldCell* cell = [tableColumn dataCellForRow:row];
         [cell setDrawsBackground:true];
         NSColor* cellColor=[colors objectAtIndex:row];
-        [cellColor set];
+        //[cellColor set];
         [cell setBackgroundColor:cellColor];
 //        [colors replaceObjectAtIndex:row withObject:cellColor];
+        NSButtonCell* buttonCell = [[NSButtonCell alloc] init];
+        [buttonCell setTarget:self];
+        [buttonCell setAction:@selector(myAction:)];
+        [buttonCell setBackgroundColor:cellColor];
+        NSString* title = [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
+        [buttonCell setTitle:title];
+        [buttonCell setBezeled:NO];
+        [buttonCell setBordered:NO];
+        [buttonCell setType:NSTextCellType];
+        [buttonCell setTag:row];
+
+        
+        [tableColumn setDataCell:buttonCell];
+        
+        return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
+        
+    } else {
+        return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
+  
     }
-    return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
 }
 
 
@@ -263,7 +302,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 }
 
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+    NSLog(@"row %d",[[notification object] selectedRow]);
+    NSLog(@"cell %@",notification);
 
+}
 
 
 @end

@@ -34,6 +34,8 @@
 -(IBAction)showView1:(id)sender;
 -(IBAction)selectChartBackgroundColor:(id)sender;
 -(IBAction)captureImage:(id)sender;
+-(IBAction)exportData:(id)sender;
+
 
 - (void)setTableView:(HCCPTableView*)tableView;
 - (void)setTabView:(HCCPTabView*)tabView;

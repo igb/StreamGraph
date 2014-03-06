@@ -74,9 +74,9 @@
     
     
     [document appendString:@"var n ="];
-    [document appendString:[NSString stringWithFormat:@"%li", [data count]]]; // number of layers
+    [document appendString:[NSString stringWithFormat:@"%li", [data count] -1]]; // number of layers
     [document appendString:@",\nm = "];
-    [document appendString:[NSString stringWithFormat:@"%li",[[data objectAtIndex:0] count]]]; // number of samples per layer
+    [document appendString:[NSString stringWithFormat:@"%li",[[data objectAtIndex:0] count] -1]]; // number of samples per layer
 	[document appendString:@",\n"];
     
     [document appendString:@"stack = d3.layout.stack().offset(\""],

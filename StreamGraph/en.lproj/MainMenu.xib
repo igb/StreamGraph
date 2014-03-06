@@ -292,7 +292,15 @@
 								</object>
 								<object class="NSMenuItem" id="336617531">
 									<reference key="NSMenu" ref="720053764"/>
-									<string key="NSTitle">Export...</string>
+									<string key="NSTitle">Export chart...</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="18759350">
+									<reference key="NSMenu" ref="720053764"/>
+									<string key="NSTitle">Export data...</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
@@ -1359,7 +1367,6 @@
 							<string key="NSFrame">{{7, 0}, {695, 443}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="45706013"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="740699279">
@@ -1382,7 +1389,7 @@
 																<array class="NSMutableArray" key="NSSubviews"/>
 																<string key="NSFrameSize">{695, 422}</string>
 																<reference key="NSSuperview" ref="288319570"/>
-																<reference key="NSNextKeyView" ref="996699119"/>
+																<reference key="NSNextKeyView" ref="241977680"/>
 																<string key="NSReuseIdentifierKey">_NS:13</string>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -1518,7 +1525,6 @@
 														<int key="NSvFlags">-2147483392</int>
 														<string key="NSFrame">{{531, 17}, {16, 279}}</string>
 														<reference key="NSSuperview" ref="506049186"/>
-														<reference key="NSNextKeyView"/>
 														<string key="NSReuseIdentifierKey">_NS:58</string>
 														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 														<reference key="NSTarget" ref="506049186"/>
@@ -1543,14 +1549,13 @@
 												</array>
 												<string key="NSFrameSize">{695, 439}</string>
 												<reference key="NSSuperview" ref="915069668"/>
-												<reference key="NSNextKeyView" ref="241977680"/>
+												<reference key="NSNextKeyView" ref="288319570"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<int key="NSsFlags">133680</int>
 												<reference key="NSVScroller" ref="202608645"/>
 												<reference key="NSHScroller" ref="996699119"/>
 												<reference key="NSContentView" ref="288319570"/>
 												<reference key="NSHeaderClipView" ref="241977680"/>
-												<reference key="NSCornerView" ref="345986486"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABC/AAAQvwAAA</bytes>
 												<double key="NSMinMagnification">0.25</double>
 												<double key="NSMaxMagnification">4</double>
@@ -1778,7 +1783,6 @@
 							<string key="NSFrame">{{7, 450}, {44, 39}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1116</string>
 							<bool key="NSEnabled">YES</bool>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -2516,6 +2520,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
+						<string key="label">exportData:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="18759350"/>
+					</object>
+					<int key="connectionID">1074</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
 						<string key="label">openCsvFile:</string>
 						<reference key="source" ref="52569491"/>
 						<reference key="destination" ref="722745758"/>
@@ -2691,6 +2703,7 @@
 							<reference ref="1010469920"/>
 							<reference ref="991940234"/>
 							<reference ref="336617531"/>
+							<reference ref="18759350"/>
 						</array>
 						<reference key="parent" ref="379814623"/>
 					</object>
@@ -3800,6 +3813,11 @@
 						<reference key="object" ref="336617531"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1073</int>
+						<reference key="object" ref="18759350"/>
+						<reference key="parent" ref="720053764"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3857,6 +3875,7 @@
 				<string key="1064.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1070.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1071.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1073.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="112.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="124.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="125.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4046,7 +4065,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1072</int>
+			<int key="maxID">1074</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4056,6 +4075,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="captureImage:">id</string>
 						<string key="createGraph:">id</string>
+						<string key="exportData:">id</string>
 						<string key="selectChartBackgroundColor:">id</string>
 						<string key="showView1:">id</string>
 					</dictionary>
@@ -4066,6 +4086,10 @@
 						</object>
 						<object class="IBActionInfo" key="createGraph:">
 							<string key="name">createGraph:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="exportData:">
+							<string key="name">exportData:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="selectChartBackgroundColor:">

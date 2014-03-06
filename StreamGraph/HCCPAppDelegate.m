@@ -60,6 +60,57 @@
 
 }
 
+-(IBAction)exportData:(id)sender {
+
+    
+    NSSavePanel *dataSavePanel	= [NSSavePanel savePanel];
+    [dataSavePanel setAllowedFileTypes:[NSArray arrayWithObjects:@"csv", nil]];
+    [dataSavePanel setExtensionHidden:NO];
+    
+    
+    int tvarInt	= [dataSavePanel runModal];
+    
+    if(tvarInt == NSOKButton){
+     	NSLog(@"doSaveAs we have an OK button");
+    } else if(tvarInt == NSCancelButton) {
+     	NSLog(@"doSaveAs we have a Cancel button");
+     	return;
+    } else {
+     	NSLog(@"doSaveAs tvarInt not equal 1 or zero = %3d",tvarInt);
+     	return;
+    } // end if
+    
+    NSMutableString* document = [[NSMutableString alloc] init];
+    NSArray* data = [myTableView getData];
+    
+    NSLog(@"data? %@", data);
+
+    
+    for (int i = 0; i < [data count]; i++) {
+        NSArray* record = [data objectAtIndex:i];
+        for (int j=0; j < [record count]; j++) {
+            [document appendString:[record objectAtIndex:j]];
+            if (j < ([record count]-1)) {
+                [document appendString:@","];
+            }
+
+        }
+        [document appendString:@"\n"];
+    }
+    
+    NSLog(@"csv: %@", document);
+NSLog(@"saving to? %@", [dataSavePanel URL]);
+    
+        [document writeToURL:[dataSavePanel URL] atomically:NO encoding:NSUTF8StringEncoding error:nil];
+    
+    //[@"sss" writeToURL:[dataSavePanel URL] atomically: NO];
+
+    
+}
+
+
+
+
 -(IBAction)captureImage:(id)sender {
     
     NSSavePanel *imageSavePanel	= [NSSavePanel savePanel];
