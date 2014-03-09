@@ -64,8 +64,8 @@ HCCPAppDelegate* delegate;
 
 - (void)selectFirstTabViewItem:(id)sender {
     NSLog(@"overriding 1st tab...");
-    //[delegate setMode:GraphViewMode];
-    //[delegate displayControls:GraphViewMode];
+    [delegate setMode:GraphViewMode];
+    [delegate displayControls:GraphViewMode];
     [super selectFirstTabViewItem:sender];
 }
 

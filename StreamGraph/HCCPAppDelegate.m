@@ -62,7 +62,7 @@
  
     [self setButtonImage:@"expand" :4];
     [self setButtonImage:@"sil-graph" :5];
-    //[self setButtonImage:@"grid" :1];
+    [self setButtonImage:@"grid" :1];
     
     currentGraphBackground=@"FFFFFF";
     
