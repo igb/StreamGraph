@@ -56,9 +56,17 @@ HCCPAppDelegate* delegate;
     NSString *scrollHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
     NSLog(@"height %@",  scrollHeight);
     
+    [delegate setMode:StackViewMode];
     
     
-    
+}
+
+
+- (void)selectFirstTabViewItem:(id)sender {
+    NSLog(@"overriding 1st tab...");
+    //[delegate setMode:GraphViewMode];
+    //[delegate displayControls:GraphViewMode];
+    [super selectFirstTabViewItem:sender];
 }
 
 

@@ -13,12 +13,11 @@
 
 @implementation HCCPTableView
 
+HCCPAppDelegate* delegate;
 
-- (void) myAction: (NSButtonCell*)button{
-    NSLog(@"in my action...%@", [button tag]);
-    NSColorPanel* colorPanel = [[NSColorPanel alloc] init];
-    
-}
+
+
+
 
 - (IBAction)createGraph:(id)pId {
     NSLog(@"Super %@", [[pId superview] className]);
@@ -69,13 +68,13 @@
 
     
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:rows:colors:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+    [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
 }
 
 
 -(void) awakeFromNib {
     NSLog(@"awake!");
-    HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
+    delegate = [[NSApplication sharedApplication] delegate];
     [delegate setTableView:self];
 }
 
@@ -210,23 +209,13 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if ([[tableColumn identifier] intValue] == 0) {
         NSTextFieldCell* cell = [tableColumn dataCellForRow:row];
         [cell setDrawsBackground:true];
-        NSColor* cellColor=[colors objectAtIndex:row];
+      //  NSColor* cellColor=[colors objectAtIndex:row];
+        NSColor* cellColor=[delegate getRowBackground:row];
+        
         //[cellColor set];
         [cell setBackgroundColor:cellColor];
 //        [colors replaceObjectAtIndex:row withObject:cellColor];
-        NSButtonCell* buttonCell = [[NSButtonCell alloc] init];
-        [buttonCell setTarget:self];
-        [buttonCell setAction:@selector(myAction:)];
-        [buttonCell setBackgroundColor:cellColor];
-        NSString* title = [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
-        [buttonCell setTitle:title];
-        [buttonCell setBezeled:NO];
-        [buttonCell setBordered:NO];
-        [buttonCell setType:NSTextCellType];
-        [buttonCell setTag:row];
 
-        
-        [tableColumn setDataCell:buttonCell];
         
         return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
         
@@ -253,12 +242,13 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         NSURL *fileUrl = [openPanel URL];
         [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:fileUrl];
         [self handleFile: fileUrl];
+        
     }
 }
 
 -(void)handleFile:(NSURL*)fileUrl {
     NSLog(@"starting handle of file");
-
+   
     NSLog(@"%@", fileUrl);
     rows = [[NSMutableArray alloc] init];
     
@@ -268,11 +258,18 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         
         // http://stackoverflow.com/questions/5140391/for-loop-in-objective-c
         NSArray* fileRows = [fileContents componentsSeparatedByString:@"\n"];
-        for (int i=0; i < [fileRows count] -1; i++) {
+    
+       [delegate initializeRowBackgroundArray:[fileRows count]];
+    
+        for (int i=0; i < [fileRows count]; i++) {
              NSString* row = [fileRows objectAtIndex:i];
              NSArray* columns = [row componentsSeparatedByString:@","];
             [rows addObject:columns];
-            [colors addObject:[colorStack pop]];
+            NSColor* tmpColor =[colorStack pop];
+            [colors addObject:tmpColor];
+            
+            [delegate setSelectedRow:i];
+            [delegate setSelectedRowBackground:tmpColor];
             NSLog(@"adding row");
         }
         
@@ -305,6 +302,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSLog(@"row %d",[[notification object] selectedRow]);
     NSLog(@"cell %@",notification);
+    [delegate setSelectedRow:[[notification object] selectedRow]];
 
 }
 

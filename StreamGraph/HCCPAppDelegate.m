@@ -13,6 +13,43 @@
 
 @implementation HCCPAppDelegate
 
+
+
+- (void)displayControls:(ModeType)mode {
+   
+    switch (mode)
+    
+    {
+        case GraphViewMode:
+            
+           [[self.window.contentView viewWithTag:4] setHidden:YES];
+            
+            break;
+            
+        case BarViewMode:
+            
+            
+            break;
+            
+        case StackViewMode:
+            
+            [[self.window.contentView viewWithTag:4] setHidden:NO];
+
+            
+            break;
+            
+        default:
+            
+            
+            
+            break;
+            
+    }
+
+    
+    
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     
@@ -25,6 +62,8 @@
  
     [self setButtonImage:@"expand" :4];
     [self setButtonImage:@"sil-graph" :5];
+    //[self setButtonImage:@"grid" :1];
+    
     currentGraphBackground=@"FFFFFF";
     
 }
@@ -59,6 +98,27 @@
     
 
 }
+
+
+- (void)initializeRowBackgroundArray:(NSInteger*)tableSize {
+    rowColors = [[NSMutableArray alloc] initWithCapacity:tableSize];
+    for (int i = 0; i < tableSize; i++) {
+        [rowColors addObject:[NSColor redColor]];
+    }
+}
+
+
+- (NSColor*)getRowBackground:(NSInteger*)rowId {
+    return [rowColors objectAtIndex:rowId];
+}
+
+- (NSArray*) getDocumentColors {
+    return rowColors;
+}
+
+
+
+
 
 -(IBAction)exportData:(id)sender {
 
@@ -158,6 +218,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 - (void)setTableView:(HCCPTableView*)tableView {
     myTableView=tableView;
     NSLog(@"setting table view: %@", myTableView);
+
 }
 
 - (void)setTabView:(HCCPTabView*)tabView {
@@ -169,16 +230,35 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
 }
 
-
+- (void)setMode:(ModeType)mode {
+    _mode=mode;
+}
 
 
 
 -(IBAction)selectChartBackgroundColor:(id)sender {
     NSColorWell * colorChooser = sender;
-    currentGraphBackground = [[[HCCPColorStack alloc] init] colorToHexString:[colorChooser color]];
+    NSLog(@"choosing color: %@", [colorChooser color]);
+    NSLog(@"current mode: %ld", _mode);
+    
+    NSString* selectedColor = [[[HCCPColorStack alloc] init] colorToHexString:[colorChooser color]];
+    if (_mode == StackViewMode) {
+        currentGraphBackground = selectedColor;
+    } else if (_mode == GraphViewMode) {
+        [self setSelectedRowBackground:[colorChooser color]];
+    }
     
     
 }
+
+- (void)setSelectedRow:(NSInteger*)selectedRow {
+    currentSelectedRow = selectedRow;
+}
+
+- (void)setSelectedRowBackground:(NSColor*)color {
+    [rowColors replaceObjectAtIndex:currentSelectedRow withObject:color];
+}
+
 
 
 -(NSString*)getCurrentGraphBackground {

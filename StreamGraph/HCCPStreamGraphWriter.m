@@ -88,7 +88,7 @@
     
     [document appendString:NSLocalizedStringFromTable (@"section1", @"d3resources", @"A comment")];
     [document appendString:@"var colors = ["];
-    for (int i = 0; i < [colors count]; i++) {
+    for (int i = 1; i < [colors count]; i++) { //starting at "1" because of the headers (need to fix)
         NSColor* color = [colors objectAtIndex:i];
          NSString* hexString = [NSString stringWithFormat:@"%02X%02X%02X",
                                (int) (color.redComponent * 0xFF), (int) (color.greenComponent * 0xFF),

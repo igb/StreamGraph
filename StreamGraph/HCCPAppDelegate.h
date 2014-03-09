@@ -12,7 +12,11 @@
 #import "HCCPTabView.h"
 
 
-
+typedef NS_ENUM(NSInteger, ModeType) {
+    GraphViewMode,
+    StackViewMode,
+    BarViewMode
+};
 
 
 
@@ -22,7 +26,12 @@
 
     NSString* currentGraphId;
     NSString* currentGraphBackground;
+    NSInteger currentSelectedRow;
+    NSMutableArray* rowColors;
+
     WebView* myWebView;
+    ModeType _mode;
+    
 
 }
 
@@ -36,12 +45,21 @@
 -(IBAction)captureImage:(id)sender;
 -(IBAction)exportData:(id)sender;
 
-
+- (void)displayControls:(ModeType)mode;
 - (void)setTableView:(HCCPTableView*)tableView;
 - (void)setTabView:(HCCPTabView*)tabView;
 - (void)setWebView:(WebView*)webView;
+- (void)setSelectedRow:(NSInteger*)selectedRow;
+- (void)setSelectedRowBackground:(NSColor*)color;
+- (void)initializeRowBackgroundArray:(NSInteger*)tableSize;
+- (NSColor*)getRowBackground:(NSInteger*)rowId;
+- (NSArray*) getDocumentColors;
 
 
+
+
+
+- (void)setMode:(ModeType)mode;
 
 -(NSString*)getCurrentGraphId;
 -(NSString*)getCurrentGraphBackground;
