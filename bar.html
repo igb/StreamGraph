@@ -81,12 +81,12 @@ var margin = {top: 20, right: 30, bottom: 30, left: 40},
 	//X AXIS (dates or Timestamps would go here...)
 	var x = d3.scale.ordinal()
 	    .domain(my_x_axis)
-	    .rangeBands([0, width]);
+	    .rangeBands([0, width], 0.3);
 	
 	
 		var z = d3.scale.ordinal()
 		    .domain(my_x_axis)
-		    .rangeBands([0, width]);
+		    .rangeBands([0, width], 0.3);
 	
 	//END X AXIS
 	
