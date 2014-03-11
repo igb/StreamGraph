@@ -22,10 +22,15 @@ body {
   text-anchor: end;
 }
 .x text {
-	
+	font: 4px gotham, sans-serif;
 }
+
+.y text {
+	font: 10px gotham, sans-serif;
+}
+
 .axis text {
-  font: 10px gotham, sans-serif;
+  font: gotham, sans-serif;
 }
 
 .axis path,
@@ -72,11 +77,16 @@ var margin = {top: 20, right: 30, bottom: 30, left: 40},
 	
 	  y.domain([0, d3.max(data) ]);
 	
+	
 	//X AXIS (dates or Timestamps would go here...)
 	var x = d3.scale.ordinal()
 	    .domain(my_x_axis)
 	    .rangeBands([0, width]);
 	
+	
+		var z = d3.scale.ordinal()
+		    .domain(my_x_axis)
+		    .rangeBands([0, width]);
 	
 	//END X AXIS
 	
@@ -97,15 +107,15 @@ var margin = {top: 20, right: 30, bottom: 30, left: 40},
 			    .orient("left");
 			
 				var xAxis = d3.svg.axis()
-				    .scale(x)
+				    .scale(z)
 				    .orient("bottom");
 
-					/*chart.append("g")
+					chart.append("g")
 					    .attr("class", "x axis")
 					    .attr("transform", "translate(0," + height  + ")")
 					    .call(xAxis);
 					
-					*/
+					
 						chart.append("g")
 						    .attr("class", "y axis")
 						    .call(yAxis);
