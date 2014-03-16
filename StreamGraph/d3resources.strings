@@ -19,6 +19,36 @@ body {
     position: relative;
 }
 
+
+.chart rect {
+    fill: steelblue;
+}
+
+.chart text {
+    fill: black;
+    font: 10px gotham, sans-serif;
+    text-anchor: end;
+}
+.x text {
+	font: 4px gotham, sans-serif;
+}
+
+.y text {
+	font: 10px gotham, sans-serif;
+}
+
+.axis text {
+    font: gotham, sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+
 </style>";
 
 "section0" = "

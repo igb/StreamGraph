@@ -27,6 +27,8 @@
 		10C7D9F218CCFFBF0062A46C /* expand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F118CCFFBF0062A46C /* expand.gif */; };
 		10C7D9F418CCFFF00062A46C /* sil.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F318CCFFF00062A46C /* sil.gif */; };
 		10C7D9F618CD009B0062A46C /* wig.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F518CD009B0062A46C /* wig.gif */; };
+		10C7D9F918D574500062A46C /* HCCPBarGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */; };
+		10C7D9FC18D574D50062A46C /* HCCPGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */; };
 		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
 		10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */; };
 		10D4C704176E8A98009A862F /* d3resources.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C703176E8A98009A862F /* d3resources.strings */; };
@@ -76,6 +78,10 @@
 		10C7D9F118CCFFBF0062A46C /* expand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = expand.gif; sourceTree = "<group>"; };
 		10C7D9F318CCFFF00062A46C /* sil.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sil.gif; sourceTree = "<group>"; };
 		10C7D9F518CD009B0062A46C /* wig.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wig.gif; sourceTree = "<group>"; };
+		10C7D9F718D574500062A46C /* HCCPBarGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPBarGraphWriter.h; sourceTree = "<group>"; };
+		10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPBarGraphWriter.m; sourceTree = "<group>"; };
+		10C7D9FA18D574D50062A46C /* HCCPGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPGraphWriter.h; sourceTree = "<group>"; };
+		10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPGraphWriter.m; sourceTree = "<group>"; };
 		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
 		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
 		10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPStreamGraphWriter.h; sourceTree = "<group>"; };
@@ -163,6 +169,10 @@
 				10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */,
 				102F94CC18957920008B4FD2 /* HCCPTabView.h */,
 				102F94CD18957920008B4FD2 /* HCCPTabView.m */,
+				10C7D9F718D574500062A46C /* HCCPBarGraphWriter.h */,
+				10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */,
+				10C7D9FA18D574D50062A46C /* HCCPGraphWriter.h */,
+				10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -324,6 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				108022C5176B61B7004D45A9 /* main.m in Sources */,
+				10C7D9F918D574500062A46C /* HCCPBarGraphWriter.m in Sources */,
+				10C7D9FC18D574D50062A46C /* HCCPGraphWriter.m in Sources */,
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
 				10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */,

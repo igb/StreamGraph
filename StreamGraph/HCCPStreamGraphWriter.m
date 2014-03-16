@@ -10,15 +10,6 @@
 
 @implementation HCCPStreamGraphWriter
 
--(void)writeStringToStream:(NSOutputStream*)stream :(NSString*)string  {
-     NSData *strData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    [stream write:(uint8_t *)[strData bytes] maxLength:[strData length]];
-}
-
--(NSArray*)interpolate:(NSArray*)data {
-    
-}
-
 
 
 -(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
@@ -29,26 +20,17 @@
     
     
     NSMutableString* document = [[NSMutableString alloc] init];
-    NSString* header = NSLocalizedStringFromTable (@"header", @"d3resources", @"A comment");
     
-    NSString* d3path = [[NSBundle mainBundle] pathForResource:@"d3"
-                                                     ofType:@"txt"];
-    NSLog(@"path: %@", d3path);
-    NSString* d3 = [NSString stringWithContentsOfFile:d3path
-                                               encoding:NSUTF8StringEncoding
-                                                    error:NULL];
-        
-    NSString* section0 = NSLocalizedStringFromTable (@"section0", @"d3resources", @"A comment");
     
-    NSString* section0_1 = NSLocalizedStringFromTable (@"section01", @"d3resources", @"A comment");
     
-    [self writeStringToStream:stream :header];
+    
+    [self writeStringToStream:stream :[self getSection:@"header"]];
     [self writeStringToStream:stream :@"<script>"];
-    [self writeStringToStream:stream :d3];
+    [self writeStringToStream:stream :[self getD3js]];
     [self writeStringToStream:stream :@"</script>"];
-    [self writeStringToStream:stream :section0];
+    [self writeStringToStream:stream :[self getSection:@"section0"]];
     [self writeStringToStream:stream :graphBackground];
-    [self writeStringToStream:stream :section0_1];
+    [self writeStringToStream:stream :[self getSection:@"section01"]];
 
 
     [document appendString:@"\ndata=[\n"];
