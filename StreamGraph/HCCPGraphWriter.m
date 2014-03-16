@@ -29,9 +29,56 @@
 
 
 -(NSString*) dataToJSArray:(NSArray*)data {
+    NSMutableString* document = [[NSMutableString alloc] init];
+
+    
+    [document appendString:@"\ndata=[\n"];
+    
+    // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SKIP HEADERS AND ROW LABELS
+    for (int i = 1; i < [data count]; i++) {
+        [document appendString:@"[\n"];
+        NSArray* record = [data objectAtIndex:i];
+        for (int j=1; j < [record count]; j++) {
+            [document appendString:[record objectAtIndex:j]];
+            if (j < [record count] - 1) {
+                [document appendString:@","];
+            }
+        }
+        [document appendString:@"\n]"];
+        if (i < [data count] - 1) {
+            [document appendString:@","];
+        }
+        
+    }
+    [document appendString:@"\n];\n\n"];
+   
+    return document;
+    
+
     
 }
 
+-(NSString*) colorsToJSArray:(NSArray*)colors {
+    
+    NSMutableString* document = [[NSMutableString alloc] init];
+
+    
+    [document appendString:@"var colors = ["];
+    for (int i = 1; i < [colors count]; i++) { //starting at "1" because of the headers (need to fix)
+        NSColor* color = [colors objectAtIndex:i];
+        NSString* hexString = [NSString stringWithFormat:@"%02X%02X%02X",
+                               (int) (color.redComponent * 0xFF), (int) (color.greenComponent * 0xFF),
+                               (int) (color.blueComponent * 0xFF)];
+        [document appendString:[NSString stringWithFormat:@"\"%@\"", hexString]];
+        if (i < [colors count] - 1) {
+            [document appendString:@","];
+        }
+    }
+    
+    [document appendString:@"];\n"];
+    return document;
+    
+}
 
 
 
