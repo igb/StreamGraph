@@ -755,7 +755,7 @@
                         </connections>
                     </tabView>
                     <button tag="1" id="923">
-                        <rect key="frame" x="442" y="451" width="41" height="38"/>
+                        <rect key="frame" x="299" y="451" width="41" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="924">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -768,7 +768,7 @@
                     <button toolTip="Expand" tag="4" id="1041">
                         <rect key="frame" x="589" y="451" width="38" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" tag="10" imageScaling="proportionallyDown" inset="2" id="1042">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1042">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -779,7 +779,7 @@
                     <button toolTip="Wiggle" tag="5" id="1043">
                         <rect key="frame" x="541" y="451" width="38" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="WIG" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1044">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1044">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -790,7 +790,7 @@
                     <button toolTip="Zero" tag="3" id="1045">
                         <rect key="frame" x="637" y="451" width="38" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="ZER" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1048">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1048">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -801,12 +801,23 @@
                     <button toolTip="Silhouette" tag="6" id="1046">
                         <rect key="frame" x="493" y="451" width="38" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="SIL" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1047">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1047">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="selectLastTabViewItem:" target="651" id="1060"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" toolTip="Silhouette" tag="8" id="xE3-Dw-l5i">
+                        <rect key="frame" x="493" y="450" width="38" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="oYh-ag-C7z">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectLastTabViewItem:" target="651" id="6Ri-Ms-Cca"/>
                         </connections>
                     </button>
                     <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
@@ -817,6 +828,35 @@
                             <action selector="selectChartBackgroundColor:" target="494" id="1065"/>
                         </connections>
                     </colorWell>
+                    <button tag="2" id="dRL-ET-oNv">
+                        <rect key="frame" x="355" y="451" width="40" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TjT-8f-RSD">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="graphBar:" target="494" id="ldx-kc-2yT"/>
+                        </connections>
+                    </button>
+                    <button tag="7" id="Vll-hL-9Qf">
+                        <rect key="frame" x="410" y="451" width="40" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" alternateTitle="Stack" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="arv-M4-YqJ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="graphStack:" target="494" id="oGl-7h-lst"/>
+                        </connections>
+                    </button>
+                    <box autoresizesSubviews="NO" horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="90v-AF-kno">
+                        <rect key="frame" x="462" y="443" width="5" height="67"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                 </subviews>
             </view>
         </window>

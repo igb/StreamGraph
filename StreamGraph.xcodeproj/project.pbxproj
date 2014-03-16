@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10279A7A18C1513D00D93A08 /* sil-graph.gif */; };
-		10279A7D18C2B4A800D93A08 /* expand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10279A7C18C2B4A800D93A08 /* expand.gif */; };
 		102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 102F94CD18957920008B4FD2 /* HCCPTabView.m */; };
 		1067112218CBD7F7000828C4 /* grid.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1067112118CBD7F7000828C4 /* grid.gif */; };
 		108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
@@ -24,6 +22,11 @@
 		108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108022F3176D112D004D45A9 /* HCCPTableView.m */; };
 		108AE5971896B212000CD894 /* HCCPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108AE5961896B212000CD894 /* HCCPWebView.m */; };
 		108AE5991896B308000CD894 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108AE5981896B308000CD894 /* WebKit.framework */; };
+		10C7D9EA18CCFD550062A46C /* bar.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9E918CCFD550062A46C /* bar.gif */; };
+		10C7D9EC18CCFE530062A46C /* zero.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9EB18CCFE530062A46C /* zero.gif */; };
+		10C7D9F218CCFFBF0062A46C /* expand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F118CCFFBF0062A46C /* expand.gif */; };
+		10C7D9F418CCFFF00062A46C /* sil.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F318CCFFF00062A46C /* sil.gif */; };
+		10C7D9F618CD009B0062A46C /* wig.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F518CD009B0062A46C /* wig.gif */; };
 		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
 		10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */; };
 		10D4C704176E8A98009A862F /* d3resources.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C703176E8A98009A862F /* d3resources.strings */; };
@@ -41,8 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10279A7A18C1513D00D93A08 /* sil-graph.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "sil-graph.gif"; sourceTree = "<group>"; };
-		10279A7C18C2B4A800D93A08 /* expand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = expand.gif; sourceTree = "<group>"; };
 		102F94CC18957920008B4FD2 /* HCCPTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTabView.h; sourceTree = "<group>"; };
 		102F94CD18957920008B4FD2 /* HCCPTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTabView.m; sourceTree = "<group>"; };
 		1067112118CBD7F7000828C4 /* grid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grid.gif; sourceTree = "<group>"; };
@@ -70,6 +71,11 @@
 		108AE5951896B212000CD894 /* HCCPWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPWebView.h; sourceTree = "<group>"; };
 		108AE5961896B212000CD894 /* HCCPWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPWebView.m; sourceTree = "<group>"; };
 		108AE5981896B308000CD894 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		10C7D9E918CCFD550062A46C /* bar.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bar.gif; sourceTree = "<group>"; };
+		10C7D9EB18CCFE530062A46C /* zero.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zero.gif; sourceTree = "<group>"; };
+		10C7D9F118CCFFBF0062A46C /* expand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = expand.gif; sourceTree = "<group>"; };
+		10C7D9F318CCFFF00062A46C /* sil.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sil.gif; sourceTree = "<group>"; };
+		10C7D9F518CD009B0062A46C /* wig.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wig.gif; sourceTree = "<group>"; };
 		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
 		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
 		10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPStreamGraphWriter.h; sourceTree = "<group>"; };
@@ -164,11 +170,14 @@
 		108022BF176B61B7004D45A9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				10C7D9F518CD009B0062A46C /* wig.gif */,
+				10C7D9EB18CCFE530062A46C /* zero.gif */,
 				1067112118CBD7F7000828C4 /* grid.gif */,
+				10C7D9F118CCFFBF0062A46C /* expand.gif */,
+				10C7D9F318CCFFF00062A46C /* sil.gif */,
+				10C7D9E918CCFD550062A46C /* bar.gif */,
 				108022C0176B61B7004D45A9 /* StreamGraph-Info.plist */,
 				108022C1176B61B7004D45A9 /* InfoPlist.strings */,
-				10279A7A18C1513D00D93A08 /* sil-graph.gif */,
-				10279A7C18C2B4A800D93A08 /* expand.gif */,
 				108022C4176B61B7004D45A9 /* main.m */,
 				108022C6176B61B7004D45A9 /* StreamGraph-Prefix.pch */,
 				108022C7176B61B7004D45A9 /* Credits.rtf */,
@@ -269,14 +278,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C7D9F418CCFFF00062A46C /* sil.gif in Resources */,
 				108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */,
+				10C7D9F218CCFFBF0062A46C /* expand.gif in Resources */,
 				108022C9176B61B7004D45A9 /* Credits.rtf in Resources */,
+				10C7D9EC18CCFE530062A46C /* zero.gif in Resources */,
 				1067112218CBD7F7000828C4 /* grid.gif in Resources */,
+				10C7D9EA18CCFD550062A46C /* bar.gif in Resources */,
 				108022CF176B61B7004D45A9 /* MainMenu.xib in Resources */,
+				10C7D9F618CD009B0062A46C /* wig.gif in Resources */,
 				10D4C704176E8A98009A862F /* d3resources.strings in Resources */,
 				10D4C70C176EC403009A862F /* d3.txt in Resources */,
-				10279A7B18C1513D00D93A08 /* sil-graph.gif in Resources */,
-				10279A7D18C2B4A800D93A08 /* expand.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

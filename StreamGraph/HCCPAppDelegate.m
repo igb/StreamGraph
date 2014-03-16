@@ -22,18 +22,37 @@
     {
         case GraphViewMode:
             
+           [[self.window.contentView viewWithTag:3] setHidden:YES];
            [[self.window.contentView viewWithTag:4] setHidden:YES];
+           [[self.window.contentView viewWithTag:5] setHidden:YES];
+           [[self.window.contentView viewWithTag:6] setHidden:YES];
+            [[self.window.contentView viewWithTag:8] setHidden:YES];
+ 
+
             
             break;
             
         case BarViewMode:
+            [[self.window.contentView viewWithTag:3] setHidden:YES];
+            [[self.window.contentView viewWithTag:4] setHidden:YES];
+            [[self.window.contentView viewWithTag:5] setHidden:YES];
+            [[self.window.contentView viewWithTag:6] setHidden:YES];
             
+            [[self.window.contentView viewWithTag:8] setHidden:NO];
+
+ 
             
             break;
             
         case StackViewMode:
             
+            [[self.window.contentView viewWithTag:3] setHidden:NO];
             [[self.window.contentView viewWithTag:4] setHidden:NO];
+            [[self.window.contentView viewWithTag:5] setHidden:NO];
+            [[self.window.contentView viewWithTag:6] setHidden:NO];
+            
+            [[self.window.contentView viewWithTag:8] setHidden:YES];
+
 
             
             break;
@@ -50,6 +69,20 @@
     
 }
 
+
+
+-(IBAction)graphStack:(id)sender {
+    [self setMode:StackViewMode];
+    [self displayControls:StackViewMode];
+    [myTabView selectLastTabViewItem:sender];
+}
+-(IBAction)graphBar:(id)sender {
+    
+    [self setMode:BarViewMode];
+    [self displayControls:BarViewMode];
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     
@@ -60,9 +93,19 @@
     
     
  
-    [self setButtonImage:@"expand" :4];
-    [self setButtonImage:@"sil-graph" :5];
     [self setButtonImage:@"grid" :1];
+    [self setButtonImage:@"bar" :2];
+    [self setButtonImage:@"zero" :3];
+    [self setButtonImage:@"expand" :4];
+    [self setButtonImage:@"wig" :5];
+    [self setButtonImage:@"sil" :6];
+    [self setButtonImage:@"sil" :7];
+    [self setButtonImage:@"bar" :8];
+
+
+
+
+
     
     currentGraphBackground=@"FFFFFF";
     

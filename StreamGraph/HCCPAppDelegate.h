@@ -44,6 +44,10 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)selectChartBackgroundColor:(id)sender;
 -(IBAction)captureImage:(id)sender;
 -(IBAction)exportData:(id)sender;
+-(IBAction)graphStack:(id)sender;
+-(IBAction)graphBar:(id)sender;
+
+
 
 - (void)displayControls:(ModeType)mode;
 - (void)setTableView:(HCCPTableView*)tableView;

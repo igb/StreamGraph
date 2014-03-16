@@ -54,6 +54,12 @@ HCCPAppDelegate* delegate;
             
             break;
             
+        case 8:
+            
+            graphType = @"bar";
+            
+            break;
+            
         default:
             
             graphType = @"silhouette";
