@@ -113,3 +113,89 @@ svg.selectAll(\"path\")
 </script>
 </body>
 </html>";
+
+
+
+
+"barGraphDataTransformationJS" = "var totals = [];
+var cols = [];
+
+
+for (var i=0;i<my_x_axis.length;i++)
+{
+	var total=0;
+	var col = new Object();
+	col.ents=new Array();
+	
+	for (var j=0; j<categories.length;j++) {
+		total+=data[j][i];
+		var entry = new Object();
+		if (j==0) {
+			entry.y0=0;
+			entry.y1=data[j][i];
+		} else {
+			entry.y0=data[j-1][i];
+			entry.y1=data[j][i] + data[j-1][i];
+		}
+		entry.name=categories[i];
+		entry.id=j;
+        
+		col.ents[j]=entry;
+    }
+	totals[i]=total;
+	cols[i]=col;
+	
+}";
+
+
+"barGraphLayoutJS001" = "var margin = {top: 20, right: 30, bottom: 30, left: 40},
+width = document.width - margin.left - margin.right,
+height = document.height - margin.top - margin.bottom;
+
+
+var y = d3.scale.linear()
+.range([height, 0]);
+
+var chart = d3.select(\".chart\")
+.attr(\"width\", width + margin.left + margin.right)
+.attr(\"height\", height + margin.top + margin.bottom).append(\"g\")
+.attr(\"transform\", \"translate(\" + margin.left + \",\" + margin.top + \")\");
+
+y.domain([0, d3.max(totals) ]);
+";
+
+
+
+
+
+
+"barGraphLayoutJS002" = "var bar = chart.selectAll(\"g\")
+.data(cols)
+.enter().append(\"g\")
+.attr(\"transform\", function(d, i) { return \"translate(\" + x(i) + \",0)\"; });
+
+bar.selectAll(\"rect\").data( function(d) { return d.ents; } ).enter().append(\"rect\")
+.attr(\"y\", function(d) { return y(d.y1); })
+.attr(\"height\", function(d) {  return y(d.y0) - y(d.y1); })
+.attr(\"width\", x.rangeBand()) // stays
+.style(\"fill\",  function(d) { return color(d.id); });
+
+
+var yAxis = d3.svg.axis()
+.scale(y)
+.orient(\"left\");
+
+var xAxis = d3.svg.axis()
+.scale(z)
+.orient(\"bottom\");
+
+chart.append(\"g\")
+.attr(\"class\", \"x axis\")
+.attr(\"transform\", \"translate(0,\" + height  + \")\")
+.call(xAxis);
+
+
+chart.append(\"g\")
+.attr(\"class\", \"y axis\")
+.call(yAxis);
+";

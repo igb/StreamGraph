@@ -27,6 +27,44 @@
     return NSLocalizedStringFromTable (section, @"d3resources", @"A comment");
 }
 
+-(NSString*) categoriesToJSArray:(NSArray*)data {
+    
+    NSMutableString* categories = [[NSMutableString alloc] init];
+    [categories appendString:@"\nvar categories = ["];
+
+    for (int i=1; i < [data count]; i++) { //I=1 so we skip first row
+         NSArray* row = [data objectAtIndex:i];
+        [categories appendString:@"\""];
+        [categories appendString:[row objectAtIndex:0]];
+        [categories appendString:@"\""];
+        if (i < [data count] - 1) {
+            [categories appendString:@","];
+        }
+        
+    }
+    [categories appendString:@"];\n"];
+    return categories;
+    
+}
+
+
+-(NSString*) xAxisToJSArray:(NSArray*)data {
+    NSMutableString* xAxis = [[NSMutableString alloc] init];
+    [xAxis appendString:@"\nvar my_x_axis = ["];
+    NSArray* headers = [data objectAtIndex:0];
+    for (int j=1; j < [headers count]; j++) { //J=1 so we skip first column
+        [xAxis appendString:@"\""];
+        [xAxis appendString:[headers objectAtIndex:j]];
+        [xAxis appendString:@"\""];
+        if (j < [headers count] - 1) {
+            [xAxis appendString:@","];
+        }
+    }
+    [xAxis appendString:@"];\n"];
+
+    return xAxis;
+    
+}
 
 -(NSString*) dataToJSArray:(NSArray*)data {
     NSMutableString* document = [[NSMutableString alloc] init];

@@ -14,7 +14,10 @@
 -(NSString*) getD3js;
 -(NSString*) getSection:(NSString*)section;
 -(NSString*) dataToJSArray:(NSArray*)data;
+-(NSString*) xAxisToJSArray:(NSArray*)data;
 -(NSString*) colorsToJSArray:(NSArray*)colors;
+-(NSString*) categoriesToJSArray:(NSArray*)data;
+
 
 
 @end

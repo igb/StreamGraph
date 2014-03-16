@@ -35,7 +35,8 @@
 
     
     [document appendString:[self dataToJSArray:data]];
-    
+    [document appendString:[self colorsToJSArray:colors]];
+
     
     
     [document appendString:@"var n ="];
@@ -54,8 +55,7 @@
     [document appendString:[self getSection:@"section1"]];
      
    
-    [document appendString:[self colorsToJSArray:colors]];
-     
+    
     [document appendString:[self getSection:@"section2"]];
     [self writeStringToStream:stream :document];
 

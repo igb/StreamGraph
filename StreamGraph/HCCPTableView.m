@@ -8,6 +8,7 @@
 
 #import "HCCPTableView.h"
 #import "HCCPStreamGraphWriter.h"
+#import "HCCPBarGraphWriter.h"
 #import "HCCPAppDelegate.h"
 
 
@@ -72,9 +73,16 @@ HCCPAppDelegate* delegate;
     HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
     
 
-    
-    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+    if ([graphType isEqualToString:@"bar"]) {
+        HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
+        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+    } else {
+        
+        HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+        
+    }
+
 }
 
 
