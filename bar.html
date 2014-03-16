@@ -61,6 +61,7 @@ categories=[
  "foo","adshard"
 ];
 
+color.domain(categories);
 
 data=[
 [1,2,4,5,5,6,4,1,0,1,9,4,7,2,2,3,2,0,1,1,8,4,1,0,2,2,0,2,3,1,1,5,5,10,0,1,3,3,9,0,2,1,3,3,2,2,2,1],
@@ -81,12 +82,18 @@ for (var i=0;i<my_x_axis.length;i++)
 	var ent0 = new Object();
 	ent0.y0=0;
 	ent0.y1=data[0][i]
+	ent0.name="foo"
+	
 	col.ents[0]=ent0;
 	
 	
 	var ent1 = new Object();
 	ent1.y0=data[0][i];
-	ent1.y1=data[1][i];
+	ent1.y1=data[1][i] + data[0][i];
+	ent0.name="adshard"
+	
+	
+	
 	col.ents[1]=ent1;
 	cols[i]=col;
 	
@@ -133,7 +140,7 @@ var margin = {top: 20, right: 30, bottom: 30, left: 40},
 		      .attr("y", function(d) { return y(d.y1); })
 		      .attr("height", function(d) {  return y(d.y0) - y(d.y1); })
 		      .attr("width", x.rangeBand()) // stays
-		.style("fill",  function(d) { return color(d); });
+		.style("fill",  function(d) { return color(d.name); });
 		
 		
 			var yAxis = d3.svg.axis()
