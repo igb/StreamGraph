@@ -128,19 +128,20 @@ for (var i=0;i<my_x_axis.length;i++)
 	col.ents=new Array();
 	
 	for (var j=0; j<categories.length;j++) {
-		total+=data[j][i];
 		var entry = new Object();
 		if (j==0) {
 			entry.y0=0;
 			entry.y1=data[j][i];
 		} else {
-			entry.y0=data[j-1][i];
-			entry.y1=data[j][i] + data[j-1][i];
+			entry.y0=total;
+			entry.y1=data[j][i] +total;
 		}
 		entry.name=categories[i];
 		entry.id=j;
         
 		col.ents[j]=entry;
+        total+=data[j][i];
+
     }
 	totals[i]=total;
 	cols[i]=col;
