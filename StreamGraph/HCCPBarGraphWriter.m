@@ -10,7 +10,7 @@
 
 @implementation HCCPBarGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap{
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -56,7 +56,7 @@
     [self writeStringToStream:stream :[self getSection:@"barGraphLayoutJS001"]];
 
     // xaxes
-     [self writeStringToStream:stream :[self generateXAxis:5]];
+     [self writeStringToStream:stream :[self generateXAxis:barGap]];
     
     [self writeStringToStream:stream :[self getSection:@"barGraphLayoutJS002"]];
 

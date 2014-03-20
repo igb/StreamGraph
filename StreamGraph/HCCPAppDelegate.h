@@ -27,10 +27,21 @@ typedef NS_ENUM(NSInteger, ModeType) {
     NSString* currentGraphId;
     NSString* currentGraphBackground;
     NSInteger currentSelectedRow;
+    NSIndexSet* currentSelectedRows;
     NSMutableArray* rowColors;
+    HCCPColorStack* purpleSwatch;
+    HCCPColorStack* greenSwatch;
+    HCCPColorStack* goldSwatch;
+    HCCPColorStack* blueSwatch;
+    HCCPColorStack* redSwatch;
+
+
+
+
 
     WebView* myWebView;
     ModeType _mode;
+    long _barGap;
     
 
 }
@@ -46,6 +57,11 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)exportData:(id)sender;
 -(IBAction)graphStack:(id)sender;
 -(IBAction)graphBar:(id)sender;
+-(IBAction)setBarGap:(id)sender;
+
+-(IBAction)applySwatch:(id)sender;
+
+
 
 
 
@@ -54,10 +70,13 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (void)setTabView:(HCCPTabView*)tabView;
 - (void)setWebView:(WebView*)webView;
 - (void)setSelectedRow:(NSInteger*)selectedRow;
+- (void)setSelectedRowIndexes:(NSIndexSet*)selectedRowIndexes;
 - (void)setSelectedRowBackground:(NSColor*)color;
 - (void)initializeRowBackgroundArray:(NSInteger*)tableSize;
 - (NSColor*)getRowBackground:(NSInteger*)rowId;
 - (NSArray*) getDocumentColors;
+- (long) getBarGap;
+
 
 
 

@@ -56,7 +56,7 @@ HCCPAppDelegate* delegate;
     NSString *scrollHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
     NSLog(@"height %@",  scrollHeight);
     
-    [delegate setMode:StackViewMode];
+   // [delegate setMode:StackViewMode];
     
     
 }

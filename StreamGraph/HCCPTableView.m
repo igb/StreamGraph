@@ -61,6 +61,13 @@ HCCPAppDelegate* delegate;
             
             break;
             
+            
+        case 11:
+            
+            graphType = @"bar";
+            
+            break;
+            
         default:
             
             graphType = @"silhouette";
@@ -75,7 +82,7 @@ HCCPAppDelegate* delegate;
 
     if ([graphType isEqualToString:@"bar"]) {
         HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
-        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
@@ -230,10 +237,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         [cell setBackgroundColor:cellColor];
 //        [colors replaceObjectAtIndex:row withObject:cellColor];
 
-        
         return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
         
     } else {
+      //  NSLog(@"row: %d of %d tabl col id: %d", row, [rows count], [[tableColumn identifier] intValue]);
+       
         return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
   
     }
@@ -269,6 +277,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     // add selected document to open recently
        
         NSString* fileContents = [NSString stringWithContentsOfURL:fileUrl];
+        fileContents=[fileContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
         // http://stackoverflow.com/questions/5140391/for-loop-in-objective-c
         NSArray* fileRows = [fileContents componentsSeparatedByString:@"\n"];
@@ -315,8 +324,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSLog(@"row %d",[[notification object] selectedRow]);
+    NSIndexSet* selectedIndexes = [[notification object] selectedRowIndexes];
+    NSLog(@"selected indexes %@", selectedIndexes);
     NSLog(@"cell %@",notification);
     [delegate setSelectedRow:[[notification object] selectedRow]];
+    [delegate setSelectedRowIndexes:selectedIndexes];
 
 }
 

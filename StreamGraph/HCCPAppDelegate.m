@@ -26,7 +26,9 @@
            [[self.window.contentView viewWithTag:4] setHidden:YES];
            [[self.window.contentView viewWithTag:5] setHidden:YES];
            [[self.window.contentView viewWithTag:6] setHidden:YES];
-            [[self.window.contentView viewWithTag:8] setHidden:YES];
+           [[self.window.contentView viewWithTag:8] setHidden:YES];
+           [[self.window.contentView viewWithTag:9] setHidden:YES];
+
  
 
             
@@ -39,6 +41,8 @@
             [[self.window.contentView viewWithTag:6] setHidden:YES];
             
             [[self.window.contentView viewWithTag:8] setHidden:NO];
+            [[self.window.contentView viewWithTag:9] setHidden:NO];
+
 
  
             
@@ -52,6 +56,7 @@
             [[self.window.contentView viewWithTag:6] setHidden:NO];
             
             [[self.window.contentView viewWithTag:8] setHidden:YES];
+            [[self.window.contentView viewWithTag:9] setHidden:YES];
 
 
             
@@ -109,7 +114,87 @@
     
     currentGraphBackground=@"FFFFFF";
     
+    [self displayControls:GraphViewMode];
+    _barGap=5;
+    
+    purpleSwatch = [self createPurpleSwatch];
+    greenSwatch = [self createGreenSwatch];
+    goldSwatch = [self createGoldSwatch];
+    blueSwatch = [self createBlueSwatch];
+    redSwatch = [self createRedSwatch];
+
+    
+
+    
 }
+
+-(HCCPColorStack*)createPurpleSwatch {
+    HCCPColorStack* _purpleSwatch = [[HCCPColorStack alloc] init];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(184/255.0f) green:(146/255.0f) blue:(171/255.0f) alpha:1.0]];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(141/255.0f) green:(103/255.0f) blue:(128/255.0f) alpha:1.0]];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(128/255.0f) green:(91/255.0f) blue:(115/255.0f) alpha:1.0]];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(135/255.0f) green:(98/255.0f) blue:(123/255.0f) alpha:1.0]];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(92/255.0f) green:(55/255.0f) blue:(80/255.0f) alpha:1.0]];
+    [_purpleSwatch add:[NSColor colorWithCalibratedRed:(155/255.0f) green:(117/255.0f) blue:(142/255.0f) alpha:1.0]];
+    
+    
+    
+    return _purpleSwatch;
+}
+
+
+
+-(HCCPColorStack*)createGreenSwatch {
+    HCCPColorStack* _greenSwatch = [[HCCPColorStack alloc] init];
+    [_greenSwatch add:[NSColor colorWithCalibratedRed:(169/255.0f) green:(198/255.0f) blue:(198/255.0f) alpha:1.0]];
+    [_greenSwatch add:[NSColor colorWithCalibratedRed:(138/255.0f) green:(167/255.0f) blue:(167/255.0f) alpha:1.0]];
+    [_greenSwatch add:[NSColor colorWithCalibratedRed:(109/255.0f) green:(138/255.0f) blue:(138/255.0f) alpha:1.0]];
+    [_greenSwatch add:[NSColor colorWithCalibratedRed:(151/255.0f) green:(180/255.0f) blue:(180/255.0f) alpha:1.0]];
+    [_greenSwatch add:[NSColor colorWithCalibratedRed:(119/255.0f) green:(148/255.0f) blue:(148/255.0f) alpha:1.0]];
+    
+    
+    
+    return _greenSwatch;
+}
+
+
+
+-(HCCPColorStack*)createGoldSwatch {
+    HCCPColorStack* _goldSwatch = [[HCCPColorStack alloc] init];
+    [_goldSwatch add:[NSColor colorWithCalibratedRed:(220/255.0f) green:(186/255.0f) blue:(158/255.0f) alpha:1.0]];
+    [_goldSwatch add:[NSColor colorWithCalibratedRed:(174/255.0f) green:(141/255.0f) blue:(113/255.0f) alpha:1.0]];
+    [_goldSwatch add:[NSColor colorWithCalibratedRed:(208/255.0f) green:(174/255.0f) blue:(146/255.0f) alpha:1.0]]; //d0ae92
+    [_goldSwatch add:[NSColor colorWithCalibratedRed:(129/255.0f) green:(95/255.0f) blue:(67/255.0f) alpha:1.0]];
+    [_goldSwatch add:[NSColor colorWithCalibratedRed:(140/255.0f) green:(106/255.0f) blue:(78/255.0f) alpha:1.0]];
+    
+    
+    
+    return _goldSwatch;
+}
+
+
+-(HCCPColorStack*)createBlueSwatch {
+    HCCPColorStack* _blueSwatch = [[HCCPColorStack alloc] init];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(95/255.0f) green:(95/255.0f) blue:(128/255.0f) alpha:1.0]];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(67/255.0f) green:(67/255.0f) blue:(100/255.0f) alpha:1.0]];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(161/255.0f) green:(161/255.0f) blue:(194/255.0f) alpha:1.0]];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(87/255.0f) green:(87/255.0f) blue:(120/255.0f) alpha:1.0]];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(208/255.0f) green:(208/255.0f) blue:(241/255.0f) alpha:1.0]];
+    [_blueSwatch add:[NSColor colorWithCalibratedRed:(112/255.0f) green:(112/255.0f) blue:(145/255.0f) alpha:1.0]];
+
+    
+    return _blueSwatch;
+}
+
+
+-(HCCPColorStack*)createRedSwatch {
+    HCCPColorStack* _redSwatch = [[HCCPColorStack alloc] init];
+    [_redSwatch add:[NSColor colorWithCalibratedRed:(149/255.0f) green:(78/255.0f) blue:(78/255.0f) alpha:1.0]];
+    [_redSwatch add:[NSColor colorWithCalibratedRed:(204/255.0f) green:(133/255.0f) blue:(133/255.0f) alpha:1.0]];
+    
+    return _redSwatch;
+}
+
 
 -(void)setButtonImage:(NSString*)gifName :(long)tag {
     NSString* silImagePath = [[NSBundle mainBundle] pathForResource:gifName
@@ -299,6 +384,12 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 }
 
 - (void)setSelectedRowBackground:(NSColor*)color {
+    
+    [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        NSLog(@"selrows idx: %d", idx);
+          [rowColors replaceObjectAtIndex:idx withObject:color];
+    }];
+    
     [rowColors replaceObjectAtIndex:currentSelectedRow withObject:color];
 }
 
@@ -325,6 +416,70 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
         NSLog(@"there...");
     }
     
+}
+
+
+-(IBAction)setBarGap:(id)sender {
+    
+    NSSlider* slider = sender;
+    _barGap = [slider doubleValue];
+    NSLog(@"bar gap is %ld", _barGap);
+    [myTabView selectLastTabViewItem:sender];
+    
+}
+
+- (long) getBarGap {
+    return _barGap;
+}
+
+
+- (void)setSelectedRowIndexes:(NSIndexSet*)selectedRowIndexes {
+    currentSelectedRows = selectedRowIndexes;
+}
+
+
+-(IBAction)applySwatch:(id)sender {
+    switch ([sender tag])
+    
+    {
+        {case 12:
+            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [rowColors replaceObjectAtIndex:idx withObject:[purpleSwatch pop]];
+            }];
+            break;
+        }
+        {case 13:
+            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [rowColors replaceObjectAtIndex:idx withObject:[greenSwatch pop]];
+            }];
+            break;
+        }
+
+        {case 14:
+            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [rowColors replaceObjectAtIndex:idx withObject:[goldSwatch pop]];
+            }];
+            break;
+        }
+
+        {case 15:
+            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [rowColors replaceObjectAtIndex:idx withObject:[blueSwatch pop]];
+            }];
+            break;
+        }
+            
+        {case 16:
+            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [rowColors replaceObjectAtIndex:idx withObject:[redSwatch pop]];
+            }];
+            break;
+        }
+    }
+    
+   
+
+   
 }
 
 

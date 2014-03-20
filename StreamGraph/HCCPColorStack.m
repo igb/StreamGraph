@@ -13,10 +13,8 @@
 
 - (id) init {
     self = [super init];
-    if (self != nil) {
-        colors = [[NSMutableArray alloc] init];
+           colors = [[NSMutableArray alloc] init];
         head = 0;
-    }
     return self;
 }
 
@@ -37,6 +35,7 @@
 
 - (id)pop {
      @synchronized(self) {
+         NSLog(@"pop %ld", head);
          NSColor* color = [colors objectAtIndex:head];
          if (head==[colors count] - 1) {
              head=0;
