@@ -318,7 +318,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
          for (int x=0; x < columnCount; x++) {
              [columnOrder addObject:[[NSNumber alloc] initWithInt:x]];
              NSTableColumn* column = [[NSTableColumn alloc] initWithIdentifier: [NSString stringWithFormat:@"%i", x]];
-             [[column headerCell] setStringValue:[headers objectAtIndex:x]];
+             [[column headerCell] setStringValue:[self headerNameForColumn:x]];
+             [[column headerCell] setAlignment:NSCenterTextAlignment];
              [myTableView addTableColumn:column];
          }
     }
@@ -327,6 +328,16 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSLog(@"rows size is: %ld", [rows count]);
     [myTableView reloadData];
 
+}
+
+-(NSString*)headerNameForColumn:(int) columnPosition {
+    NSString* string = @"";
+    float x = columnPosition / 26;
+    for (int i=0; i <= x; i++) {
+        char letter = (char) (columnPosition % 26) + 65;
+        string = [string stringByAppendingString:[NSString stringWithFormat:@"%c" , letter]];
+    }
+    return  string;
 }
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
@@ -357,6 +368,14 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [myTableView moveColumn:columnIndex toColumn:newIndex];
 }
 
+-(void)updateColumnHeaders {
+    NSArray* columns = [myTableView tableColumns];
+    for (int i = 0; i < [columns count]; i++) {
+        NSTableColumn* col = [columns objectAtIndex:i];
+        [[col headerCell] setStringValue:[self headerNameForColumn:i]];
+    }
+}
+
 
 - (void)tableViewColumnDidMove:(NSNotification *)aNotification {
   
@@ -376,6 +395,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             [columnOrder removeObjectAtIndex:([oldColumn intValue]) + 1];
             
         }
+        [self updateColumnHeaders];
         
         updateData=NO; // suppress next 'event'
         
