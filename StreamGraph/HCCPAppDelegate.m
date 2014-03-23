@@ -292,7 +292,6 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
         [document writeToURL:[dataSavePanel URL] atomically:NO encoding:NSUTF8StringEncoding error:nil];
     
-    //[@"sss" writeToURL:[dataSavePanel URL] atomically: NO];
 
     
 }
@@ -481,6 +480,18 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
    
 
    
+}
+
+-(IBAction)reverseColumnOrder:(id)sender {
+    
+     NSLog(@"before reverse %@", [myTableView getColumnOrder]);
+    int columnCount = [[myTableView getColumnOrder] count];
+    for (int i=1; i < columnCount; i++) {
+        [myTableView moveColumn:(columnCount -1) toColumn:i];
+    }
+    
+    NSLog(@"after reverse %@", [myTableView getColumnOrder]);
+    
 }
 
 

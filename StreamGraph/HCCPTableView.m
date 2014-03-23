@@ -309,7 +309,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     for (int x=0; x < [tableCols count]; x++) {
         NSLog(@"removing column");
 
-        [myTableView removeTableColumn:[tableCols objectAtIndex:x]];
+        [myTableView removeTableColumn:[tableCols objectAtIndex:x]];  // i fucked soemthing up here...'myTableView' is needed...self not working right
     }
     
     if ([rows count] > 0) {
@@ -354,12 +354,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (void)moveColumn:(NSInteger)columnIndex toColumn:(NSInteger)newIndex {
-    NSLog(@"move event: %ld -> %ld", columnIndex, (long)newIndex);
-
-    [super moveColumn:columnIndex toColumn:newIndex];
-    
-    
+    [myTableView moveColumn:columnIndex toColumn:newIndex];
 }
+
+
 - (void)tableViewColumnDidMove:(NSNotification *)aNotification {
   
     NSNumber* oldColumn = [[aNotification userInfo] objectForKey:@"NSOldColumn"];
@@ -390,6 +388,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 
 - (NSArray*)getColumnOrder {
+    NSLog(@"cols: %@", [self tableColumns]);
     return columnOrder;
 }
 

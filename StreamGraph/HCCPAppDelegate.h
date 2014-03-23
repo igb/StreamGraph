@@ -60,6 +60,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)setBarGap:(id)sender;
 
 -(IBAction)applySwatch:(id)sender;
+-(IBAction)reverseColumnOrder:(id)sender;
+
 
 
 

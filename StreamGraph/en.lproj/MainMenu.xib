@@ -188,6 +188,13 @@
                             <menuItem isSeparatorItem="YES" id="214">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
+                            <menuItem title="Reverse Column Order" id="zo7-jh-AZu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reverseColumnOrder:" target="494" id="J0L-nO-tUB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="sYi-6Z-SYq"/>
                             <menuItem title="Find" id="218">
                                 <menu key="submenu" title="Find" id="220">
                                     <items>
