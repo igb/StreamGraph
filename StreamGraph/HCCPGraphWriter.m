@@ -48,13 +48,14 @@
 }
 
 
--(NSString*) xAxisToJSArray:(NSArray*)data {
+-(NSString*) xAxisToJSArray:(NSArray*)data :(NSArray*)columnOrder{
     NSMutableString* xAxis = [[NSMutableString alloc] init];
     [xAxis appendString:@"\nvar my_x_axis = ["];
     NSArray* headers = [data objectAtIndex:0];
     for (int j=1; j < [headers count]; j++) { //J=1 so we skip first column
         [xAxis appendString:@"\""];
-        [xAxis appendString:[headers objectAtIndex:j]];
+         int mappedIndex = [[columnOrder objectAtIndex:j] intValue];
+        [xAxis appendString:[headers objectAtIndex:mappedIndex]];
         [xAxis appendString:@"\""];
         if (j < [headers count] - 1) {
             [xAxis appendString:@","];
@@ -66,7 +67,7 @@
     
 }
 
--(NSString*) dataToJSArray:(NSArray*)data {
+-(NSString*) dataToJSArray:(NSArray*)data :(NSArray*)columnOrder{
     NSMutableString* document = [[NSMutableString alloc] init];
 
     
@@ -77,7 +78,8 @@
         [document appendString:@"[\n"];
         NSArray* record = [data objectAtIndex:i];
         for (int j=1; j < [record count]; j++) {
-            [document appendString:[record objectAtIndex:j]];
+            int mappedIndex = [[columnOrder objectAtIndex:j] intValue]; // get index from order column so graph matches column order in view
+            [document appendString:[record objectAtIndex:mappedIndex]];
             if (j < [record count] - 1) {
                 [document appendString:@","];
             }

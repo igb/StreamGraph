@@ -11,20 +11,25 @@
 
 
 
+
 @interface HCCPTableView : NSTableView
 {
 
     NSMutableArray *rows;
+    NSMutableArray *columnOrder;
     NSMutableArray *colors;
     NSTableView *myTableView;
     HCCPColorStack *colorStack;
-   
+    BOOL updateData;
+
     
 }
 
  - (IBAction)createGraph:(id)pId;
  - (void)handleFile:(NSURL*)fileUrl;
 - (NSArray*)getData;
+- (NSArray*)getColumnOrder;
+
 
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation HCCPBarGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap{
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap{
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -35,9 +35,9 @@
     
     
     
-    [document appendString:[self dataToJSArray:data]];
+    [document appendString:[self dataToJSArray:data:columnOrder]];
     [document appendString:[self colorsToJSArray:colors]];
-    [document appendString:[self xAxisToJSArray:data]];
+    [document appendString:[self xAxisToJSArray:data:columnOrder]];
     [document appendString:[self categoriesToJSArray:data]];
     
     [document appendString:@"\nvar color = d3.scale.ordinal().range(colors);\n"];

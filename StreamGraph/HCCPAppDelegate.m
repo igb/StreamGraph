@@ -277,7 +277,8 @@
     for (int i = 0; i < [data count]; i++) {
         NSArray* record = [data objectAtIndex:i];
         for (int j=0; j < [record count]; j++) {
-            [document appendString:[record objectAtIndex:j]];
+            int mappedIndex = [[[myTableView getColumnOrder] objectAtIndex:j] intValue];
+            [document appendString:[record objectAtIndex:mappedIndex]];
             if (j < ([record count]-1)) {
                 [document appendString:@","];
             }

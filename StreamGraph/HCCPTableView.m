@@ -82,11 +82,11 @@ HCCPAppDelegate* delegate;
 
     if ([graphType isEqualToString:@"bar"]) {
         HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
-        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:rows:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
         
     }
 
@@ -95,8 +95,12 @@ HCCPAppDelegate* delegate;
 
 -(void) awakeFromNib {
     NSLog(@"awake!");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewColumnDidMove:) name:NSTableViewColumnDidMoveNotification object:nil];
+
     delegate = [[NSApplication sharedApplication] delegate];
     [delegate setTableView:self];
+    updateData=NO;
+
 }
 
 
@@ -273,6 +277,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
    
     NSLog(@"%@", fileUrl);
     rows = [[NSMutableArray alloc] init];
+    columnOrder = [[NSMutableArray alloc] init];
     
     // add selected document to open recently
        
@@ -295,6 +300,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             [delegate setSelectedRowBackground:tmpColor];
             NSLog(@"adding row");
         }
+    
         
         
     
@@ -310,6 +316,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         NSArray* headers = [rows objectAtIndex:0];
         NSUInteger columnCount = [headers count];
          for (int x=0; x < columnCount; x++) {
+             [columnOrder addObject:[[NSNumber alloc] initWithInt:x]];
              NSTableColumn* column = [[NSTableColumn alloc] initWithIdentifier: [NSString stringWithFormat:@"%i", x]];
              [[column headerCell] setStringValue:[headers objectAtIndex:x]];
              [myTableView addTableColumn:column];
@@ -330,6 +337,60 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [delegate setSelectedRow:[[notification object] selectedRow]];
     [delegate setSelectedRowIndexes:selectedIndexes];
 
+}
+
+
+-(void)tableView: (NSTableView*)inTableView mouseDownInHeaderOfTableColumn:(NSTableColumn*)tableColumn
+{
+    if ([[tableColumn identifier] intValue] == 0)
+    {
+        [inTableView setAllowsColumnReordering:NO];
+    }
+    else
+    {
+        
+        [inTableView setAllowsColumnReordering:YES];
+    }
+}
+
+- (void)moveColumn:(NSInteger)columnIndex toColumn:(NSInteger)newIndex {
+    NSLog(@"move event: %ld -> %ld", columnIndex, (long)newIndex);
+
+    [super moveColumn:columnIndex toColumn:newIndex];
+    
+    
+}
+- (void)tableViewColumnDidMove:(NSNotification *)aNotification {
+  
+    NSNumber* oldColumn = [[aNotification userInfo] objectForKey:@"NSOldColumn"];
+    NSNumber* newColumn = [[aNotification userInfo] objectForKey:@"NSNewColumn"];
+  
+    
+    if (updateData) { // we seem to get two tableViewColumnDidMove events, so adding a flip flag to suppress the dupe
+        
+        // we store the view column order in an array outside of the model because the columns retain original mapping to model
+        // we'll use the 'columnOrder' array to selct from model in the correct order when rendering graphs
+        if ([oldColumn intValue] < [newColumn intValue]) {
+            [columnOrder insertObject:[columnOrder objectAtIndex:[oldColumn intValue]] atIndex:([newColumn intValue]) + 1];
+            [columnOrder removeObjectAtIndex:([oldColumn intValue])];
+        } else if ([oldColumn intValue] > [newColumn intValue]) {
+            [columnOrder insertObject:[columnOrder objectAtIndex:[oldColumn intValue]] atIndex:[newColumn intValue]];
+            [columnOrder removeObjectAtIndex:([oldColumn intValue]) + 1];
+            
+        }
+        
+        updateData=NO; // suppress next 'event'
+        
+    } else {
+        updateData=YES; // enable response to next 'event'
+    }
+    
+    
+}
+
+
+- (NSArray*)getColumnOrder {
+    return columnOrder;
 }
 
 

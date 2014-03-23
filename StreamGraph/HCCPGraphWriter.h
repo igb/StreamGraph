@@ -13,8 +13,8 @@
 -(void)writeStringToStream:(NSOutputStream*)stream :(NSString*)string;
 -(NSString*) getD3js;
 -(NSString*) getSection:(NSString*)section;
--(NSString*) dataToJSArray:(NSArray*)data;
--(NSString*) xAxisToJSArray:(NSArray*)data;
+-(NSString*) dataToJSArray:(NSArray*)data :(NSArray*)columnOrder;
+-(NSString*) xAxisToJSArray:(NSArray*)data :(NSArray*)columnOrder;
 -(NSString*) colorsToJSArray:(NSArray*)colors;
 -(NSString*) categoriesToJSArray:(NSArray*)data;
 

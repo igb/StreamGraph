@@ -12,7 +12,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -34,7 +34,7 @@
 
 
     
-    [document appendString:[self dataToJSArray:data]];
+    [document appendString:[self dataToJSArray:data:columnOrder]];
     [document appendString:[self colorsToJSArray:colors]];
 
     
