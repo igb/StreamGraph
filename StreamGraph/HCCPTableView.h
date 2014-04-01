@@ -25,7 +25,7 @@
     
 }
 
- - (IBAction)createGraph:(id)pId;
+ - (void)createGraph:(int)graphType;
  - (void)handleFile:(NSURL*)fileUrl;
 - (NSArray*)getData;
 - (NSArray*)getColumnOrder;

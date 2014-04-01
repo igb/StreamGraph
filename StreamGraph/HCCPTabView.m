@@ -37,7 +37,12 @@ HCCPAppDelegate* delegate;
 
     
     // draw the graph...
-    [delegate createGraph:sender];
+    if (sender != nil && [sender class] == [NSButton class]) {
+        [delegate createGraph:sender];
+    } else {
+        [delegate createGraph:nil];
+    }
+    
    
     NSLog(@"selecting last tab item...yes?");
     [super selectLastTabViewItem:sender];
@@ -61,6 +66,21 @@ HCCPAppDelegate* delegate;
     
 }
 
+
+-(IBAction)dataPanelActivated:(id)sender {
+    
+}
+
+- (void)showTableData:(id)sender {
+    NSLog(@"overriding xxst tab...");
+    [delegate setMode:GraphViewMode];
+    [delegate displayControls:GraphViewMode];
+    [super selectFirstTabViewItem:sender];
+}
+
+- (void)showChart:(id)sender {
+    [self selectLastTabViewItem:sender];
+}
 
 - (void)selectFirstTabViewItem:(id)sender {
     NSLog(@"overriding 1st tab...");

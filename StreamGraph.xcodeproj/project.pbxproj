@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1014C7C418E88C17004CA936 /* HCCPControlPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1014C7C318E88C17004CA936 /* HCCPControlPanelView.m */; };
+		1014C7C518E88C17004CA936 /* HCCPControlPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1014C7C318E88C17004CA936 /* HCCPControlPanelView.m */; };
 		102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 102F94CD18957920008B4FD2 /* HCCPTabView.m */; };
 		1067112218CBD7F7000828C4 /* grid.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1067112118CBD7F7000828C4 /* grid.gif */; };
 		108022B9176B61B7004D45A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108022B8176B61B7004D45A9 /* Cocoa.framework */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1014C7C218E88C17004CA936 /* HCCPControlPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPControlPanelView.h; sourceTree = "<group>"; };
+		1014C7C318E88C17004CA936 /* HCCPControlPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPControlPanelView.m; sourceTree = "<group>"; };
 		102F94CC18957920008B4FD2 /* HCCPTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPTabView.h; sourceTree = "<group>"; };
 		102F94CD18957920008B4FD2 /* HCCPTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPTabView.m; sourceTree = "<group>"; };
 		1067112118CBD7F7000828C4 /* grid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grid.gif; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */,
 				10C7D9FA18D574D50062A46C /* HCCPGraphWriter.h */,
 				10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */,
+				1014C7C218E88C17004CA936 /* HCCPControlPanelView.h */,
+				1014C7C318E88C17004CA936 /* HCCPControlPanelView.m */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				10C7D9FC18D574D50062A46C /* HCCPGraphWriter.m in Sources */,
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
+				1014C7C418E88C17004CA936 /* HCCPControlPanelView.m in Sources */,
 				10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */,
 				10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */,
 				102F94CE18957920008B4FD2 /* HCCPTabView.m in Sources */,
@@ -350,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				108022E3176B61B7004D45A9 /* StreamGraphTests.m in Sources */,
+				1014C7C518E88C17004CA936 /* HCCPControlPanelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

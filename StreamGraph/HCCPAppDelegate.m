@@ -9,6 +9,7 @@
 #import "HCCPAppDelegate.h"
 #import "HCCPColorStack.h"
 #import "HCCPStreamGraphWriter.h"
+#import "HCCPBarGraphWriter.h"
 
 
 @implementation HCCPAppDelegate
@@ -17,7 +18,7 @@
 
 - (void)displayControls:(ModeType)mode {
    
-    switch (mode)
+  /*  switch (mode)
     
     {
         case GraphViewMode:
@@ -70,7 +71,7 @@
             
     }
 
-    
+    */
     
 }
 
@@ -81,6 +82,8 @@
     [self displayControls:StackViewMode];
     [myTabView selectLastTabViewItem:sender];
 }
+
+
 -(IBAction)graphBar:(id)sender {
     
     [self setMode:BarViewMode];
@@ -99,13 +102,11 @@
     
  
     [self setButtonImage:@"grid" :1];
-    [self setButtonImage:@"bar" :2];
-    [self setButtonImage:@"zero" :3];
-    [self setButtonImage:@"expand" :4];
-    [self setButtonImage:@"wig" :5];
-    [self setButtonImage:@"sil" :6];
-    [self setButtonImage:@"sil" :7];
-    [self setButtonImage:@"bar" :8];
+    [self setButtonImageById:@"zero" :[self zeroStreamChart]];
+    [self setButtonImageById:@"expand" :[self expandStreamChart]];
+    [self setButtonImageById:@"wig" :[self wiggleStreamChart]];
+    [self setButtonImageById:@"sil" :[self silStreamChart]];
+    [self setButtonImageById:@"bar" :[self barChart]];
 
 
 
@@ -204,6 +205,14 @@
     [silButton setImage:silImage];
 }
 
+
+-(void)setButtonImageById:(NSString*)gifName :(NSButton*)button {
+    NSString* silImagePath = [[NSBundle mainBundle] pathForResource:gifName
+                                                             ofType:@"gif"];
+    NSImage* silImage = [[NSImage alloc] initWithContentsOfFile:silImagePath];
+    [button setImage:silImage];
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)item 
 {
     NSLog(@"validating UI %@", item);
@@ -221,8 +230,12 @@
 
 
 - (IBAction)createGraph:(id)pId {
+    if (pId != nil){
+        [myTableView createGraph:[pId tag]];
+    } else {
+        [myTableView createGraph:-1];
     
-    [myTableView createGraph:pId];
+    }
     
 
 }
@@ -350,7 +363,11 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 }
 
 - (void)setTabView:(HCCPTabView*)tabView {
-    myTabView = tabView;
+  //  if (tabView == nil) {
+     myTabView = tabView;   
+    //} else {
+      //  NSLog(@"tab view already defined...");
+   // }
 }
 
 - (void)setWebView:(WebView*)webView {
@@ -424,7 +441,13 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     NSSlider* slider = sender;
     _barGap = [slider doubleValue];
     NSLog(@"bar gap is %ld", _barGap);
-    [myTabView selectLastTabViewItem:sender];
+    NSLog(@"mode is %ld", _mode);
+    
+    [[self chartAndTableTabView] selectLastTabViewItem:sender];
+    
+    HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:@"bar":[self getCurrentGraphBackground]:[self getBarGap]];
+    [myWebView reload:self];
     
 }
 
@@ -494,6 +517,14 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
 }
 
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+    NSLog(@"selected data tab! xx");
+}
+
+- (NSTabView*) getTabView {
+    return myTabView;
+}
 
 
 @end

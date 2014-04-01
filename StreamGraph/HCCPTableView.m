@@ -20,15 +20,11 @@ HCCPAppDelegate* delegate;
 
 
 
-- (IBAction)createGraph:(id)pId {
-    NSLog(@"Super %@", [[pId superview] className]);
-    for (NSView *subview in [pId subviews]) {
-        NSLog(@"subview: %@", [subview className]);
-    }
+- (IBAction)createGraph:(int)graphTypeId {
 
-    
+    NSLog(@"create graph called %ld", graphTypeId);
     NSString* graphType = [[NSString alloc] init];
-    switch ([pId tag])
+    switch (graphTypeId)
     
     {
         case 6:
@@ -405,6 +401,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     
     
 }
+
 
 
 - (NSArray*)getColumnOrder {

@@ -48,6 +48,16 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet WebView *display;
+@property (assign) IBOutlet NSTabView *chartAndTableTabView;
+
+//buttons
+@property (assign) IBOutlet NSButton *barChart;
+@property (assign) IBOutlet NSButton *expandStreamChart;
+@property (assign) IBOutlet NSButton *zeroStreamChart;
+@property (assign) IBOutlet NSButton *wiggleStreamChart;
+@property (assign) IBOutlet NSButton *silStreamChart;
+
+
 
 
 -(IBAction)createGraph:(id)pId;
@@ -78,6 +88,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (NSColor*)getRowBackground:(NSInteger*)rowId;
 - (NSArray*) getDocumentColors;
 - (long) getBarGap;
+- (NSTabView*) getTabView;
 
 
 

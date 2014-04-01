@@ -16,6 +16,10 @@
 }
 
 - (IBAction)goToView:(id)pId;
+-(IBAction)dataPanelActivated:(id)sender;
+- (void)showTableData:(id)sender;
+- (void)showChart:(id)sender;
+
 
 
 @end

@@ -453,31 +453,31 @@
         <window title="StreamGraph" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
-            <rect key="contentRect" x="345" y="208" width="695" height="493"/>
+            <rect key="contentRect" x="345" y="208" width="748" height="537"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="695" height="493"/>
+                <rect key="frame" x="0.0" y="0.0" width="748" height="537"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView identifier="&quot;foo&quot;" type="noTabsNoBorder" initialItem="652" id="651" customClass="HCCPTabView">
-                        <rect key="frame" x="7" y="0.0" width="695" height="443"/>
+                        <rect key="frame" x="20" y="20" width="498" height="497"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Tab" identifier="1" id="652">
                                 <view key="view" id="655">
-                                    <rect key="frame" x="0.0" y="0.0" width="695" height="443"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="498" height="497"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="SCv-na-t4H">
-                                            <rect key="frame" x="6" y="20" width="669" height="417"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="498" height="497"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="GBZ-iF-Lxw">
-                                                <rect key="frame" x="1" y="17" width="667" height="399"/>
+                                                <rect key="frame" x="1" y="17" width="496" height="479"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="CsO-qh-yEl" id="8Zb-L0-pre">
-                                                        <rect key="frame" x="0.0" y="0.0" width="667" height="399"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="496" height="479"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -514,7 +514,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="CsO-qh-yEl">
-                                                <rect key="frame" x="0.0" y="0.0" width="667" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="496" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
@@ -523,12 +523,12 @@
                             </tabViewItem>
                             <tabViewItem label="View" identifier="2" id="653">
                                 <view key="view" id="654">
-                                    <rect key="frame" x="0.0" y="0.0" width="695" height="443"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="498" height="497"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <webView horizontalHuggingPriority="1000" verticalHuggingPriority="373" id="940">
-                                            <rect key="frame" x="19" y="20" width="655" height="403"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="498" height="497"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
                                                 <nil key="identifier"/>
                                             </webPreferences>
@@ -545,130 +545,164 @@
                             <outlet property="delegate" destination="832" id="899"/>
                         </connections>
                     </tabView>
-                    <button tag="1" id="923">
-                        <rect key="frame" x="299" y="451" width="41" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="924">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
+                    <tabView controlSize="mini" id="qBt-Rr-9ZY">
+                        <rect key="frame" x="519" y="10" width="227" height="509"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                        <font key="font" size="10" name="LucidaGrande"/>
+                        <tabViewItems>
+                            <tabViewItem label="Color" identifier="31" id="hTm-7T-LSn">
+                                <view key="view" id="2xQ-yJ-xeW">
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
+                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="selectChartBackgroundColor:" target="494" id="1065"/>
+                                            </connections>
+                                        </colorWell>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Axes &amp; Labels" identifier="" id="bF7-RM-oP0">
+                                <view key="view" id="9d2-CC-Zxu">
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <slider verticalHuggingPriority="750" tag="9" allowsExpansionToolTips="YES" id="QTV-ts-4Um">
+                                            <rect key="frame" x="33" y="384" width="159" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <sliderCell key="cell" state="on" alignment="left" maxValue="90" doubleValue="20" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="2LE-i6-gcS">
+                                                <connections>
+                                                    <action selector="setBarGap:" target="494" id="OuG-9p-cd6"/>
+                                                </connections>
+                                            </sliderCell>
+                                        </slider>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ouy-I3-mze">
+                                            <rect key="frame" x="15" y="418" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bar Spacing:" id="ZFj-c7-Pls">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Charts" identifier="2" id="zrA-eL-vyG">
+                                <view key="view" id="xQZ-6p-unn">
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button toolTip="Silhouette" tag="8" id="xE3-Dw-l5i">
+                                            <rect key="frame" x="9" y="372" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="oYh-ag-C7z">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="6Ri-Ms-Cca"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Silhouette" tag="6" id="1046">
+                                            <rect key="frame" x="9" y="288" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1047">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="1060"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Wiggle" tag="5" id="1043">
+                                            <rect key="frame" x="57" y="288" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1044">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="1061"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Expand" tag="4" id="1041">
+                                            <rect key="frame" x="105" y="288" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1042">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="1062"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Zero" tag="3" id="1045">
+                                            <rect key="frame" x="152" y="288" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1048">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="1063"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="29K-SS-3YM">
+                                            <rect key="frame" x="1" y="334" width="115" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stacks &amp; Streams:" id="Jbg-sX-iNP">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GKm-R2-gSk">
+                                            <rect key="frame" x="1" y="418" width="35" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bars:" id="K4a-qA-D3o">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Data" identifier="1" id="m03-96-vla">
+                                <view key="view" id="sse-nF-HMt">
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
                         <connections>
-                            <action selector="selectFirstTabViewItem:" target="651" id="939"/>
+                            <outlet property="delegate" destination="cHR-vt-Wob" id="A2j-yW-F5v"/>
                         </connections>
-                    </button>
-                    <button toolTip="Expand" tag="4" id="1041">
-                        <rect key="frame" x="589" y="451" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1042">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectLastTabViewItem:" target="651" id="1062"/>
-                        </connections>
-                    </button>
-                    <button toolTip="Wiggle" tag="5" id="1043">
-                        <rect key="frame" x="541" y="451" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1044">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectLastTabViewItem:" target="651" id="1061"/>
-                        </connections>
-                    </button>
-                    <button toolTip="Zero" tag="3" id="1045">
-                        <rect key="frame" x="637" y="451" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1048">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectLastTabViewItem:" target="651" id="1063"/>
-                        </connections>
-                    </button>
-                    <button toolTip="Silhouette" tag="6" id="1046">
-                        <rect key="frame" x="493" y="451" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="1047">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectLastTabViewItem:" target="651" id="1060"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" toolTip="Silhouette" tag="8" id="xE3-Dw-l5i">
-                        <rect key="frame" x="493" y="450" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="oYh-ag-C7z">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="selectLastTabViewItem:" target="651" id="6Ri-Ms-Cca"/>
-                        </connections>
-                    </button>
-                    <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                        <rect key="frame" x="7" y="450" width="44" height="39"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <action selector="selectChartBackgroundColor:" target="494" id="1065"/>
-                        </connections>
-                    </colorWell>
-                    <button tag="2" id="dRL-ET-oNv">
-                        <rect key="frame" x="355" y="451" width="40" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TjT-8f-RSD">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="graphBar:" target="494" id="ldx-kc-2yT"/>
-                        </connections>
-                    </button>
-                    <button tag="7" id="Vll-hL-9Qf">
-                        <rect key="frame" x="410" y="451" width="40" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" alternateTitle="Stack" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="arv-M4-YqJ">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="graphStack:" target="494" id="oGl-7h-lst"/>
-                        </connections>
-                    </button>
-                    <box autoresizesSubviews="NO" horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="90v-AF-kno">
-                        <rect key="frame" x="462" y="443" width="5" height="67"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
-                    </box>
-                    <slider verticalHuggingPriority="750" tag="9" allowsExpansionToolTips="YES" id="QTV-ts-4Um">
-                        <rect key="frame" x="544" y="454" width="144" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" maxValue="90" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="2LE-i6-gcS">
-                            <connections>
-                                <action selector="setBarGap:" target="494" id="OuG-9p-cd6"/>
-                            </connections>
-                        </sliderCell>
-                    </slider>
+                    </tabView>
                 </subviews>
             </view>
         </window>
         <customObject id="494" customClass="HCCPAppDelegate">
             <connections>
+                <outlet property="barChart" destination="xE3-Dw-l5i" id="XiD-rW-5x0"/>
                 <outlet property="display" destination="940" id="948"/>
+                <outlet property="expandStreamChart" destination="1041" id="dxc-Rb-gN2"/>
+                <outlet property="silStreamChart" destination="1046" id="8cC-5v-BFv"/>
+                <outlet property="tableAndChartContainer" destination="651" id="3XN-rv-LOt"/>
+                <outlet property="wiggleStreamChart" destination="1043" id="BM7-mq-HeF"/>
                 <outlet property="window" destination="371" id="532"/>
+                <outlet property="zeroStreamChart" destination="1045" id="d54-3a-fQr"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="575" customClass="HCCPTableView"/>
         <customObject id="832" customClass="HCCPTabView"/>
         <customObject id="950" customClass="HCCPWebView"/>
+        <customObject id="cHR-vt-Wob" customClass="HCCPControlPanelView"/>
     </objects>
 </document>
