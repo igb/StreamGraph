@@ -17,61 +17,11 @@
 HCCPAppDelegate* delegate;
 
 
-
-
-
 - (IBAction)createGraph:(int)graphTypeId {
 
     NSLog(@"create graph called %ld", graphTypeId);
     NSString* graphType = [[NSString alloc] init];
-    switch (graphTypeId)
-    
-    {
-        case 6:
-            
-            graphType = @"silhouette";
-            
-            break;
-            
-        case 5:
-            
-             graphType = @"wiggle";
-            
-            break;
-            
-        case 4:
-            
-            graphType = @"expand";
-            
-            break;
-            
-        case 3:
-            
-            graphType = @"zero";
-            
-            break;
-            
-        case 8:
-            
-            graphType = @"bar";
-            
-            break;
-            
-            
-        case 11:
-            
-            graphType = @"bar";
-            
-            break;
-            
-        default:
-            
-            graphType = @"silhouette";
-
-            
-            break;
-            
-    }
+    graphType = [delegate getGraphType:graphTypeId];
     
     HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
     
@@ -111,6 +61,7 @@ HCCPAppDelegate* delegate;
           HCCPAppDelegate* my_delegate = [[NSApplication sharedApplication] delegate];
         
         [my_delegate setTableView:self];
+        
 
         
         

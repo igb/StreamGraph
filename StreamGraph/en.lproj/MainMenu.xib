@@ -550,13 +550,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                         <font key="font" size="10" name="LucidaGrande"/>
                         <tabViewItems>
-                            <tabViewItem label="Color" identifier="31" id="hTm-7T-LSn">
+                            <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -566,7 +566,7 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Axes &amp; Labels" identifier="" id="bF7-RM-oP0">
+                            <tabViewItem label="Axes &amp; Labels" identifier="3" id="bF7-RM-oP0">
                                 <view key="view" id="9d2-CC-Zxu">
                                     <rect key="frame" x="10" y="19" width="207" height="477"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -587,6 +587,63 @@
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uS7-If-BPQ">
+                                            <rect key="frame" x="15" y="418" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Grid:" id="b4q-dq-iaG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button id="jgk-RI-zU3">
+                                            <rect key="frame" x="55" y="417" width="22" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xY4-kq-gqS">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Q15-C1-rJz">
+                                            <rect key="frame" x="54" y="385" width="19" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="IC5-Tx-lFa"/>
+                                        </stepper>
+                                        <textField verticalHuggingPriority="750" id="cl1-xD-9sx">
+                                            <rect key="frame" x="78" y="388" width="39" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nS6-3V-O3D">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="K1V-Gc-yXL">
+                                                    <real key="roundingIncrement" value="0.0"/>
+                                                    <metadata>
+                                                        <bool key="localizesFormat" value="YES"/>
+                                                    </metadata>
+                                                </numberFormatter>
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Osk-cx-90A">
+                                            <rect key="frame" x="54" y="355" width="19" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="8vN-tF-rmp"/>
+                                        </stepper>
+                                        <textField verticalHuggingPriority="750" id="SGi-ZF-eEY">
+                                            <rect key="frame" x="78" y="358" width="39" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0cd-n4-LJI">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="pXy-zc-9me">
+                                                    <real key="roundingIncrement" value="0.0"/>
+                                                    <metadata>
+                                                        <bool key="localizesFormat" value="YES"/>
+                                                    </metadata>
+                                                </numberFormatter>
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
@@ -690,10 +747,20 @@
         <customObject id="494" customClass="HCCPAppDelegate">
             <connections>
                 <outlet property="barChart" destination="xE3-Dw-l5i" id="XiD-rW-5x0"/>
+                <outlet property="barSpaceControlLabel" destination="Ouy-I3-mze" id="t3k-PY-e7W"/>
+                <outlet property="barSpaceControlSlider" destination="QTV-ts-4Um" id="kva-AU-pA3"/>
                 <outlet property="display" destination="940" id="948"/>
                 <outlet property="expandStreamChart" destination="1041" id="dxc-Rb-gN2"/>
+                <outlet property="graphTabView" destination="653" id="Yya-mo-EHh"/>
+                <outlet property="gridCheck" destination="jgk-RI-zU3" id="7cy-1i-xT2"/>
+                <outlet property="gridXStepper" destination="Q15-C1-rJz" id="7u1-MK-UEh"/>
+                <outlet property="gridXText" destination="cl1-xD-9sx" id="fWF-a8-YB6"/>
+                <outlet property="gridYStepper" destination="Osk-cx-90A" id="eHq-ya-TkS"/>
+                <outlet property="gridYText" destination="SGi-ZF-eEY" id="KhK-4o-jOm"/>
+                <outlet property="gridlabel" destination="uS7-If-BPQ" id="uim-LY-PDG"/>
+                <outlet property="mainTabView" destination="651" id="UkW-Ut-0Lr"/>
                 <outlet property="silStreamChart" destination="1046" id="8cC-5v-BFv"/>
-                <outlet property="tableAndChartContainer" destination="651" id="3XN-rv-LOt"/>
+                <outlet property="tableTabView" destination="652" id="pdy-aL-2KJ"/>
                 <outlet property="wiggleStreamChart" destination="1043" id="BM7-mq-HeF"/>
                 <outlet property="window" destination="371" id="532"/>
                 <outlet property="zeroStreamChart" destination="1045" id="d54-3a-fQr"/>

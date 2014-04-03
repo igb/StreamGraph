@@ -39,6 +39,9 @@ HCCPAppDelegate* delegate;
     // draw the graph...
     if (sender != nil && [sender class] == [NSButton class]) {
         [delegate createGraph:sender];
+        [delegate setMode:[delegate getGraphMode:[sender tag]]];
+        [delegate displayControls:[delegate getGraphMode:[sender tag]]];
+
     } else {
         [delegate createGraph:nil];
     }
@@ -61,7 +64,6 @@ HCCPAppDelegate* delegate;
     NSString *scrollHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
     NSLog(@"height %@",  scrollHeight);
     
-   // [delegate setMode:StackViewMode];
     
     
 }
@@ -72,29 +74,24 @@ HCCPAppDelegate* delegate;
 }
 
 - (void)showTableData:(id)sender {
-    NSLog(@"overriding xxst tab...");
+    NSLog(@"overriding xxst2 tab...%@",[[delegate tableTabView] identifier]);
+    NSLog(@"overriding xxst2 tab...%@",[[delegate graphTabView] identifier]);
+
     [delegate setMode:GraphViewMode];
     [delegate displayControls:GraphViewMode];
-    [super selectFirstTabViewItem:sender];
+    [[delegate mainTabView] selectTabViewItemWithIdentifier:[[delegate tableTabView] identifier]];
 }
 
 - (void)showChart:(id)sender {
-    [self selectLastTabViewItem:sender];
-}
+    [delegate setMode:BarViewMode];
+    [delegate displayControls:BarViewMode];
+    [[delegate mainTabView] selectTabViewItemWithIdentifier:[[delegate graphTabView] identifier]];
 
-- (void)selectFirstTabViewItem:(id)sender {
-    NSLog(@"overriding 1st tab...");
-    [delegate setMode:GraphViewMode];
-    [delegate displayControls:GraphViewMode];
-    [super selectFirstTabViewItem:sender];
 }
 
 
 
-- (IBAction)goToView:(id)pId {
-    NSTabViewItem *item = [super tabViewItemAtIndex:1];
-    [super selectTabViewItem:item];
-}
+
 
 
 @end

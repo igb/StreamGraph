@@ -58,6 +58,24 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSButton *silStreamChart;
 
 
+//
+
+@property (assign) IBOutlet NSControl *barSpaceControlLabel;
+@property (assign) IBOutlet NSSlider *barSpaceControlSlider;
+
+@property (assign) IBOutlet NSStepper *gridXStepper;
+@property (assign) IBOutlet NSStepper *gridYStepper;
+@property (assign) IBOutlet NSTextField *gridXText;
+@property (assign) IBOutlet NSTextField *gridYText;
+@property (assign) IBOutlet NSTextField *gridlabel;
+@property (assign) IBOutlet NSButton *gridCheck;
+
+//
+@property (assign) IBOutlet NSTabView* mainTabView;
+@property (assign) IBOutlet NSTabViewItem* tableTabView;
+@property (assign) IBOutlet NSTabViewItem* graphTabView;
+
+
 
 
 -(IBAction)createGraph:(id)pId;
@@ -91,11 +109,15 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (NSTabView*) getTabView;
 
 
+- (NSString *)getGraphType:(int)graphTypeId;
+- (ModeType)getGraphMode:(int)graphTypeId;
+
 
 
 
 
 - (void)setMode:(ModeType)mode;
+- (ModeType)getMode;
 
 -(NSString*)getCurrentGraphId;
 -(NSString*)getCurrentGraphBackground;

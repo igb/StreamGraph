@@ -17,47 +17,48 @@
 
 
 - (void)displayControls:(ModeType)mode {
+    
+    NSLog(@"display control called %ld", mode);
    
-  /*  switch (mode)
+    switch (mode)
     
     {
         case GraphViewMode:
             
-           [[self.window.contentView viewWithTag:3] setHidden:YES];
-           [[self.window.contentView viewWithTag:4] setHidden:YES];
-           [[self.window.contentView viewWithTag:5] setHidden:YES];
-           [[self.window.contentView viewWithTag:6] setHidden:YES];
-           [[self.window.contentView viewWithTag:8] setHidden:YES];
-           [[self.window.contentView viewWithTag:9] setHidden:YES];
-
- 
-
+  
+            [[self barSpaceControlLabel] setHidden:YES];
+            [[self barSpaceControlSlider] setHidden:YES];
             
             break;
             
         case BarViewMode:
-            [[self.window.contentView viewWithTag:3] setHidden:YES];
-            [[self.window.contentView viewWithTag:4] setHidden:YES];
-            [[self.window.contentView viewWithTag:5] setHidden:YES];
-            [[self.window.contentView viewWithTag:6] setHidden:YES];
+  
             
-            [[self.window.contentView viewWithTag:8] setHidden:NO];
-            [[self.window.contentView viewWithTag:9] setHidden:NO];
-
-
- 
+            [[self barSpaceControlLabel] setHidden:NO];
+            [[self barSpaceControlSlider] setHidden:NO];
+            
+            
+            [[self gridCheck] setHidden:YES];
+            [[self gridlabel] setHidden:YES];
+            [[self gridXText] setHidden:YES];
+            [[self gridXStepper] setHidden:YES];
+            [[self gridYText] setHidden:YES];
+            [[self gridYStepper] setHidden:YES];
             
             break;
             
         case StackViewMode:
             
-            [[self.window.contentView viewWithTag:3] setHidden:NO];
-            [[self.window.contentView viewWithTag:4] setHidden:NO];
-            [[self.window.contentView viewWithTag:5] setHidden:NO];
-            [[self.window.contentView viewWithTag:6] setHidden:NO];
             
-            [[self.window.contentView viewWithTag:8] setHidden:YES];
-            [[self.window.contentView viewWithTag:9] setHidden:YES];
+            [[self barSpaceControlLabel] setHidden:YES];
+            [[self barSpaceControlSlider] setHidden:YES];
+            
+            [[self gridCheck] setHidden:NO];
+            [[self gridlabel] setHidden:NO];
+            [[self gridXText] setHidden:NO];
+            [[self gridXStepper] setHidden:NO];
+            [[self gridYText] setHidden:NO];
+            [[self gridYStepper] setHidden:NO];
 
 
             
@@ -66,12 +67,16 @@
         default:
             
             
+            [[self barSpaceControlLabel] setHidden:YES];
+            [[self barSpaceControlSlider] setHidden:YES];
+            
+
+            
             
             break;
             
     }
 
-    */
     
 }
 
@@ -80,7 +85,7 @@
 -(IBAction)graphStack:(id)sender {
     [self setMode:StackViewMode];
     [self displayControls:StackViewMode];
-    [myTabView selectLastTabViewItem:sender];
+    [myTabView showChart:[self chartAndTableTabView]];
 }
 
 
@@ -115,7 +120,7 @@
     
     currentGraphBackground=@"FFFFFF";
     
-    [self displayControls:GraphViewMode];
+   // [self displayControls:GraphViewMode];
     _barGap=5;
     
     purpleSwatch = [self createPurpleSwatch];
@@ -376,6 +381,14 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 }
 
 - (void)setMode:(ModeType)mode {
+    NSLog(@"bview: %ld", BarViewMode);
+    NSLog(@"gview: %ld", GraphViewMode);
+    NSLog(@"sview: %ld", StackViewMode);
+    
+    NSLog(@"called with: %ld", mode);
+    
+    
+
     _mode=mode;
 }
 
@@ -392,6 +405,9 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     } else if (_mode == GraphViewMode) {
         [self setSelectedRowBackground:[colorChooser color]];
     }
+    
+    [myWebView reload:self];
+
     
     
 }
@@ -525,6 +541,121 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 - (NSTabView*) getTabView {
     return myTabView;
 }
+
+- (ModeType)getMode {
+    return _mode;
+}
+
+
+
+
+
+
+- (NSString *)getGraphType:(int)graphTypeId {
+    NSString *graphType;
+    switch (graphTypeId)
+    
+    {
+        case 6:
+            
+            graphType = @"silhouette";
+            
+            break;
+            
+        case 5:
+            
+            graphType = @"wiggle";
+            
+            break;
+            
+        case 4:
+            
+            graphType = @"expand";
+            
+            break;
+            
+        case 3:
+            
+            graphType = @"zero";
+            
+            break;
+            
+        case 8:
+            
+            graphType = @"bar";
+            
+            break;
+            
+            
+        case 11:
+            
+            graphType = @"bar";
+            
+            break;
+            
+        default:
+            
+            graphType = @"silhouette";
+            
+            
+            break;
+            
+    }
+    return graphType;
+}
+
+
+
+- (ModeType)getGraphMode:(int)graphTypeId {
+    switch (graphTypeId)
+    
+    {
+        case 6:
+            
+            return StackViewMode;
+            break;
+            
+        case 5:
+            
+            return StackViewMode;
+
+            break;
+            
+        case 4:
+            
+            return StackViewMode;
+            break;
+            
+        case 3:
+            
+            return StackViewMode;
+            break;
+            
+        case 8:
+            
+            return BarViewMode;
+
+            
+            break;
+            
+            
+        case 11:
+            
+            return BarViewMode;
+            
+            break;
+            
+        default:
+            
+            return StackViewMode;
+            
+            
+            break;
+            
+    }
+}
+
+
 
 
 @end

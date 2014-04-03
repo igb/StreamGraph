@@ -35,6 +35,14 @@ HCCPAppDelegate* delegate;
             NSLog(@"sent!");
             
             break;
+            
+        case 3:
+            
+            NSLog(@"mode is: %ld", [delegate getMode]);
+            
+            NSLog(@"sent!");
+            
+            break;
         default:
             break;
     }
