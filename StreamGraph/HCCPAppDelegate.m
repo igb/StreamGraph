@@ -44,6 +44,9 @@
             [[self gridXStepper] setHidden:YES];
             [[self gridYText] setHidden:YES];
             [[self gridYStepper] setHidden:YES];
+            [[self gridXlabel] setHidden:YES];
+            [[self gridYlabel] setHidden:YES];
+            
             
             break;
             
@@ -59,6 +62,8 @@
             [[self gridXStepper] setHidden:NO];
             [[self gridYText] setHidden:NO];
             [[self gridYStepper] setHidden:NO];
+            [[self gridXlabel] setHidden:NO];
+            [[self gridYlabel] setHidden:NO];
 
 
             
@@ -656,6 +661,31 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 }
 
 
+-(IBAction)gridTickStepperXYAction:(id)pId {
+    NSLog(@"tick action");
+}
+-(IBAction)gridTickerCheck:(id)pId {
+    NSButton* gridcheck = pId;
+    NSLog(@"grid checkbox state %ld", [gridcheck state]);
+    drawGrid = [gridcheck state];
+    NSLog(@"draw grid state: %@", drawGrid);
+    
+    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid];
+    [myWebView reload:self];
+    
+}
+
+-(BOOL)getDrawGrid {
+    return drawGrid;
+}
+
+- (NSString *)getCurrentGraphType {
+    return currentGraphType;
+}
+- (void)setCurrentGraphType:(NSString*)curGraphType {
+    currentGraphType=curGraphType;
+}
 
 
 @end

@@ -12,7 +12,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -37,8 +37,11 @@
     [document appendString:[self dataToJSArray:data:columnOrder]];
     [document appendString:[self colorsToJSArray:colors]];
 
+    if (drawGrid) {
+       [document appendString:@"\nfunction make_x_axis() {return d3.svg.axis().scale(x).orient(\"bottom\").ticks(48)};\nfunction make_y_axis() { return d3.svg.axis().scale(y).orient(\"left\").ticks(25)};\n"];
+    }
     
-    
+
     [document appendString:@"var n ="];
     [document appendString:[NSString stringWithFormat:@"%li", [data count] -1]]; // number of layers
     [document appendString:@",\nm = "];
@@ -57,6 +60,15 @@
    
     
     [document appendString:[self getSection:@"section2"]];
+    
+    if (drawGrid) {
+        [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").attr(\"transform\", \"translate(0,\" + height + \")\").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(\"\"))"];
+        [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(\"\"))"];
+    }
+    
+    [document appendString:[self getSection:@"section3"]];
+
+    
     [self writeStringToStream:stream :document];
 
     [stream close];

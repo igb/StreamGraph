@@ -22,6 +22,7 @@ HCCPAppDelegate* delegate;
     NSLog(@"create graph called %ld", graphTypeId);
     NSString* graphType = [[NSString alloc] init];
     graphType = [delegate getGraphType:graphTypeId];
+    [delegate setCurrentGraphType:graphType];
     
     HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
     
@@ -32,7 +33,7 @@ HCCPAppDelegate* delegate;
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]];
         
     }
 

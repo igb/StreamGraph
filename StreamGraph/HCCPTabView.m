@@ -51,12 +51,8 @@ HCCPAppDelegate* delegate;
     [super selectLastTabViewItem:sender];
     WebView  *webview = [WebView alloc];
     webview =  [[[[self selectedTabViewItem] view] subviews]objectAtIndex:0];
-    //[[self.tabViewItems]
-    //[self.window  setContentView:webview];
-    
     [[[webview mainFrame] frameView] setAllowsScrolling:YES];
-    //[[[webview mainFrame] frameView] setFrameSize:NSMakeSize(100, 100)];
-
+   
     [[webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[delegate getCurrentGraphUrl]]];
     
     [delegate setWebView:webview];

@@ -42,7 +42,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
     WebView* myWebView;
     ModeType _mode;
     long _barGap;
+    BOOL drawGrid;
     
+    NSString* currentGraphType;
 
 }
 
@@ -67,6 +69,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSStepper *gridYStepper;
 @property (assign) IBOutlet NSTextField *gridXText;
 @property (assign) IBOutlet NSTextField *gridYText;
+@property (assign) IBOutlet NSTextField *gridXlabel;
+@property (assign) IBOutlet NSTextField *gridYlabel;
+
 @property (assign) IBOutlet NSTextField *gridlabel;
 @property (assign) IBOutlet NSButton *gridCheck;
 
@@ -90,6 +95,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)applySwatch:(id)sender;
 -(IBAction)reverseColumnOrder:(id)sender;
 
+-(IBAction)gridTickStepperXYAction:(id)pId;
+-(IBAction)gridTickerCheck:(id)pId;
 
 
 
@@ -113,7 +120,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (ModeType)getGraphMode:(int)graphTypeId;
 
 
-
+- (NSString *)getCurrentGraphType;
+- (void)setCurrentGraphType:(NSString*)curGraphType;
 
 
 - (void)setMode:(ModeType)mode;
@@ -124,6 +132,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 -(NSURL*)getCurrentGraphUrl;
 
+-(BOOL)getDrawGrid;
 
 
 
