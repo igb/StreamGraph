@@ -26,45 +26,23 @@
         case GraphViewMode:
             
   
-            [[self barSpaceControlLabel] setHidden:YES];
-            [[self barSpaceControlSlider] setHidden:YES];
+            [self toggleBarControls:YES];
+
             
             break;
             
         case BarViewMode:
   
-            
-            [[self barSpaceControlLabel] setHidden:NO];
-            [[self barSpaceControlSlider] setHidden:NO];
-            
-            
-            [[self gridCheck] setHidden:YES];
-            [[self gridlabel] setHidden:YES];
-            [[self gridXText] setHidden:YES];
-            [[self gridXStepper] setHidden:YES];
-            [[self gridYText] setHidden:YES];
-            [[self gridYStepper] setHidden:YES];
-            [[self gridXlabel] setHidden:YES];
-            [[self gridYlabel] setHidden:YES];
-            
-            
+            [self toggleBarControls:NO];
+            [self toggleStackControls:YES];
             break;
             
         case StackViewMode:
             
+        
+            [self toggleBarControls:YES];
+            [self toggleStackControls:NO];
             
-            [[self barSpaceControlLabel] setHidden:YES];
-            [[self barSpaceControlSlider] setHidden:YES];
-            
-            [[self gridCheck] setHidden:NO];
-            [[self gridlabel] setHidden:NO];
-            [[self gridXText] setHidden:NO];
-            [[self gridXStepper] setHidden:NO];
-            [[self gridYText] setHidden:NO];
-            [[self gridYStepper] setHidden:NO];
-            [[self gridXlabel] setHidden:NO];
-            [[self gridYlabel] setHidden:NO];
-
 
             
             break;
@@ -72,8 +50,7 @@
         default:
             
             
-            [[self barSpaceControlLabel] setHidden:YES];
-            [[self barSpaceControlSlider] setHidden:YES];
+            [self toggleBarControls:YES];
             
 
             
@@ -85,8 +62,26 @@
     
 }
 
+-(void)toggleStackControls:(BOOL)toggle  {
+    [[self gridCheck] setHidden:toggle];
+    [[self gridlabel] setHidden:toggle];
+    [[self gridXText] setHidden:toggle];
+    [[self gridXStepper] setHidden:toggle];
+    [[self gridYText] setHidden:toggle];
+    [[self gridYStepper] setHidden:toggle];
+    [[self gridXlabel] setHidden:toggle];
+    [[self gridYlabel] setHidden:toggle];
+    [[self gridColorChooser] setHidden:toggle];
+    [[self gridColorLabel] setHidden:toggle];
 
+    
+}
 
+-(void)toggleBarControls:(BOOL)toggle  {
+    [[self barSpaceControlLabel] setHidden:toggle];
+    [[self barSpaceControlSlider] setHidden:toggle];
+
+}
 -(IBAction)graphStack:(id)sender {
     [self setMode:StackViewMode];
     [self displayControls:StackViewMode];
@@ -106,6 +101,7 @@
     
     
    currentGraphId = [[NSProcessInfo processInfo] globallyUniqueString];
+    currentGridColor = @"000000";
     // Insert code here to initialize your application
     
     
@@ -135,6 +131,8 @@
     redSwatch = [self createRedSwatch];
 
     
+    
+    [[self gridXText] setDelegate:self];
 
     
 }
@@ -183,6 +181,9 @@
     return _goldSwatch;
 }
 
+- (void)setGridEditMode:(BOOL)isGridEdit {
+    isGridEditMode = isGridEdit;
+}
 
 -(HCCPColorStack*)createBlueSwatch {
     HCCPColorStack* _blueSwatch = [[HCCPColorStack alloc] init];
@@ -401,17 +402,25 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 -(IBAction)selectChartBackgroundColor:(id)sender {
     NSColorWell * colorChooser = sender;
+    if (![colorChooser isActive])  {
+        [colorChooser activate:YES];
+    }
     NSLog(@"choosing color: %@", [colorChooser color]);
     NSLog(@"current mode: %ld", _mode);
     
     NSString* selectedColor = [[[HCCPColorStack alloc] init] colorToHexString:[colorChooser color]];
     if (_mode == StackViewMode) {
-        currentGraphBackground = selectedColor;
+        if (isGridEditMode) {
+            currentGridColor = selectedColor;
+        } else {
+            currentGraphBackground = selectedColor;
+        
+        }
     } else if (_mode == GraphViewMode) {
         [self setSelectedRowBackground:[colorChooser color]];
     }
     
-    [myWebView reload:self];
+      [self refreshChart];
 
     
     
@@ -662,16 +671,47 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 
 -(IBAction)gridTickStepperXYAction:(id)pId {
-    NSLog(@"tick action");
+    NSLog(@"tick action %d",  [pId intValue]);
+    int dirValue = [pId intValue];
+    if ([pId tag] == 1) {
+        if (dirValue < gridXStepValue) {
+            [[self gridXText] setIntValue:[[self gridXText] intValue] - 1];
+        } else {
+            [[self gridXText] setIntValue:[[self gridXText] intValue] + 1];
+        }
+        gridXStepValue = dirValue;
+    }
+
+    if ([pId tag] == 2) {
+        if (dirValue < gridyStepValue) {
+            [[self gridYText] setIntValue:[[self gridYText] intValue] - 1];
+        } else {
+            [[self gridYText] setIntValue:[[self gridYText] intValue] + 1];
+        }
+        gridyStepValue = dirValue;
+    }
+    
+    [self refreshChart];
+    
+    
 }
+
 -(IBAction)gridTickerCheck:(id)pId {
     NSButton* gridcheck = pId;
     NSLog(@"grid checkbox state %ld", [gridcheck state]);
     drawGrid = [gridcheck state];
     NSLog(@"draw grid state: %@", drawGrid);
+ 
+    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor];
+    [myWebView reload:self];
+    
+}
+
+-(void)refreshChart {
     
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor];
     [myWebView reload:self];
     
 }
@@ -687,5 +727,16 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     currentGraphType=curGraphType;
 }
 
+- (void)controlTextDidChange:(NSNotification *)notification {
+    [self refreshChart];
+}
+
+-(BOOL)getGridEditMode {
+    return isGridEditMode;
+}
+
+-(NSString*)getCurrentGridColor {
+    return currentGridColor;
+}
 
 @end

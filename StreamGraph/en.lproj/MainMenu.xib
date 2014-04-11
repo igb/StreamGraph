@@ -552,11 +552,11 @@
                         <tabViewItems>
                             <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -609,15 +609,15 @@
                                                 <action selector="gridTickerCheck:" target="494" id="wiX-lR-bkV"/>
                                             </connections>
                                         </button>
-                                        <stepper hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Q15-C1-rJz">
+                                        <stepper hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="1" id="Q15-C1-rJz">
                                             <rect key="frame" x="54" y="385" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="IC5-Tx-lFa"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="-10000" maxValue="10000" id="IC5-Tx-lFa"/>
                                             <connections>
                                                 <action selector="gridTickStepperXYAction:" target="494" id="KLg-zV-Wgq"/>
                                             </connections>
                                         </stepper>
-                                        <textField hidden="YES" verticalHuggingPriority="750" id="cl1-xD-9sx">
+                                        <textField hidden="YES" verticalHuggingPriority="750" tag="1" id="cl1-xD-9sx">
                                             <rect key="frame" x="78" y="388" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nS6-3V-O3D">
@@ -631,19 +631,22 @@
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <outlet property="delegate" destination="494" id="4FD-Zx-Jax"/>
+                                            </connections>
                                         </textField>
-                                        <stepper hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Osk-cx-90A">
+                                        <stepper hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="2" id="Osk-cx-90A">
                                             <rect key="frame" x="54" y="355" width="19" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="8vN-tF-rmp"/>
+                                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="-10000" maxValue="10000" id="8vN-tF-rmp"/>
                                             <connections>
                                                 <action selector="gridTickStepperXYAction:" target="494" id="66o-dw-RNI"/>
                                             </connections>
                                         </stepper>
-                                        <textField hidden="YES" verticalHuggingPriority="750" id="SGi-ZF-eEY">
+                                        <textField hidden="YES" verticalHuggingPriority="750" tag="2" id="SGi-ZF-eEY">
                                             <rect key="frame" x="78" y="358" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0cd-n4-LJI">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="0" drawsBackground="YES" id="0cd-n4-LJI">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="pXy-zc-9me">
                                                     <real key="roundingIncrement" value="0.0"/>
                                                     <metadata>
@@ -654,6 +657,9 @@
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <outlet property="delegate" destination="494" id="ksO-6w-V03"/>
+                                            </connections>
                                         </textField>
                                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nJK-Te-k5m">
                                             <rect key="frame" x="123" y="388" width="80" height="17"/>
@@ -673,6 +679,23 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jEE-UC-4Rd">
+                                            <rect key="frame" x="123" y="327" width="80" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="grid color" id="Aac-Ns-3pD">
+                                                <font key="font" size="9" name="LucidaGrande"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <colorWell identifier="9" hidden="YES" canDrawConcurrently="YES" id="Ee4-6k-Vw0">
+                                            <rect key="frame" x="73" y="327" width="44" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="selectChartBackgroundColor:" target="494" id="JeL-Zn-ySp"/>
+                                            </connections>
+                                        </colorWell>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -780,6 +803,8 @@
                 <outlet property="expandStreamChart" destination="1041" id="dxc-Rb-gN2"/>
                 <outlet property="graphTabView" destination="653" id="Yya-mo-EHh"/>
                 <outlet property="gridCheck" destination="jgk-RI-zU3" id="7cy-1i-xT2"/>
+                <outlet property="gridColorChooser" destination="Ee4-6k-Vw0" id="yt2-aE-bN9"/>
+                <outlet property="gridColorLabel" destination="jEE-UC-4Rd" id="bC8-NL-fCx"/>
                 <outlet property="gridXStepper" destination="Q15-C1-rJz" id="7u1-MK-UEh"/>
                 <outlet property="gridXText" destination="cl1-xD-9sx" id="a9d-mj-HLN"/>
                 <outlet property="gridXlabel" destination="nJK-Te-k5m" id="U4a-9H-ZzM"/>

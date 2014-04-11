@@ -41,8 +41,15 @@ HCCPAppDelegate* delegate;
             NSLog(@"mode is: %ld", [delegate getMode]);
             
             NSLog(@"sent!");
-            
+            [delegate setGridEditMode:YES];
             break;
+        case 4:
+            
+            NSLog(@"mode is: %ld", [delegate getMode]);
+            
+            [delegate setGridEditMode:NO];
+            break;
+            
         default:
             break;
     }

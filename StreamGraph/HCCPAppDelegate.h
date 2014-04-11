@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
     NSString* currentGraphId;
     NSString* currentGraphBackground;
+    NSString* currentGridColor;
     NSInteger currentSelectedRow;
     NSIndexSet* currentSelectedRows;
     NSMutableArray* rowColors;
@@ -34,6 +35,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
     HCCPColorStack* goldSwatch;
     HCCPColorStack* blueSwatch;
     HCCPColorStack* redSwatch;
+    
+    
+    
 
 
 
@@ -43,6 +47,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
     ModeType _mode;
     long _barGap;
     BOOL drawGrid;
+    int gridXStepValue;
+    int gridyStepValue;
+    BOOL isGridEditMode;
     
     NSString* currentGraphType;
 
@@ -74,6 +81,10 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 @property (assign) IBOutlet NSTextField *gridlabel;
 @property (assign) IBOutlet NSButton *gridCheck;
+@property (assign) IBOutlet NSColorWell *gridColorChooser;
+@property (assign) IBOutlet NSTextField *gridColorLabel;
+
+
 
 //
 @property (assign) IBOutlet NSTabView* mainTabView;
@@ -129,11 +140,14 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 -(NSString*)getCurrentGraphId;
 -(NSString*)getCurrentGraphBackground;
+-(NSString*)getCurrentGridColor;
 
 -(NSURL*)getCurrentGraphUrl;
 
 -(BOOL)getDrawGrid;
 
+- (void)setGridEditMode:(BOOL)isGridEdit;
+- (BOOL)getGridEditMode;
 
 
 @property (assign) IBOutlet NSView* mainView;

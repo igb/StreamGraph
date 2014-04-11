@@ -12,7 +12,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid :(int)xTicks :(int)yTicks :(NSString*)gridColor {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -28,6 +28,9 @@
     [self writeStringToStream:stream :@"<script>"];
     [self writeStringToStream:stream :[self getD3js]];
     [self writeStringToStream:stream :@"</script>"];
+    [self writeStringToStream:stream :@"\n<style>.grid .tick {\nstroke: #"];
+    [self writeStringToStream:stream :gridColor];
+    [self writeStringToStream:stream :@";\nopacity: 0.3;\n}\n</style>\n"];
     [self writeStringToStream:stream :[self getSection:@"section0"]];
     [self writeStringToStream:stream :graphBackground];
     [self writeStringToStream:stream :[self getSection:@"section01"]];
@@ -38,7 +41,7 @@
     [document appendString:[self colorsToJSArray:colors]];
 
     if (drawGrid) {
-       [document appendString:@"\nfunction make_x_axis() {return d3.svg.axis().scale(x).orient(\"bottom\").ticks(48)};\nfunction make_y_axis() { return d3.svg.axis().scale(y).orient(\"left\").ticks(25)};\n"];
+       [document appendString:[NSString stringWithFormat:@"\nfunction make_x_axis() {return d3.svg.axis().scale(x).orient(\"bottom\").ticks(%ld)};\nfunction make_y_axis() { return d3.svg.axis().scale(y).orient(\"left\").ticks(%ld)};\n", xTicks, yTicks]];
     }
     
 

@@ -33,7 +33,7 @@ HCCPAppDelegate* delegate;
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]];
         
     }
 
@@ -150,7 +150,10 @@ HCCPAppDelegate* delegate;
     return [rows count];
 }
 
-
+- (void)controlTextDidChange:(NSNotification *)notification {
+    NSTextField *textField = [notification object];
+    NSLog(@"controlTextDidChange: stringValue == %@", [textField stringValue]);
+}
 
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex {
     NSLog(@"cell edit operation recieved");
@@ -274,6 +277,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     
     
     NSLog(@"rows size is: %ld", [rows count]);
+    [[delegate gridXText] setStringValue:[NSString stringWithFormat:@"%ld", [tableCols count] - 1]];
     [myTableView reloadData];
 
 }
