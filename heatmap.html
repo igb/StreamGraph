@@ -27,27 +27,108 @@
   <body>
     <div id="chart"></div>
 
+	
     <script type="text/javascript">
       var margin = { top: 50, right: 0, bottom: 100, left: 30 },
           width = 960 - margin.left - margin.right,
           height = 430 - margin.top - margin.bottom,
-          gridSize = Math.floor(width / 24),
+          gridSize = Math.floor(width / 12),
           legendElementWidth = gridSize*2,
-          buckets = 9,
+          buckets = 50,
           colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
           days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-          times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
+          times = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a"];//, "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
 
-
-      d3.tsv("data.tsv",
-        function(d) {
-          return {
-            day: +d.day,
-            hour: +d.hour,
-            value: +d.value
-          };
-        },
-        function(error, data) {
+var mdata=[
+			    {day: "1", hour:"1", value:"6"},
+				{day: "1", hour:"2", value:"5"},
+				{day: "1", hour:"3", value:"2"},
+				{day: "1", hour:"4", value:"5"},
+				{day: "1", hour:"5", value:"3"},
+				{day: "1", hour:"6", value:"10"},
+				{day: "1", hour:"7", value:"2"},
+				{day: "1", hour:"8", value:"5"},
+				{day: "1", hour:"9", value:"9"},
+				{day: "1", hour:"10", value:"0"},
+				{day: "1", hour:"11", value:"1"},
+				{day: "1", hour:"12", value:"15"},
+				{day: "2", hour:"1", value:"10"},
+				{day: "2", hour:"2", value:"2"},
+				{day: "2", hour:"3", value:"3"},
+				{day: "2", hour:"4", value:"17"},
+				{day: "2", hour:"5", value:"2"},
+				{day: "2", hour:"6", value:"4"},
+				{day: "2", hour:"7", value:"15"},
+				{day: "2", hour:"8", value:"14"},
+				{day: "2", hour:"9", value:"1"},
+				{day: "2", hour:"10", value:"1"},
+				{day: "2", hour:"11", value:"8"},
+				{day: "2", hour:"12", value:"9"},
+				{day: "3", hour:"1", value:"4"},
+				{day: "3", hour:"2", value:"3"},
+				{day: "3", hour:"3", value:"10"},
+				{day: "3", hour:"4", value:"19"},
+				{day: "3", hour:"5", value:"17"},
+				{day: "3", hour:"6", value:"11"},
+				{day: "3", hour:"7", value:"5"},
+				{day: "3", hour:"8", value:"5"},
+				{day: "3", hour:"9", value:"10"},
+				{day: "3", hour:"10", value:"11"},
+				{day: "3", hour:"11", value:"19"},
+				{day: "3", hour:"12", value:"13"},
+				{day: "4", hour:"1", value:"9"},
+				{day: "4", hour:"2", value:"18"},
+				{day: "4", hour:"3", value:"8"},
+				{day: "4", hour:"4", value:"15"},
+				{day: "4", hour:"5", value:"16"},
+				{day: "4", hour:"6", value:"18"},
+				{day: "4", hour:"7", value:"19"},
+				{day: "4", hour:"8", value:"7"},
+				{day: "4", hour:"9", value:"12"},
+				{day: "4", hour:"10", value:"12"},
+				{day: "4", hour:"11", value:"14"},
+				{day: "4", hour:"12", value:"3"},
+				{day: "5", hour:"1", value:"19"},
+				{day: "5", hour:"2", value:"15"},
+				{day: "5", hour:"3", value:"17"},
+				{day: "5", hour:"4", value:"6"},
+				{day: "5", hour:"5", value:"15"},
+				{day: "5", hour:"6", value:"11"},
+				{day: "5", hour:"7", value:"12"},
+				{day: "5", hour:"8", value:"19"},
+				{day: "5", hour:"9", value:"16"},
+				{day: "5", hour:"10", value:"16"},
+				{day: "5", hour:"11", value:"16"},
+				{day: "5", hour:"12", value:"9"},
+				{day: "6", hour:"1", value:"15"},
+				{day: "6", hour:"2", value:"7"},
+				{day: "6", hour:"3", value:"12"},
+				{day: "6", hour:"4", value:"10"},
+				{day: "6", hour:"5", value:"17"},
+				{day: "6", hour:"6", value:"12"},
+				{day: "6", hour:"7", value:"14"},
+				{day: "6", hour:"8", value:"16"},
+				{day: "6", hour:"9", value:"17"},
+				{day: "6", hour:"10", value:"8"},
+				{day: "6", hour:"11", value:"14"},
+				{day: "6", hour:"12", value:"17"},
+				{day: "7", hour:"1", value:"10"},
+				{day: "7", hour:"2", value:"10"},
+				{day: "7", hour:"3", value:"10"},
+				{day: "7", hour:"4", value:"15"},
+				{day: "7", hour:"5", value:"19"},
+				{day: "7", hour:"6", value:"7"},
+				{day: "7", hour:"7", value:"2"},
+				{day: "7", hour:"8", value:"18"},
+				{day: "7", hour:"9", value:"17"},
+				{day: "7", hour:"10", value:"3"},
+				{day: "7", hour:"11", value:"16"},
+				{day: "7", hour:"12", value:"11"}
+			
+			];
+     // d3.tsv("data.tsv",
+        
+        x=function(error, data) {
 			console.log(data);
           var colorScale = d3.scale.quantile()
               .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
@@ -91,12 +172,12 @@
               .attr("height", gridSize)
               .style("fill", colors[0]);
 
-          heatMap.transition().duration(1000)
+          heatMap.transition().duration(0)
               .style("fill", function(d) { return colorScale(d.value); });
 
           heatMap.append("title").text(function(d) { return d.value; });
               
-          var legend = svg.selectAll(".legend")
+         /* var legend = svg.selectAll(".legend")
               .data([0].concat(colorScale.quantiles()), function(d) { return d; })
               .enter().append("g")
               .attr("class", "legend");
@@ -113,8 +194,9 @@
             .text(function(d) { return "≥ " + Math.round(d); })
             .attr("x", function(d, i) { return legendElementWidth * i; })
             .attr("y", height + gridSize);
-      });
-
+*/
+      };
+	x(1, mdata);
     </script>
   </body>
 </html>
