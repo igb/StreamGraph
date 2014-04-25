@@ -14,7 +14,10 @@
 
 @implementation HCCPAppDelegate
 
-
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    NSLog(@"mouse");
+}
 
 - (void)displayControls:(ModeType)mode {
     

@@ -10,7 +10,7 @@
 
       text.mono {
         font-size: 9pt;
-        font-family: Consolas, courier;
+        font-family: Gotham, Consolas, courier;
         fill: #aaa;
       }
 
@@ -31,21 +31,24 @@
 
 
   </head>
-  <body>
+  <body onresize="location.reload();">
     <div id="chart"></div>
 
 	
     <script type="text/javascript">
-      var margin = { top: 50, right: 0, bottom: 100, left: 30 },
-          width = 960 - margin.left - margin.right,
-          height = 430 - margin.top - margin.bottom,
-          gridSize = Math.floor(width / 24),
-          legendElementWidth = gridSize*2,
+      var margin = { top: 20, right: 0, bottom: 290, left: 40 },
+          width = document.width - margin.left - margin.right,
+          height = document.height - margin.top - margin.bottom,
+          gridSize = Math.floor((width  - margin.left - margin.right) /12),
+          legendElementWidth = gridSize + ((gridSize * 3) / 9),
           buckets = 5,
           colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
           days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
           times = ["12AM", "2AM", "4AM", "6AM", "8AM", "10AM", "12PM", "2PM", "4PM", "6PM", "8PM", "10PM"];//, "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
 
+		  console.log("width: " + width);
+		  console.log("height:" + height);
+		  console.log("grid size:" + gridSize );
 var mdata=[
 			    {day: 1, hour: 1, value: 0},
 				{day: 1, hour: 2, value: 1},
@@ -145,7 +148,7 @@ var mdata=[
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
               .append("g")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // what does this do?
 
           var dayLabels = svg.selectAll(".dayLabel")
               .data(days)
@@ -155,7 +158,8 @@ var mdata=[
                 .attr("y", function (d, i) { return i * gridSize; })
                 .style("text-anchor", "end")
                 .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
-                .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
+                .attr("class", "dayLabel mono axis axis-workweek");
+				//.attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
 
           var timeLabels = svg.selectAll(".timeLabel")
               .data(times)
@@ -165,25 +169,26 @@ var mdata=[
                 .attr("y", 0)
                 .style("text-anchor", "middle")
                 .attr("transform", "translate(" + gridSize / 2 + ", -6)")
-                .attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
+				.attr("class","timeLabel mono axis-worktime");
+                //.attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
 
           var heatMap = svg.selectAll(".hour")
               .data(data)
               .enter().append("rect")
               .attr("x", function(d) { return (d.hour - 1) * gridSize; })
               .attr("y", function(d) { return (d.day - 1) * gridSize; })
-              .attr("rx", 4)
-              .attr("ry", 4)
+              .attr("rx", 2)
+              .attr("ry", 2)
               .attr("class", "hour bordered")
               .attr("width", gridSize )
               .attr("height", gridSize )
               .style("fill", colors[2]);
 
-          heatMap.transition().duration(10000)
+          heatMap.transition().duration(0)
               .style("fill", function(d) { return colorScale(d.value); });
 
           heatMap.append("title").text(function(d) { return d.value; });
-              
+             /** 
           var legend = svg.selectAll(".legend")
               .data([0].concat(colorScale.quantiles()), function(d) { return d; })
               .enter().append("g")
@@ -193,15 +198,15 @@ var mdata=[
             .attr("x", function(d, i) { return legendElementWidth * i; })
             .attr("y", height)
             .attr("width", legendElementWidth)
-            .attr("height", gridSize / 2)
+            .attr("height", (gridSize - / 2)
             .style("fill", function(d, i) { return colors[i]; });
 
           legend.append("text")
-            .attr("class", "mono")
+            .attr("class", "mono  axis-worktime")
             .text(function(d) { return "≥ " + Math.round(d); })
             .attr("x", function(d, i) { return legendElementWidth * i; })
             .attr("y", height + gridSize);
-
+*/
       };
 	x(1, mdata);
     </script>

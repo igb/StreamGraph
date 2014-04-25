@@ -552,11 +552,11 @@
                         <tabViewItems>
                             <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -772,6 +772,15 @@
                                             <rect key="frame" x="1" y="418" width="35" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bars:" id="K4a-qA-D3o">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zM3-fa-ape">
+                                            <rect key="frame" x="1" y="242" width="71" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Heatmaps:" id="ZRy-WX-L4h">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

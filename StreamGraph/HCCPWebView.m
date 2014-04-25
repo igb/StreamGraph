@@ -16,18 +16,18 @@
     NSLog(@"in web view init load");
     
     self = [super init];
+    id win = [self windowScriptObject];
+    [win setValue:self forKey:@"HccpWebKitView"];
+
     return self;
 }
 
-- (id)UIDelegate {
-    return self;
-}
 
 
 -(void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
     NSLog(@"in did start load");
-}
+    }
 
 -(void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
@@ -35,9 +35,9 @@
     NSLog(@"in finish load");
     
     
-    
-    
 }
+
+
 -(BOOL)webViewIsResizable:(WebView *)sender {
     return FALSE;
     
@@ -54,7 +54,14 @@
     return NSMakeSize([scrollHeight intValue], [scrollWidth intValue]);
 }
 
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
 
+
+-(void)myMouseDown:(int) x{
+    NSLog(@"mouse down:%d", x);
+}
 
 
 @end

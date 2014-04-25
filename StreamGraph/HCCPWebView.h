@@ -16,5 +16,6 @@
 }
 
 
+-(void)mouseDown:(int) x :(int) y;
 
 @end

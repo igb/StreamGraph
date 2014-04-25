@@ -51,6 +51,7 @@
     [document appendString:[NSString stringWithFormat:@"%li",[[data objectAtIndex:0] count] -1]]; // number of samples per layer
 	[document appendString:@",\n"];
     
+    
     [document appendString:@"stack = d3.layout.stack().offset(\""],
     
     [document appendString:graphType];
@@ -63,7 +64,8 @@
    
     
     [document appendString:[self getSection:@"section2"]];
-    
+    [document appendString:@"\n//xxx\nvar foo = window.HccpWebKitView;\nconsole.log(foo);\nfoo.myMouseDown_(1);\n"];
+
     if (drawGrid) {
         [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").attr(\"transform\", \"translate(0,\" + height + \")\").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(\"\"))"];
         [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(\"\"))"];
