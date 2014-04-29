@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -705,7 +705,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button toolTip="Silhouette" tag="8" id="xE3-Dw-l5i">
-                                            <rect key="frame" x="9" y="372" width="38" height="38"/>
+                                            <rect key="frame" x="9" y="371" width="38" height="38"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="oYh-ag-C7z">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -757,6 +757,17 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="selectLastTabViewItem:" target="651" id="1063"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Zero" tag="10" id="iag-cy-KIl">
+                                            <rect key="frame" x="9" y="196" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" tag="10" imageScaling="proportionallyDown" inset="2" id="pmD-34-lXZ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectLastTabViewItem:" target="651" id="Wg0-Hf-bMV"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="29K-SS-3YM">
@@ -814,6 +825,7 @@
                 <outlet property="gridCheck" destination="jgk-RI-zU3" id="7cy-1i-xT2"/>
                 <outlet property="gridColorChooser" destination="Ee4-6k-Vw0" id="yt2-aE-bN9"/>
                 <outlet property="gridColorLabel" destination="jEE-UC-4Rd" id="bC8-NL-fCx"/>
+                <outlet property="gridHeatMapChart" destination="iag-cy-KIl" id="HyV-kG-2XP"/>
                 <outlet property="gridXStepper" destination="Q15-C1-rJz" id="7u1-MK-UEh"/>
                 <outlet property="gridXText" destination="cl1-xD-9sx" id="a9d-mj-HLN"/>
                 <outlet property="gridXlabel" destination="nJK-Te-k5m" id="U4a-9H-ZzM"/>

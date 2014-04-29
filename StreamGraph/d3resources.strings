@@ -52,6 +52,26 @@ body {
     shape-rendering: crispEdges;
 }
 
+// heatmap
+
+rect.bordered {
+    stroke: #E6E6E6;
+    stroke-width:2px;
+}
+
+text.mono {
+    font-size: 9pt;
+    font-family: Gotham, Consolas, courier;
+    fill: #aaa;
+}
+
+text.axis-workweek {
+    fill: #000;
+}
+
+text.axis-worktime {
+    fill: #000;
+}
 
 </style>";
 
@@ -204,3 +224,57 @@ chart.append(\"g\")
 .attr(\"class\", \"y axis\")
 .call(yAxis);
 ";
+
+
+
+"heatMapLayoutJS001" = " x=function(error, data) {
+console.log(data);
+var colorScale = d3.scale.quantile()
+.domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
+.range(colors);
+
+var svg = d3.select(\"#chart\").append(\"svg\")
+.attr(\"width\", width + margin.left + margin.right)
+.attr(\"height\", height + margin.top + margin.bottom)
+.append(\"g\")
+.attr(\"transform\", \"translate(\" + margin.left + \",\" + margin.top + \")\"); // what does this do?
+
+var dayLabels = svg.selectAll(\".dayLabel\")
+.data(yLabels)
+.enter().append(\"text\")
+.text(function (d) { return d; })
+.attr(\"x\", 0)
+.attr(\"y\", function (d, i) { return i * gridSize; })
+.style(\"text-anchor\", \"end\")
+.attr(\"transform\", \"translate(-6,\" + gridSize / 1.5 + \")\")
+.attr(\"class\", \"dayLabel mono axis axis-workweek\");
+//.attr(\"class\", function (d, i) { return ((i >= 0 && i <= 4) ? \"dayLabel mono axis axis-workweek\" : \"dayLabel mono axis\"); });
+
+var timeLabels = svg.selectAll(\".timeLabel\")
+.data(xLabels)
+.enter().append(\"text\")
+.text(function(d) { return d; })
+.attr(\"x\", function(d, i) { return i * gridSize; })
+.attr(\"y\", 0)
+.style(\"text-anchor\", \"middle\")
+.attr(\"transform\", \"translate(\" + gridSize / 2 + \", -6)\")
+.attr(\"class\",\"timeLabel mono axis-worktime\");
+//.attr(\"class\", function(d, i) { return ((i >= 7 && i <= 16) ? \"timeLabel mono axis axis-worktime\" : \"timeLabel mono axis\"); });
+
+var heatMap = svg.selectAll(\".hour\")
+.data(data)
+.enter().append(\"rect\")
+.attr(\"x\", function(d) { return (d.x - 1) * ((width  - margin.left - margin.right) / x_size ); })
+.attr(\"y\", function(d) { return (d.y - 1) * ((height) / y_size ); })
+.attr(\"rx\", 2)
+.attr(\"ry\", 2)
+.attr(\"class\", \"hour bordered\")
+.attr(\"width\", ((width  - margin.left - margin.right) / x_size ) )
+.attr(\"height\", ((height) / y_size ) )
+.style(\"fill\", colors[2]);
+
+heatMap.transition().duration(0)
+.style(\"fill\", function(d) { return colorScale(d.value); });
+
+heatMap.append(\"title\").text(function(d) { return d.value; });
+};";

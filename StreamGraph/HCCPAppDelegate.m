@@ -116,6 +116,9 @@
     [self setButtonImageById:@"wig" :[self wiggleStreamChart]];
     [self setButtonImageById:@"sil" :[self silStreamChart]];
     [self setButtonImageById:@"bar" :[self barChart]];
+    
+    [self setButtonImageById:@"grid" :[self gridHeatMapChart]];
+
 
 
 
@@ -603,6 +606,12 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             
             break;
             
+            
+        case 10:
+            
+            graphType = @"heatmap";
+            
+            break;
             
         case 11:
             

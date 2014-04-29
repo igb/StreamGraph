@@ -65,6 +65,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSButton *zeroStreamChart;
 @property (assign) IBOutlet NSButton *wiggleStreamChart;
 @property (assign) IBOutlet NSButton *silStreamChart;
+@property (assign) IBOutlet NSButton *gridHeatMapChart;
+
 
 
 //

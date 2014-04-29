@@ -37,13 +37,13 @@
 	
     <script type="text/javascript">
 
-	   x_size=12;
-	   y_size=7;
+	   x_size=12; // set dynamically
+	   y_size=7; // set dynamically
 	
       var margin = { top: 20, right: 0, bottom: 10, left: 40 },
           width = document.width - margin.left - margin.right,
           height = document.height - margin.top - margin.bottom,
-          gridSize = Math.floor(    Math.min( ((width  - margin.left - margin.right) / x_size ),   ((height) / y_size ))  ),
+          gridSize = Math.floor(    Math.min( ((width  - margin.left - margin.right) / x_size ),   ((height) / y_size ))  ), // scale grid square size to fit entire chart in browser pane...could be turned off if we don't need to preserve squareness
           legendElementWidth = gridSize + ((gridSize * 3) / 9),
           buckets = 5,
           colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
@@ -179,13 +179,13 @@ var mdata=[
           var heatMap = svg.selectAll(".hour")
               .data(data)
               .enter().append("rect")
-              .attr("x", function(d) { return (d.hour - 1) * gridSize; })
-              .attr("y", function(d) { return (d.day - 1) * gridSize; })
+              .attr("x", function(d) { return (d.hour - 1) * ((width  - margin.left - margin.right) / x_size ); })
+              .attr("y", function(d) { return (d.day - 1) * ((height) / x_size ); })
               .attr("rx", 2)
               .attr("ry", 2)
               .attr("class", "hour bordered")
-              .attr("width", gridSize )
-              .attr("height", gridSize )
+              .attr("width", ((width  - margin.left - margin.right) / x_size ) )
+              .attr("height", ((height) / y_size ) )
               .style("fill", colors[2]);
 
           heatMap.transition().duration(0)

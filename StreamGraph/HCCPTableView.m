@@ -9,6 +9,7 @@
 #import "HCCPTableView.h"
 #import "HCCPStreamGraphWriter.h"
 #import "HCCPBarGraphWriter.h"
+#import "HCCPHeatMapGraphWriter.h"
 #import "HCCPAppDelegate.h"
 
 
@@ -30,7 +31,13 @@ HCCPAppDelegate* delegate;
     if ([graphType isEqualToString:@"bar"]) {
         HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
-    } else {
+    } else if ([graphType isEqualToString:@"heatmap"]) {
+        HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:YES:YES:YES:NO];
+
+        
+    }
+    else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]];
