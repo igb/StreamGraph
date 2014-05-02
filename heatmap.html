@@ -40,7 +40,7 @@
 	   x_size=12; // set dynamically
 	   y_size=7; // set dynamically
 	
-      var margin = { top: 20, right: 0, bottom: 10, left: 40 },
+      var margin = { top: 20, right: 0, bottom: (x_size * 122), left: 40 },
           width = document.width - margin.left - margin.right,
           height = document.height - margin.top - margin.bottom,
           gridSize = Math.floor(    Math.min( ((width  - margin.left - margin.right) / x_size ),   ((height) / y_size ))  ), // scale grid square size to fit entire chart in browser pane...could be turned off if we don't need to preserve squareness
@@ -180,7 +180,7 @@ var mdata=[
               .data(data)
               .enter().append("rect")
               .attr("x", function(d) { return (d.hour - 1) * ((width  - margin.left - margin.right) / x_size ); })
-              .attr("y", function(d) { return (d.day - 1) * ((height) / x_size ); })
+              .attr("y", function(d) { return (d.day - 1) * ((height) / y_size ); })
               .attr("rx", 2)
               .attr("ry", 2)
               .attr("class", "hour bordered")

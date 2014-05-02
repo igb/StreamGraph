@@ -705,13 +705,16 @@
                                                 <action selector="selectChartBackgroundColor:" target="494" id="JeL-Zn-ySp"/>
                                             </connections>
                                         </colorWell>
-                                        <button id="sDq-MT-Etn">
-                                            <rect key="frame" x="55" y="390" width="61" height="18"/>
+                                        <button hidden="YES" id="sDq-MT-Etn">
+                                            <rect key="frame" x="59" y="381" width="109" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Show Legend" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="T1A-Wk-CUO">
+                                            <buttonCell key="cell" type="check" title="Show Legend" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="T1A-Wk-CUO">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="heatMapLegendCheck:" target="494" id="1mV-VF-q2c"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>

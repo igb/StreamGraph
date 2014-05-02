@@ -51,6 +51,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
     int gridXStepValue;
     int gridyStepValue;
     BOOL isGridEditMode;
+    BOOL isShowHeatMapLegend;
+
     
     NSString* currentGraphType;
 
@@ -115,6 +117,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)gridTickerCheck:(id)pId;
 
 
+-(IBAction)heatMapLegendCheck:(id)pId;
 
 
 
@@ -153,6 +156,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 - (void)setGridEditMode:(BOOL)isGridEdit;
 - (BOOL)getGridEditMode;
+- (BOOL)getIsShowHeatMapLegend;
 
 
 @property (assign) IBOutlet NSView* mainView;

@@ -70,7 +70,14 @@
        [document appendFormat:@"\nx_size=%lu;\ny_size=y%lu; //hardcoded by data size\n", (unsigned long)[[data objectAtIndex:0] count], (unsigned long)[data count]];
     }
     
-         [document appendString:@" var margin = { top: 20, right: 0, bottom: 10, left: 40 },\n"];
+    if (displayLegend) {
+        [document appendString:@" var margin = { top: 20, right: 0, bottom: x_size * 3, left: 40 },\n"];
+
+    } else {
+        [document appendString:@" var margin = { top: 20, right: 0, bottom: 10, left: 40 },\n"];
+
+    }
+    
          [document appendString:@"width = document.width - margin.left - margin.right,\n"];
          [document appendString:@"height = document.height - margin.top - margin.bottom,\n"];
          [document appendString:@"gridSize = Math.floor(    Math.min( ((width  - margin.left - margin.right) / x_size ),   ((height) / y_size ))  ),\n"];
@@ -97,7 +104,14 @@
         [document appendString:@"\n];\n"];
         
         [document appendString:[self getSection:@"heatMapLayoutJS001"]];
-     [document appendString:@"</script><div id=\"chart\"></div>"];    [document appendString:@"<script>x(1, mdata);\n</script></body></html>\n"];
+    
+        if (displayLegend) {
+            
+            [document appendString:[self getSection:@"heatMapLegend"]];
+
+        }
+    
+     [document appendString:@"};</script><div id=\"chart\"></div>"];    [document appendString:@"<script>x(1, mdata);\n</script></body></html>\n"];
     
     
     [self writeStringToStream:stream :document];

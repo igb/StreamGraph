@@ -277,4 +277,28 @@ heatMap.transition().duration(0)
 .style(\"fill\", function(d) { return colorScale(d.value); });
 
 heatMap.append(\"title\").text(function(d) { return d.value; });
-};";
+";
+
+
+
+
+"heatMapLegend" = "var legend = svg.selectAll(\".legend\")
+.data([0].concat(colorScale.quantiles()), function(d) { return d; })
+.enter().append(\"g\")
+.attr(\"class\", \"legend\");
+
+legend.append(\"rect\")
+.attr(\"x\", function(d, i) { return legendElementWidth * i; })
+.attr(\"y\", height + 20)
+.attr(\"width\", legendElementWidth )
+.attr(\"height\", (x_size ))
+.attr(\"rx\", 0)
+.attr(\"ry\", 0)
+.style(\"fill\", function(d, i) { return colors[i]; });
+
+legend.append(\"text\")
+.attr(\"class\", \"mono  axis-worktime\")
+.text(function(d) { return \"≥ \" + Math.round(d); })
+.attr(\"x\", function(d, i) { return (legendElementWidth * i) + (legendElementWidth / 3); })
+.attr(\"y\", height + (x_size * 2.5));
+";

@@ -10,6 +10,7 @@
 #import "HCCPColorStack.h"
 #import "HCCPStreamGraphWriter.h"
 #import "HCCPBarGraphWriter.h"
+#import "HCCPHeatMapGraphWriter.h"
 
 
 @implementation HCCPAppDelegate
@@ -292,6 +293,9 @@
 }
 
 
+- (BOOL)getIsShowHeatMapLegend {
+    return isShowHeatMapLegend;
+}
 
 
 
@@ -688,6 +692,12 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             
             break;
             
+            
+        case 10:
+            
+            return HeatMapMode;
+            
+            break;
         default:
             
             return StackViewMode;
@@ -696,6 +706,13 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             break;
             
     }
+}
+
+
+-(IBAction)heatMapLegendCheck:(id)pId {
+    NSButton* legendCheck = pId;
+    isShowHeatMapLegend = [legendCheck state];
+    [self refreshChart];
 }
 
 
@@ -739,8 +756,24 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 -(void)refreshChart {
     
-    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor];
+    NSString* graphType = [self getCurrentGraphType];
+    
+    if ([graphType isEqualToString:@"bar"]) {
+        HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getBarGap]];
+    } else if ([graphType isEqualToString:@"heatmap"]) {
+        HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]];
+        
+        
+    } else {
+        
+        HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]];
+        
+    }
+    
+    
     [myWebView reload:self];
     
 }
