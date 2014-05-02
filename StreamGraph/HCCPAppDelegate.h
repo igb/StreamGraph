@@ -15,7 +15,8 @@
 typedef NS_ENUM(NSInteger, ModeType) {
     GraphViewMode,
     StackViewMode,
-    BarViewMode
+    BarViewMode,
+    HeatMapMode
 };
 
 
@@ -86,6 +87,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSColorWell *gridColorChooser;
 @property (assign) IBOutlet NSTextField *gridColorLabel;
 
+@property (assign) IBOutlet NSTextField *heatMapLegendlabel;
+@property (assign) IBOutlet NSButton *heatMapLegendCheck;
 
 
 //

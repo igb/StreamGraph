@@ -75,6 +75,7 @@
     
     // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SKIP HEADERS AND ROW LABELS
     for (int i = 1; i < [data count]; i++) {
+        NSLog(@"foo");
         [document appendString:@"[\n"];
         NSArray* record = [data objectAtIndex:i];
         for (int j=1; j < [record count]; j++) {

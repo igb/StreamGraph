@@ -598,6 +598,15 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="i3m-vt-lxx">
+                                            <rect key="frame" x="15" y="416" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Legend:" id="V2x-P6-hTV">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button hidden="YES" id="jgk-RI-zU3">
                                             <rect key="frame" x="55" y="417" width="22" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -618,7 +627,7 @@
                                             </connections>
                                         </stepper>
                                         <textField hidden="YES" verticalHuggingPriority="750" tag="1" id="cl1-xD-9sx">
-                                            <rect key="frame" x="78" y="388" width="39" height="22"/>
+                                            <rect key="frame" x="78" y="389" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nS6-3V-O3D">
                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="K1V-Gc-yXL">
@@ -696,6 +705,14 @@
                                                 <action selector="selectChartBackgroundColor:" target="494" id="JeL-Zn-ySp"/>
                                             </connections>
                                         </colorWell>
+                                        <button id="sDq-MT-Etn">
+                                            <rect key="frame" x="55" y="390" width="61" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Show Legend" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="T1A-Wk-CUO">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -833,6 +850,8 @@
                 <outlet property="gridYText" destination="SGi-ZF-eEY" id="Lg0-vp-SL8"/>
                 <outlet property="gridYlabel" destination="z01-WD-ZZb" id="e9c-OE-q59"/>
                 <outlet property="gridlabel" destination="uS7-If-BPQ" id="uim-LY-PDG"/>
+                <outlet property="heatMapLegendCheck" destination="sDq-MT-Etn" id="wgG-Dp-hbD"/>
+                <outlet property="heatMapLegendlabel" destination="i3m-vt-lxx" id="HxN-0Z-ToK"/>
                 <outlet property="mainTabView" destination="651" id="UkW-Ut-0Lr"/>
                 <outlet property="silStreamChart" destination="1046" id="8cC-5v-BFv"/>
                 <outlet property="tableTabView" destination="652" id="pdy-aL-2KJ"/>

@@ -38,6 +38,7 @@
   
             [self toggleBarControls:NO];
             [self toggleStackControls:YES];
+            [self toggleHeatMapControls:YES];
             break;
             
         case StackViewMode:
@@ -45,9 +46,16 @@
         
             [self toggleBarControls:YES];
             [self toggleStackControls:NO];
+            [self toggleHeatMapControls:YES];
             
 
             
+            break;
+            
+        case HeatMapMode:
+            [self toggleBarControls:YES];
+            [self toggleStackControls:YES];
+            [self toggleHeatMapControls:NO];
             break;
             
         default:
@@ -79,6 +87,15 @@
 
     
 }
+
+-(void)toggleHeatMapControls:(BOOL)toggle  {
+    [[self heatMapLegendlabel] setHidden:toggle];
+    [[self heatMapLegendCheck] setHidden:toggle];
+
+
+
+}
+
 
 -(void)toggleBarControls:(BOOL)toggle  {
     [[self barSpaceControlLabel] setHidden:toggle];
