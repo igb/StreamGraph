@@ -1,0 +1,55 @@
+<html>
+<head>
+<script src="colorbrewer.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body font-family="Gotham" bgcolor="cccccc">
+	<script>
+	
+	document.write("SEQUENTIAL<br/></br/>multi hue:<br/><br/>")
+	for (i=0; i < sequential.multihue.length; i++) {
+		var swatch = sequential.multihue[i];
+		for (j=0; j < swatch.length; j++) {
+			document.write("<canvas id='myCanvads' width='20' height='30' style='background: " + swatch[j] +"' border=2></canvas>");
+		}
+		document.write("<br/><br/>");
+	}
+
+
+	document.write("<br/></br/>mono hue:<br/><br/>")
+	
+	for (i=0; i < sequential.monohue.length; i++) {
+		var swatch = sequential.monohue[i];
+		for (j=0; j < swatch.length; j++) {
+			document.write("<canvas id='myCanvads' width='20' height='30' style='background: " + swatch[j] +"'></canvas>");
+		}
+		document.write("<br/><br/>");
+	}
+	
+	document.write("<br/></br/>DIVERGENT<br/><br/>")
+	
+	for (i=0; i < divergent.length; i++) {
+		var swatch = divergent[i];
+		for (j=0; j < swatch.length; j++) {
+			document.write("<canvas id='myCanvads' width='20' height='30' style='background: " + swatch[j] +"'></canvas>");
+			
+		}
+		document.write("<br/><br/>");
+	}
+	
+
+	document.write("<br/></br/>QUALITATIVE<br/><br/>")
+	
+	for (i=0; i < qualitative.length; i++) {
+		var swatch = qualitative[i];
+		for (j=0; j < swatch.length; j++) {
+			document.write("<canvas id='myCanvadss' width='20' height='30' style='background: " + swatch[j] +"'></canvas>");
+		}
+		document.write("<br/><br/>");
+	}	
+	
+	var x = document.getElementById("myCanvadss");
+	document.write("<img src='" + x.toDataURL("image/png") + "' border=4>");
+	//window.location=x.toDataURL("image/png") ;
+	</script>
+</body>	
+</html>
