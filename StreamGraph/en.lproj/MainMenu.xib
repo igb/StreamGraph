@@ -607,6 +607,15 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dQz-yo-5WR">
+                                            <rect key="frame" x="15" y="356" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Buckets:" id="Zrq-7S-waN">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button hidden="YES" id="jgk-RI-zU3">
                                             <rect key="frame" x="55" y="417" width="22" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -716,6 +725,65 @@
                                                 <action selector="heatMapLegendCheck:" target="494" id="1mV-VF-q2c"/>
                                             </connections>
                                         </button>
+                                        <slider hidden="YES" verticalHuggingPriority="750" id="24r-s2-hrL">
+                                            <rect key="frame" x="34" y="325" width="159" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="3" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="r82-Hf-sLN"/>
+                                            <connections>
+                                                <action selector="setHeatMapBucketRange:" target="494" id="6hc-fY-Dco"/>
+                                            </connections>
+                                        </slider>
+                                        <popUpButton id="vHi-YX-gjo">
+                                            <rect key="frame" x="17" y="231" width="174" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" tag="29" imageScaling="axesIndependently" inset="2" selectedItem="oiN-Jy-bBJ" id="Hv4-f5-wHu">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <menu key="menu" title="OtherViews" id="UXK-Yc-y0f">
+                                                    <items>
+                                                        <menuItem title="Sequential" enabled="NO" id="xIg-8G-6ha"/>
+                                                        <menuItem title="Mono Hues" enabled="NO" indentationLevel="1" id="8ao-Vq-Gqs"/>
+                                                        <menuItem image="Blues" tag="1" indentationLevel="2" id="iXy-RB-kA6"/>
+                                                        <menuItem image="Greens" tag="2" indentationLevel="2" id="SLJ-Bh-rzP"/>
+                                                        <menuItem image="Greys" tag="3" indentationLevel="2" id="ZmN-NY-MXg"/>
+                                                        <menuItem image="Oranges" tag="4" indentationLevel="2" id="MA3-c1-daa"/>
+                                                        <menuItem image="Purples" tag="5" indentationLevel="2" id="H1N-6N-rVd"/>
+                                                        <menuItem image="Reds" tag="6" indentationLevel="2" id="iNZ-Au-sLb"/>
+                                                        <menuItem title="Multi Hues" enabled="NO" indentationLevel="1" id="KFG-0D-DTo"/>
+                                                        <menuItem image="BuGn_" tag="7" indentationLevel="2" id="SJc-Ef-IIW"/>
+                                                        <menuItem image="BuPu_" tag="8" indentationLevel="2" id="5Op-cu-Kef"/>
+                                                        <menuItem image="GnBu_" tag="9" indentationLevel="2" id="JEX-Xi-1Wg"/>
+                                                        <menuItem image="OrRd_" tag="10" indentationLevel="2" id="hqc-va-DmL"/>
+                                                        <menuItem image="PuBuGn_" tag="11" indentationLevel="2" id="C1E-6N-m11"/>
+                                                        <menuItem image="PuBu_" tag="12" indentationLevel="2" id="v46-BS-Nf1"/>
+                                                        <menuItem image="PuRd_" tag="13" indentationLevel="2" id="gFs-LM-TSa"/>
+                                                        <menuItem image="RdPu_" tag="14" indentationLevel="2" id="Lzy-Fq-GxP"/>
+                                                        <menuItem image="YlGnBu_" tag="15" indentationLevel="2" id="p4t-KP-5hV"/>
+                                                        <menuItem image="YlGn_" tag="16" indentationLevel="2" id="hG4-no-nNb"/>
+                                                        <menuItem image="YlOrBr_" tag="17" indentationLevel="2" id="bFq-6h-ozB"/>
+                                                        <menuItem image="YlOrRd_" tag="18" indentationLevel="2" id="Sab-SN-x7i"/>
+                                                        <menuItem title="Divergent" enabled="NO" id="23f-h7-g2Y">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                        <menuItem image="BrBG" tag="19" indentationLevel="2" id="MOI-ji-rTd"/>
+                                                        <menuItem image="PiYG" tag="20" indentationLevel="2" id="nWT-49-jDP"/>
+                                                        <menuItem image="PRGn" tag="21" indentationLevel="2" id="0x8-vd-ftb"/>
+                                                        <menuItem image="PuOr" tag="22" indentationLevel="2" id="1xB-sD-hEy"/>
+                                                        <menuItem image="RdBu" tag="23" indentationLevel="2" id="9hr-pa-Hp3"/>
+                                                        <menuItem image="RdGy" tag="24" indentationLevel="2" id="zDT-Vu-TBc"/>
+                                                        <menuItem image="RdYlBu" tag="25" indentationLevel="2" id="EyF-kz-K8g"/>
+                                                        <menuItem image="RdYlGn" tag="26" indentationLevel="2" id="EJH-RI-TQc"/>
+                                                        <menuItem image="Spectral" tag="27" indentationLevel="2" id="sM5-ny-Qhr"/>
+                                                        <menuItem title="Qualitative" enabled="NO" id="hBf-hL-p1X"/>
+                                                        <menuItem image="Paired" tag="28" indentationLevel="2" id="js0-ZK-q6G"/>
+                                                        <menuItem state="on" image="Set3" tag="29" indentationLevel="2" id="oiN-Jy-bBJ"/>
+                                                    </items>
+                                                </menu>
+                                                <connections>
+                                                    <action selector="setHeatMapColorSelection:" target="494" id="c7x-vi-tAr"/>
+                                                </connections>
+                                            </popUpButtonCell>
+                                        </popUpButton>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -853,6 +921,8 @@
                 <outlet property="gridYText" destination="SGi-ZF-eEY" id="Lg0-vp-SL8"/>
                 <outlet property="gridYlabel" destination="z01-WD-ZZb" id="e9c-OE-q59"/>
                 <outlet property="gridlabel" destination="uS7-If-BPQ" id="uim-LY-PDG"/>
+                <outlet property="heatMapBucketLabel" destination="dQz-yo-5WR" id="4Rh-lI-v9x"/>
+                <outlet property="heatMapBucketSlider" destination="24r-s2-hrL" id="Yt2-6V-28c"/>
                 <outlet property="heatMapLegendCheck" destination="sDq-MT-Etn" id="wgG-Dp-hbD"/>
                 <outlet property="heatMapLegendlabel" destination="i3m-vt-lxx" id="HxN-0Z-ToK"/>
                 <outlet property="mainTabView" destination="651" id="UkW-Ut-0Lr"/>
@@ -869,4 +939,35 @@
         <customObject id="950" customClass="HCCPWebView"/>
         <customObject id="cHR-vt-Wob" customClass="HCCPControlPanelView"/>
     </objects>
+    <resources>
+        <image name="Blues" width="282" height="46"/>
+        <image name="BrBG" width="347" height="47"/>
+        <image name="BuGn_" width="282" height="48"/>
+        <image name="BuPu_" width="282" height="47"/>
+        <image name="GnBu_" width="282" height="49"/>
+        <image name="Greens" width="284" height="45"/>
+        <image name="Greys" width="284" height="47"/>
+        <image name="OrRd_" width="285" height="48"/>
+        <image name="Oranges" width="285" height="46"/>
+        <image name="PRGn" width="347" height="46"/>
+        <image name="Paired" width="380" height="45"/>
+        <image name="PiYG" width="346" height="46"/>
+        <image name="PuBuGn_" width="281" height="51"/>
+        <image name="PuBu_" width="284" height="52"/>
+        <image name="PuOr" width="346" height="46"/>
+        <image name="PuRd_" width="282" height="51"/>
+        <image name="Purples" width="286" height="45"/>
+        <image name="RdBu" width="346" height="46"/>
+        <image name="RdGy" width="349" height="49"/>
+        <image name="RdPu_" width="283" height="50"/>
+        <image name="RdYlBu" width="347" height="47"/>
+        <image name="RdYlGn" width="346" height="46"/>
+        <image name="Reds" width="286" height="45"/>
+        <image name="Set3" width="379" height="47"/>
+        <image name="Spectral" width="346" height="45"/>
+        <image name="YlGnBu_" width="284" height="51"/>
+        <image name="YlGn_" width="281" height="49"/>
+        <image name="YlOrBr_" width="284" height="50"/>
+        <image name="YlOrRd_" width="282" height="47"/>
+    </resources>
 </document>

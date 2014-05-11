@@ -92,7 +92,8 @@
 -(void)toggleHeatMapControls:(BOOL)toggle  {
     [[self heatMapLegendlabel] setHidden:toggle];
     [[self heatMapLegendCheck] setHidden:toggle];
-
+    [[self heatMapBucketLabel] setHidden:toggle];
+    [[self heatMapBucketSlider] setHidden:toggle];
 
 
 }
@@ -513,6 +514,22 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 }
 
 
+-(IBAction)setHeatMapBucketRange:(id)sender {
+    NSSlider* slider = sender;
+    _heatMapBuckets = [slider doubleValue];
+    [self refreshChart];
+}
+
+- (long) getHeatMapBucketCount {
+    if (_heatMapBuckets <= 0) {
+        return 5;
+    } else {
+        return _heatMapBuckets;
+    }
+}
+
+
+
 - (void)setSelectedRowIndexes:(NSIndexSet*)selectedRowIndexes {
     currentSelectedRows = selectedRowIndexes;
 }
@@ -763,7 +780,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
         [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getBarGap]];
     } else if ([graphType isEqualToString:@"heatmap"]) {
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
-        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]:[self getHeatMapBucketCount]:[self getHeatMapPalette]];
         
         
     } else {
@@ -777,6 +794,33 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     [myWebView reload:self];
     
 }
+
+
+-(IBAction)setHeatMapColorSelection:(id)sender {
+    
+    // http://youtu.be/5klUbOvaBS4   <-- Haslam
+    
+    
+    
+    NSString* palettes[29] = {@"Blues", @"Greens", @"Greys", @"Oranges", @"Purples", @"Reds", @"BuGn", @"BuPu", @"GnBu", @"OrRd", @"PuBu", @"PuBuGn", @"PuRd", @"RdPu", @"YlGn", @"YlGnBu", @"YlOrBr", @"YlOrRd", @"BrBG", @"PiYG", @"PRGn", @"PuOr", @"RdBu", @"RdGy", @"RdYlBu", @"RdYlGn", @"Spectral", @"Paired", @"Set3"};
+    
+    
+    NSPopUpButton* button = sender;    
+    int tag = [[button selectedItem] tag];
+    currentHeatMapPalette = palettes[tag - 1];
+    [self refreshChart];
+ 
+    
+    
+}
+
+-(NSString*)getHeatMapPalette {
+    if (currentHeatMapPalette == nil) {
+        currentHeatMapPalette = @"YlGnBu";
+    }
+    return currentHeatMapPalette;
+}
+
 
 -(BOOL)getDrawGrid {
     return drawGrid;

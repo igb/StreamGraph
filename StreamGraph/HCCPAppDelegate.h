@@ -52,9 +52,12 @@ typedef NS_ENUM(NSInteger, ModeType) {
     int gridyStepValue;
     BOOL isGridEditMode;
     BOOL isShowHeatMapLegend;
+    long _heatMapBuckets;
+
 
     
     NSString* currentGraphType;
+    NSString* currentHeatMapPalette;
 
 }
 
@@ -91,6 +94,12 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 @property (assign) IBOutlet NSTextField *heatMapLegendlabel;
 @property (assign) IBOutlet NSButton *heatMapLegendCheck;
+@property (assign) IBOutlet NSSlider *heatMapBucketSlider;
+@property (assign) IBOutlet NSTextField *heatMapBucketLabel;
+@property (assign) IBOutlet NSButton *heatMapColorBrewerSelector;
+
+
+
 
 
 //
@@ -110,6 +119,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)graphBar:(id)sender;
 -(IBAction)setBarGap:(id)sender;
 
+
 -(IBAction)applySwatch:(id)sender;
 -(IBAction)reverseColumnOrder:(id)sender;
 
@@ -118,6 +128,10 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 
 -(IBAction)heatMapLegendCheck:(id)pId;
+-(IBAction)setHeatMapBucketRange:(id)sender;
+-(IBAction)setHeatMapColorSelection:(id)sender;
+
+
 
 
 
@@ -132,6 +146,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (NSColor*)getRowBackground:(NSInteger*)rowId;
 - (NSArray*) getDocumentColors;
 - (long) getBarGap;
+- (long) getHeatMapBucketCount;
+
 - (NSTabView*) getTabView;
 
 
@@ -157,6 +173,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (void)setGridEditMode:(BOOL)isGridEdit;
 - (BOOL)getGridEditMode;
 - (BOOL)getIsShowHeatMapLegend;
+-(NSString*)getHeatMapPalette;
 
 
 @property (assign) IBOutlet NSView* mainView;

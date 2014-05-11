@@ -10,7 +10,7 @@
 
 @implementation HCCPHeatMapGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend :(long)buckets :(NSString*)palette {
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -27,6 +27,11 @@
     [self writeStringToStream:stream :@"<script>"];
     [self writeStringToStream:stream :[self getD3js]];
     [self writeStringToStream:stream :@"</script>"];
+    
+    [self writeStringToStream:stream :@"<script>"];
+    [self writeStringToStream:stream :[self getColorBrewerJs]];
+    [self writeStringToStream:stream :@"</script>"];
+    
     [self writeStringToStream:stream :[self getSection:@"section0"]];
     [self writeStringToStream:stream :@"FFFFFF"];
     [self writeStringToStream:stream :[self getSection:@"section01"]];
@@ -82,9 +87,11 @@
          [document appendString:@"height = document.height - margin.top - margin.bottom,\n"];
          [document appendString:@"gridSize = Math.floor(    Math.min( ((width  - margin.left - margin.right) / x_size ),   ((height) / y_size ))  ),\n"];
         [document appendString:@"legendElementWidth = gridSize + ((gridSize * 3) / 9),\n"];
-        [document appendString:@"buckets = 5,\n"];
-        [document appendString:@"colors = [\"#ffffd9\",\"#edf8b1\",\"#c7e9b4\",\"#7fcdbb\",\"#41b6c4\",\"#1d91c0\",\"#225ea8\",\"#253494\",\"#081d58\"];\n"];
-        
+        [document appendFormat:@"buckets = %ld,\n", buckets];
+        [document appendString:@"colors = "];
+        [document appendString:palette];
+    
+    
         [document appendString:@"\nvar mdata=[\n"];
         
         for (int i = i_start_pos; i < [data count]; i++) {

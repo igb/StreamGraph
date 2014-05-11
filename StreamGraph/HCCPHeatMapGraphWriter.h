@@ -10,6 +10,6 @@
 
 @interface HCCPHeatMapGraphWriter : HCCPGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend;
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend:(long)buckets:(NSString*)palette;
 
 @end

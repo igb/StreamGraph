@@ -23,6 +23,17 @@
                                                 error:NULL];
 }
 
+
+-(NSString*) getColorBrewerJs {
+    NSString* jspath = [[NSBundle mainBundle] pathForResource:@"colorbrewer"
+                                                       ofType:@"txt"];
+    
+    return [NSString stringWithContentsOfFile:jspath
+                                     encoding:NSUTF8StringEncoding
+                                        error:NULL];
+}
+
+
 -(NSString*) getSection:(NSString*)section {
     return NSLocalizedStringFromTable (section, @"d3resources", @"A comment");
 }

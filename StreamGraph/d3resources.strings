@@ -228,9 +228,15 @@ chart.append(\"g\")
 
 
 "heatMapLayoutJS001" = " x=function(error, data) {
-console.log(data);
-var colorScale = d3.scale.quantile()
-.domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
+
+var domain = new Array(buckets);
+var incr = 	Math.floor(d3.max(data, function (d) { return d.value; }) / buckets);
+for (i=0; i < domain.length; i++) {
+	domain[i] = i * incr;
+}
+console.log(domain);
+var colorScale = d3.scale.linear()
+.domain(domain)
 .range(colors);
 
 var svg = d3.select(\"#chart\").append(\"svg\")
@@ -283,7 +289,7 @@ heatMap.append(\"title\").text(function(d) { return d.value; });
 
 
 "heatMapLegend" = "var legend = svg.selectAll(\".legend\")
-.data([0].concat(colorScale.quantiles()), function(d) { return d; })
+.data(domain, function(d) { return d; })
 .enter().append(\"g\")
 .attr(\"class\", \"legend\");
 

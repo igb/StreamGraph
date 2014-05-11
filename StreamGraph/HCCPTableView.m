@@ -33,7 +33,7 @@ HCCPAppDelegate* delegate;
         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
     } else if ([graphType isEqualToString:@"heatmap"]) {
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:YES:YES:YES:[delegate getIsShowHeatMapLegend]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:YES:YES:YES:[delegate getIsShowHeatMapLegend]:[delegate getHeatMapBucketCount]:[delegate getHeatMapPalette]];
 
         
     }
