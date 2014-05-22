@@ -94,6 +94,14 @@
     [[self heatMapLegendCheck] setHidden:toggle];
     [[self heatMapBucketLabel] setHidden:toggle];
     [[self heatMapBucketSlider] setHidden:toggle];
+    [[self heatMapColorBrewerSelector] setHidden:toggle];
+    [[self heatMapColorLow] setHidden:toggle];
+    [[self heatMapColorHigh] setHidden:toggle];
+    [[self heatMapColorOrderButton] setHidden:toggle];
+    [[self heatMapColorLabel] setHidden:toggle];
+    
+
+
 
 
 }
@@ -161,6 +169,29 @@
 
     
 }
+
+- (BOOL)isHeatMapColorOrderReversed {
+    return isHeatMapColorOrderReversed;
+}
+
+-(IBAction)toggleHeatMapColorOrder:(id)sender {
+    isHeatMapColorOrderReversed = !isHeatMapColorOrderReversed;
+    
+    if (isHeatMapColorOrderReversed) {
+        [[self heatMapColorHigh] setStringValue:@"Low"];
+        [[self heatMapColorLow] setStringValue:@"High"];
+    } else {
+        [[self heatMapColorHigh] setStringValue:@"High"];
+        [[self heatMapColorLow] setStringValue:@"Low"];
+
+    }
+    NSLog(@"isHeatMapColorOrderReversed is %i", isHeatMapColorOrderReversed);
+
+    
+    [self refreshChart];
+
+}
+
 
 -(HCCPColorStack*)createPurpleSwatch {
     HCCPColorStack* _purpleSwatch = [[HCCPColorStack alloc] init];
@@ -780,7 +811,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
         [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getBarGap]];
     } else if ([graphType isEqualToString:@"heatmap"]) {
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
-        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]:[self getHeatMapBucketCount]:[self getHeatMapPalette]];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]:[self getHeatMapBucketCount]:[self getHeatMapPalette]:[self isHeatMapColorOrderReversed]];
         
         
     } else {

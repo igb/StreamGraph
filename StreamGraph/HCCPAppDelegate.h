@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
     BOOL isGridEditMode;
     BOOL isShowHeatMapLegend;
     long _heatMapBuckets;
-
+    BOOL isHeatMapColorOrderReversed;
 
     
     NSString* currentGraphType;
@@ -97,6 +97,12 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSSlider *heatMapBucketSlider;
 @property (assign) IBOutlet NSTextField *heatMapBucketLabel;
 @property (assign) IBOutlet NSButton *heatMapColorBrewerSelector;
+@property (assign) IBOutlet NSTextField *heatMapColorLow;
+@property (assign) IBOutlet NSTextField *heatMapColorHigh;
+@property (assign) IBOutlet NSButton *heatMapColorOrderButton;
+@property (assign) IBOutlet NSTextField *heatMapColorLabel;
+
+
 
 
 
@@ -130,6 +136,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)heatMapLegendCheck:(id)pId;
 -(IBAction)setHeatMapBucketRange:(id)sender;
 -(IBAction)setHeatMapColorSelection:(id)sender;
+-(IBAction)toggleHeatMapColorOrder:(id)sender;
 
 
 
@@ -174,6 +181,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (BOOL)getGridEditMode;
 - (BOOL)getIsShowHeatMapLegend;
 -(NSString*)getHeatMapPalette;
+- (BOOL)isHeatMapColorOrderReversed;
 
 
 @property (assign) IBOutlet NSView* mainView;

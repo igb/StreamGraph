@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -616,6 +616,15 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rGZ-SI-Dsu">
+                                            <rect key="frame" x="15" y="294" width="85" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colors:" id="wHM-mg-fJC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button hidden="YES" id="jgk-RI-zU3">
                                             <rect key="frame" x="55" y="417" width="22" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -733,12 +742,12 @@
                                                 <action selector="setHeatMapBucketRange:" target="494" id="6hc-fY-Dco"/>
                                             </connections>
                                         </slider>
-                                        <popUpButton id="vHi-YX-gjo">
-                                            <rect key="frame" x="17" y="231" width="174" height="21"/>
+                                        <popUpButton hidden="YES" id="vHi-YX-gjo">
+                                            <rect key="frame" x="17" y="258" width="174" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" tag="29" imageScaling="axesIndependently" inset="2" selectedItem="oiN-Jy-bBJ" id="Hv4-f5-wHu">
+                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" tag="7" imageScaling="axesIndependently" inset="2" selectedItem="SJc-Ef-IIW" id="Hv4-f5-wHu">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" title="OtherViews" id="UXK-Yc-y0f">
                                                     <items>
                                                         <menuItem title="Sequential" enabled="NO" id="xIg-8G-6ha"/>
@@ -750,7 +759,7 @@
                                                         <menuItem image="Purples" tag="5" indentationLevel="2" id="H1N-6N-rVd"/>
                                                         <menuItem image="Reds" tag="6" indentationLevel="2" id="iNZ-Au-sLb"/>
                                                         <menuItem title="Multi Hues" enabled="NO" indentationLevel="1" id="KFG-0D-DTo"/>
-                                                        <menuItem image="BuGn_" tag="7" indentationLevel="2" id="SJc-Ef-IIW"/>
+                                                        <menuItem state="on" image="BuGn_" tag="7" indentationLevel="2" id="SJc-Ef-IIW"/>
                                                         <menuItem image="BuPu_" tag="8" indentationLevel="2" id="5Op-cu-Kef"/>
                                                         <menuItem image="GnBu_" tag="9" indentationLevel="2" id="JEX-Xi-1Wg"/>
                                                         <menuItem image="OrRd_" tag="10" indentationLevel="2" id="hqc-va-DmL"/>
@@ -776,7 +785,7 @@
                                                         <menuItem image="Spectral" tag="27" indentationLevel="2" id="sM5-ny-Qhr"/>
                                                         <menuItem title="Qualitative" enabled="NO" id="hBf-hL-p1X"/>
                                                         <menuItem image="Paired" tag="28" indentationLevel="2" id="js0-ZK-q6G"/>
-                                                        <menuItem state="on" image="Set3" tag="29" indentationLevel="2" id="oiN-Jy-bBJ"/>
+                                                        <menuItem image="Set3" tag="29" indentationLevel="2" id="oiN-Jy-bBJ"/>
                                                     </items>
                                                 </menu>
                                                 <connections>
@@ -784,6 +793,35 @@
                                                 </connections>
                                             </popUpButtonCell>
                                         </popUpButton>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="p5I-vO-esE">
+                                            <rect key="frame" x="27" y="226" width="45" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Low" id="LeX-Rp-IoS">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rIP-PK-0sN">
+                                            <rect key="frame" x="149" y="226" width="34" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="High" id="Zc9-bZ-XEb">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button hidden="YES" verticalHuggingPriority="750" id="dOV-WF-dil">
+                                            <rect key="frame" x="78" y="217" width="50" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="↔" bezelStyle="rounded" alignment="center" borderStyle="border" allowsMixedState="YES" imageScaling="proportionallyUpOrDown" inset="2" id="fLq-Qb-paX">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="20" name="AquaKana"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleHeatMapColorOrder:" target="494" id="LSi-v0-SGi"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -923,6 +961,11 @@
                 <outlet property="gridlabel" destination="uS7-If-BPQ" id="uim-LY-PDG"/>
                 <outlet property="heatMapBucketLabel" destination="dQz-yo-5WR" id="4Rh-lI-v9x"/>
                 <outlet property="heatMapBucketSlider" destination="24r-s2-hrL" id="Yt2-6V-28c"/>
+                <outlet property="heatMapColorBrewerSelector" destination="vHi-YX-gjo" id="wmh-0z-WNx"/>
+                <outlet property="heatMapColorHigh" destination="rIP-PK-0sN" id="JiM-XQ-JBJ"/>
+                <outlet property="heatMapColorLabel" destination="rGZ-SI-Dsu" id="Yi5-mk-Hv5"/>
+                <outlet property="heatMapColorLow" destination="p5I-vO-esE" id="su3-Od-KFN"/>
+                <outlet property="heatMapColorOrderButton" destination="dOV-WF-dil" id="jGB-xM-YPN"/>
                 <outlet property="heatMapLegendCheck" destination="sDq-MT-Etn" id="wgG-Dp-hbD"/>
                 <outlet property="heatMapLegendlabel" destination="i3m-vt-lxx" id="HxN-0Z-ToK"/>
                 <outlet property="mainTabView" destination="651" id="UkW-Ut-0Lr"/>

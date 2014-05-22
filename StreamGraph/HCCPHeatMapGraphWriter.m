@@ -10,7 +10,7 @@
 
 @implementation HCCPHeatMapGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend :(long)buckets :(NSString*)palette {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(BOOL)constrainCells :(BOOL)displayLabels :(BOOL)useFirstColumnAndRowForLabels :(BOOL)displayLegend :(long)buckets :(NSString*)palette :(BOOL)reverseColorOrder {
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -90,7 +90,10 @@
         [document appendFormat:@"buckets = %ld,\n", buckets];
         [document appendString:@"colors = "];
         [document appendString:palette];
-    
+        if (reverseColorOrder) {
+            [document appendString:@".reverse()"];
+            NSLog(@"reversing color order is %i", reverseColorOrder);
+        }
     
         [document appendString:@"\nvar mdata=[\n"];
         
