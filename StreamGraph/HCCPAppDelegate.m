@@ -15,6 +15,14 @@
 
 @implementation HCCPAppDelegate
 
+- (id) init
+{
+    NSLog(@"my deegate has been inititalized...");
+    brightness = 1.0f;
+    return [super init];
+}
+
+
 - (void)mouseDown:(NSEvent *)theEvent
 {
     NSLog(@"mouse");
@@ -329,7 +337,29 @@
     return isShowHeatMapLegend;
 }
 
+-(IBAction)brightnessFilterDialog:(id)sender {
+    NSLog(@"window open");
+    [NSApp beginSheet:[self brightnessPanel]
+       modalForWindow:[self window]
+        modalDelegate:self
+       didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo:nil];
+    NSString* value;
+    if (brightness < 1) {
+        value = [[NSString alloc] initWithFormat:@"-%d", (int)((1 - brightness) * 100)];
+    } else if (brightness == 0) {
+        value = @"0";
+    } else {
+        value = [[NSString alloc] initWithFormat:@"%d", (int)((brightness - 1) * 100)];
+    }
+    [[self brightnessField] setStringValue:[[NSString alloc] initWithFormat:@"%@", value]];
 
+    
+
+}
+
+- (void) didEndSheet: (NSAlert *) alert returnCode: (NSInteger) code contextInfo: (id) contextInfo {
+}
 
 -(IBAction)exportData:(id)sender {
 
@@ -763,6 +793,59 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     [self refreshChart];
 }
 
+-(IBAction)brightnessSlider:(id)sender {
+    
+    NSSlider* slider = sender;
+    int sliderValue =  [slider intValue];
+    [self updateBrightness:sliderValue];
+    
+    [[self brightnessField] setStringValue: [[NSString alloc] initWithFormat:@"%i", sliderValue]];
+
+    
+
+}
+
+-(IBAction)brightnessField:(id)sender {
+    NSTextField *brightnessField = sender;
+    [self updateBrightness:[brightnessField intValue]];
+}
+
+-(float)getBrightness {
+    return brightness;
+}
+
+-(void)updateBrightness:(int)value {
+    
+    NSLog(@"brightness: %i", value);
+    
+    if (value < 0) {
+        brightness = 1 + (value * 0.01);
+    } else {
+        brightness = 1 + (value * 0.01);
+    }
+    
+    //brightness = [slider intValue];
+    NSLog(@"brightness %f", brightness);
+    [self refreshChart];
+
+}
+
+
+-(IBAction)applyBrightness:(id)sender {
+    
+    [[self brightnessPanel] close];
+    [NSApp endSheet:[self brightnessPanel]];
+}
+
+
+-(IBAction)cancelBrightness:(id)sender {
+    [[self brightnessPanel] close];
+    [NSApp endSheet:[self brightnessPanel]];
+    
+}
+
+
+
 
 -(IBAction)gridTickStepperXYAction:(id)pId {
     NSLog(@"tick action %d",  [pId intValue]);
@@ -797,7 +880,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     NSLog(@"draw grid state: %@", drawGrid);
  
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
     [myWebView reload:self];
     
 }
@@ -817,7 +900,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]:[self getBrightness]];
         
     }
     

@@ -351,6 +351,26 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Image" id="vKR-NN-iJ1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Image" id="RIY-pg-7fL">
+                        <items>
+                            <menuItem title="Adjustments" id="50T-zK-ZYT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" id="ntb-Af-m5b">
+                                    <items>
+                                        <menuItem title="Brightness/Contrast..." id="afV-nX-tQH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="brightnessFilterDialog:" target="494" id="85D-VN-F53"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Format" id="375">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Format" id="376">
@@ -552,11 +572,11 @@
                         <tabViewItems>
                             <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -945,6 +965,8 @@
                 <outlet property="barChart" destination="xE3-Dw-l5i" id="XiD-rW-5x0"/>
                 <outlet property="barSpaceControlLabel" destination="Ouy-I3-mze" id="t3k-PY-e7W"/>
                 <outlet property="barSpaceControlSlider" destination="QTV-ts-4Um" id="kva-AU-pA3"/>
+                <outlet property="brightnessField" destination="A16-iy-5WF" id="DIv-2r-hEu"/>
+                <outlet property="brightnessPanel" destination="f81-r4-pcm" id="IF2-jl-Iiz"/>
                 <outlet property="display" destination="940" id="948"/>
                 <outlet property="expandStreamChart" destination="1041" id="dxc-Rb-gN2"/>
                 <outlet property="graphTabView" destination="653" id="Yya-mo-EHh"/>
@@ -981,6 +1003,78 @@
         <customObject id="832" customClass="HCCPTabView"/>
         <customObject id="950" customClass="HCCPWebView"/>
         <customObject id="cHR-vt-Wob" customClass="HCCPControlPanelView"/>
+        <window title="Brightness/Contrast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="f81-r4-pcm" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <rect key="contentRect" x="554" y="321" width="411" height="94"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="3ZF-Xm-V1w">
+                <rect key="frame" x="0.0" y="0.0" width="411" height="94"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <slider verticalHuggingPriority="750" id="DpN-ef-tND">
+                        <rect key="frame" x="18" y="28" width="285" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-100" maxValue="100" tickMarkPosition="below" allowsTickMarkValuesOnly="YES" sliderType="linear" id="jlY-dn-a8K">
+                            <connections>
+                                <action selector="brightnessSlider:" target="494" id="Jec-ve-2vU"/>
+                            </connections>
+                        </sliderCell>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yrT-45-MQf">
+                        <rect key="frame" x="18" y="57" width="69" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Brightness" id="GPM-X8-l0i">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="Eqd-Cb-YRH">
+                        <rect key="frame" x="315" y="46" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSf-dh-TB9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="h9w-Bo-Bwh">
+                        <rect key="frame" x="315" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gvx-qj-HhY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelBrightness:" target="494" id="PAi-ww-kPJ"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" id="A16-iy-5WF">
+                        <rect key="frame" x="250" y="52" width="51" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8lp-GA-XnO">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="fjp-B6-wsh">
+                                <real key="roundingIncrement" value="0.0"/>
+                                <metadata>
+                                    <bool key="localizesFormat" value="YES"/>
+                                </metadata>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="brightnessField:" target="494" id="Z1n-Jm-ACp"/>
+                        </connections>
+                    </textField>
+                </subviews>
+            </view>
+        </window>
     </objects>
     <resources>
         <image name="Blues" width="282" height="46"/>

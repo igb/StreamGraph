@@ -40,7 +40,7 @@ HCCPAppDelegate* delegate;
     else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]:[delegate getBrightness]];
         
     }
 

@@ -138,7 +138,36 @@ svg.selectAll(\"path\")
 </body>
 </html>";
 
+"filters" = "
 
+var defs = svg.append(\"defs\");
+
+
+var brightness_filter = defs.append(\"filter\");
+brightness_filter.attr(\"id\", \"brightness-filter\");
+var feComponentTransfer = brightness_filter.append(\"feComponentTransfer\");
+
+feComponentTransfer.append(\"feFuncR\")
+.attr(\"type\", \"linear\")
+.attr(\"slope\", brR);
+
+feComponentTransfer.append(\"feFuncG\")
+.attr(\"type\", \"linear\")
+.attr(\"slope\", brG);
+
+feComponentTransfer.append(\"feFuncB\")
+.attr(\"type\", \"linear\")
+.attr(\"slope\", brB);
+
+feComponentTransfer.append(\"feFuncA\")
+.attr(\"type\", \"linear\")
+.attr(\"slope\", \"1\");
+
+svg.selectAll(\"path\").attr(\"filter\", \"url(#brightness-filter)\")
+svg.selectAll(\"g\").attr(\"filter\", \"url(#brightness-filter)\")
+
+
+";
 
 
 "barGraphDataTransformationJS" = "var totals = [];

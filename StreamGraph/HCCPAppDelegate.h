@@ -55,9 +55,14 @@ typedef NS_ENUM(NSInteger, ModeType) {
     long _heatMapBuckets;
     BOOL isHeatMapColorOrderReversed;
 
+    BOOL applyBrightnessFilter;
+
     
     NSString* currentGraphType;
     NSString* currentHeatMapPalette;
+    
+    float brightness;
+
 
 }
 
@@ -104,6 +109,11 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 
 
+@property (assign) IBOutlet NSTextField *brightnessField;
+
+
+
+
 
 
 
@@ -114,6 +124,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSTabViewItem* graphTabView;
 
 
+@property (assign) IBOutlet NSPanel *brightnessPanel;
 
 
 -(IBAction)createGraph:(id)pId;
@@ -138,7 +149,15 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)setHeatMapColorSelection:(id)sender;
 -(IBAction)toggleHeatMapColorOrder:(id)sender;
 
+//filters
+-(IBAction)brightnessFilterDialog:(id)sender;
+-(IBAction)brightnessSlider:(id)sender;
+-(IBAction)brightnessField:(id)sender;
 
+
+-(IBAction)brightnessField:(id)sender;
+
+-(IBAction)clearFilters:(id)sender;
 
 
 
@@ -157,6 +176,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 - (NSTabView*) getTabView;
 
+- (float) getBrightness;
 
 - (NSString *)getGraphType:(int)graphTypeId;
 - (ModeType)getGraphMode:(int)graphTypeId;

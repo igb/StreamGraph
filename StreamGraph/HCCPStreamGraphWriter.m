@@ -12,7 +12,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid :(int)xTicks :(int)yTicks :(NSString*)gridColor {
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid :(int)xTicks :(int)yTicks :(NSString*)gridColor :(float)brightness {
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
     [stream open];
@@ -64,12 +64,21 @@
    
     
     [document appendString:[self getSection:@"section2"]];
-    [document appendString:@"\n//xxx\nvar foo = window.HccpWebKitView;\nconsole.log(foo);\nfoo.myMouseDown_(1);\n"];
-
+   
     if (drawGrid) {
         [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").attr(\"transform\", \"translate(0,\" + height + \")\").call(make_x_axis().tickSize(-height, 0, 0).tickFormat(\"\"))"];
         [document appendString:@"\nsvg.append(\"g\").attr(\"class\", \"grid\").call(make_y_axis().tickSize(-width, 0, 0).tickFormat(\"\"))"];
     }
+    
+    [document appendString:[NSString stringWithFormat:@"\nvar brR=%f;\n", brightness]];
+    [document appendString:[NSString stringWithFormat:@"var brG=%f;\n", brightness]];
+    [document appendString:[NSString stringWithFormat:@"var brB=%f;\n", brightness]];
+
+    
+    
+    [document appendString:[self getSection:@"filters"]];
+
+    
     
     [document appendString:[self getSection:@"section3"]];
 
