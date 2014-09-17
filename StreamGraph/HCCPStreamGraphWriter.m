@@ -74,9 +74,11 @@
     [document appendString:[NSString stringWithFormat:@"var brG=%f;\n", brightness]];
     [document appendString:[NSString stringWithFormat:@"var brB=%f;\n", brightness]];
 
+    if (brightness != 1.0f) {
+        [document appendString:[self getSection:@"filters"]];
+
+    }
     
-    
-    [document appendString:[self getSection:@"filters"]];
 
     
     
