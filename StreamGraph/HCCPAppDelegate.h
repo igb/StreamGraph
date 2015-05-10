@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
     GraphViewMode,
     StackViewMode,
     BarViewMode,
-    HeatMapMode
+    HeatMapMode,
+    PieMode
 };
 
 
@@ -77,6 +78,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSButton *wiggleStreamChart;
 @property (assign) IBOutlet NSButton *silStreamChart;
 @property (assign) IBOutlet NSButton *gridHeatMapChart;
+@property (assign) IBOutlet NSButton *pieChart;
 
 
 
@@ -154,6 +156,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)brightnessSlider:(id)sender;
 -(IBAction)brightnessField:(id)sender;
 
+
+- (IBAction)newDocument:(id)sender;
 
 -(IBAction)brightnessField:(id)sender;
 

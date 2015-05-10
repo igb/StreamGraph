@@ -27,6 +27,8 @@
 
  - (void)createGraph:(int)graphType;
  - (void)handleFile:(NSURL*)fileUrl;
+ - (void)handleString:(NSString*) dataString;
+
 - (NSArray*)getData;
 - (NSArray*)getColumnOrder;
 

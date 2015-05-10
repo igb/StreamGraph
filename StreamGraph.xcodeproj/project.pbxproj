@@ -66,10 +66,16 @@
 		10C7D9F618CD009B0062A46C /* wig.gif in Resources */ = {isa = PBXBuildFile; fileRef = 10C7D9F518CD009B0062A46C /* wig.gif */; };
 		10C7D9F918D574500062A46C /* HCCPBarGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */; };
 		10C7D9FC18D574D50062A46C /* HCCPGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */; };
+		10D3D2DD1A06B0D10014C8B9 /* HCCPPieGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3D2DC1A06B0D10014C8B9 /* HCCPPieGraphWriter.m */; };
 		10D4C6FE176E4309009A862F /* HCCPColorStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C6FD176E4309009A862F /* HCCPColorStack.m */; };
 		10D4C702176E87A2009A862F /* HCCPStreamGraphWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */; };
 		10D4C704176E8A98009A862F /* d3resources.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C703176E8A98009A862F /* d3resources.strings */; };
 		10D4C70C176EC403009A862F /* d3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10D4C70B176EC403009A862F /* d3.txt */; };
+		10F603531AFB237000A7652B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10F603521AFB237000A7652B /* Images.xcassets */; };
+		10F603551AFB23DD00A7652B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10F603541AFB23DD00A7652B /* Images-2.xcassets */; };
+		10F603571AFB25D100A7652B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10F603561AFB25D100A7652B /* Images-2.xcassets */; };
+		10FE5F781AFAE5FA004D19F7 /* StreamGraph.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 10FE5F771AFAE5FA004D19F7 /* StreamGraph.iconset */; };
+		10FE5F791AFAE5FA004D19F7 /* StreamGraph.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 10FE5F771AFAE5FA004D19F7 /* StreamGraph.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,12 +160,18 @@
 		10C7D9F818D574500062A46C /* HCCPBarGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPBarGraphWriter.m; sourceTree = "<group>"; };
 		10C7D9FA18D574D50062A46C /* HCCPGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPGraphWriter.h; sourceTree = "<group>"; };
 		10C7D9FB18D574D50062A46C /* HCCPGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPGraphWriter.m; sourceTree = "<group>"; };
+		10D3D2DB1A06B0D10014C8B9 /* HCCPPieGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPPieGraphWriter.h; sourceTree = "<group>"; };
+		10D3D2DC1A06B0D10014C8B9 /* HCCPPieGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPPieGraphWriter.m; sourceTree = "<group>"; };
 		10D4C6FC176E4309009A862F /* HCCPColorStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPColorStack.h; sourceTree = "<group>"; };
 		10D4C6FD176E4309009A862F /* HCCPColorStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPColorStack.m; sourceTree = "<group>"; };
 		10D4C700176E87A2009A862F /* HCCPStreamGraphWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCPStreamGraphWriter.h; sourceTree = "<group>"; };
 		10D4C701176E87A2009A862F /* HCCPStreamGraphWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCPStreamGraphWriter.m; sourceTree = "<group>"; };
 		10D4C703176E8A98009A862F /* d3resources.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = d3resources.strings; sourceTree = "<group>"; };
 		10D4C70B176EC403009A862F /* d3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = d3.txt; sourceTree = "<group>"; };
+		10F603521AFB237000A7652B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		10F603541AFB23DD00A7652B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		10F603561AFB25D100A7652B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		10FE5F771AFAE5FA004D19F7 /* StreamGraph.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = StreamGraph.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +199,7 @@
 		108022A9176B61B7004D45A9 = {
 			isa = PBXGroup;
 			children = (
+				10FE5F771AFAE5FA004D19F7 /* StreamGraph.iconset */,
 				108AE5981896B308000CD894 /* WebKit.framework */,
 				108022BE176B61B7004D45A9 /* StreamGraph */,
 				108022DB176B61B7004D45A9 /* StreamGraphTests */,
@@ -249,6 +262,11 @@
 				1014C7C318E88C17004CA936 /* HCCPControlPanelView.m */,
 				10640D57190C864F00B20374 /* HCCPHeatMapGraphWriter.h */,
 				10640D58190C864F00B20374 /* HCCPHeatMapGraphWriter.m */,
+				10D3D2DB1A06B0D10014C8B9 /* HCCPPieGraphWriter.h */,
+				10D3D2DC1A06B0D10014C8B9 /* HCCPPieGraphWriter.m */,
+				10F603521AFB237000A7652B /* Images.xcassets */,
+				10F603541AFB23DD00A7652B /* Images-2.xcassets */,
+				10F603561AFB25D100A7652B /* Images-2.xcassets */,
 			);
 			path = StreamGraph;
 			sourceTree = "<group>";
@@ -360,7 +378,7 @@
 			name = StreamGraphTests;
 			productName = StreamGraphTests;
 			productReference = 108022D5176B61B7004D45A9 /* StreamGraphTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -401,6 +419,7 @@
 				105725C0191E7AB100065F18 /* BrBG.tiff in Resources */,
 				105725C8191E7AB100065F18 /* Spectral.tiff in Resources */,
 				1057259C191DD07D00065F18 /* Oranges.tiff in Resources */,
+				10F603551AFB23DD00A7652B /* Images-2.xcassets in Resources */,
 				108022C3176B61B7004D45A9 /* InfoPlist.strings in Resources */,
 				105725B4191DE14800065F18 /* YlGn_.tiff in Resources */,
 				105725CB191E915B00065F18 /* Paired.tiff in Resources */,
@@ -411,6 +430,8 @@
 				108022C9176B61B7004D45A9 /* Credits.rtf in Resources */,
 				105725AC191DE14800065F18 /* BuGn_.tiff in Resources */,
 				10C7D9EC18CCFE530062A46C /* zero.gif in Resources */,
+				10FE5F781AFAE5FA004D19F7 /* StreamGraph.iconset in Resources */,
+				10F603571AFB25D100A7652B /* Images-2.xcassets in Resources */,
 				105725D1191FE89B00065F18 /* colorbrewer.txt in Resources */,
 				105725C3191E7AB100065F18 /* PuOr.tiff in Resources */,
 				105725B0191DE14800065F18 /* PuBu_.tiff in Resources */,
@@ -418,6 +439,7 @@
 				105725C1191E7AB100065F18 /* PiYG.tiff in Resources */,
 				105725B1191DE14800065F18 /* PuBuGn_.tiff in Resources */,
 				105725C5191E7AB100065F18 /* RdGy.tiff in Resources */,
+				10F603531AFB237000A7652B /* Images.xcassets in Resources */,
 				105725AE191DE14800065F18 /* GnBu_.tiff in Resources */,
 				105725AF191DE14800065F18 /* OrRd_.tiff in Resources */,
 				10C7D9EA18CCFD550062A46C /* bar.gif in Resources */,
@@ -444,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				108022E0176B61B7004D45A9 /* InfoPlist.strings in Resources */,
+				10FE5F791AFAE5FA004D19F7 /* StreamGraph.iconset in Resources */,
 				105725D2191FE89B00065F18 /* colorbrewer.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +499,7 @@
 				10C7D9FC18D574D50062A46C /* HCCPGraphWriter.m in Sources */,
 				108022CC176B61B7004D45A9 /* HCCPAppDelegate.m in Sources */,
 				108022F4176D112D004D45A9 /* HCCPTableView.m in Sources */,
+				10D3D2DD1A06B0D10014C8B9 /* HCCPPieGraphWriter.m in Sources */,
 				1014C7C418E88C17004CA936 /* HCCPControlPanelView.m in Sources */,
 				10640D59190C864F00B20374 /* HCCPHeatMapGraphWriter.m in Sources */,
 				105725CE191FDB6D00065F18 /* colorbrewer.js in Sources */,
@@ -600,6 +624,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StreamGraph",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreamGraph/StreamGraph-Prefix.pch";
 				INFOPLIST_FILE = "StreamGraph/StreamGraph-Info.plist";
@@ -612,6 +641,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StreamGraph",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreamGraph/StreamGraph-Prefix.pch";
 				INFOPLIST_FILE = "StreamGraph/StreamGraph-Info.plist";
@@ -625,7 +659,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StreamGraph.app/Contents/MacOS/StreamGraph";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreamGraph/StreamGraph-Prefix.pch";
 				INFOPLIST_FILE = "StreamGraphTests/StreamGraphTests-Info.plist";
@@ -640,7 +677,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StreamGraph.app/Contents/MacOS/StreamGraph";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreamGraph/StreamGraph-Prefix.pch";
 				INFOPLIST_FILE = "StreamGraphTests/StreamGraphTests-Info.plist";

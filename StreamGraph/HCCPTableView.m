@@ -10,6 +10,7 @@
 #import "HCCPStreamGraphWriter.h"
 #import "HCCPBarGraphWriter.h"
 #import "HCCPHeatMapGraphWriter.h"
+#import "HCCPPieGraphWriter.h"
 #import "HCCPAppDelegate.h"
 
 
@@ -35,6 +36,11 @@ HCCPAppDelegate* delegate;
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:YES:YES:YES:[delegate getIsShowHeatMapLegend]:[delegate getHeatMapBucketCount]:[delegate getHeatMapPalette]:[delegate isHeatMapColorOrderReversed]];
 
+        
+    } else if ([graphType isEqualToString:@"pie"]) {
+        HCCPPieGraphWriter* writer = [[HCCPPieGraphWriter alloc] init];
+         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
+        
         
     }
     else {
@@ -240,10 +246,15 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     // add selected document to open recently
        
         NSString* fileContents = [NSString stringWithContentsOfURL:fileUrl];
-        fileContents=[fileContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+     fileContents=[fileContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [self handleString:fileContents];
+}
+
+    - (void)handleString:(NSString*) dataString {
         
         // http://stackoverflow.com/questions/5140391/for-loop-in-objective-c
-        NSArray* fileRows = [fileContents componentsSeparatedByString:@"\n"];
+        NSArray* fileRows = [dataString componentsSeparatedByString:@"\n"];
     
        [delegate initializeRowBackgroundArray:[fileRows count]];
     

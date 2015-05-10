@@ -151,7 +151,7 @@
     [self setButtonImageById:@"wig" :[self wiggleStreamChart]];
     [self setButtonImageById:@"sil" :[self silStreamChart]];
     [self setButtonImageById:@"bar" :[self barChart]];
-    
+    [self setButtonImageById:@"pie" :[self barChart]];
     [self setButtonImageById:@"grid" :[self gridHeatMapChart]];
 
 
@@ -198,6 +198,14 @@
     
     [self refreshChart];
 
+}
+
+
+- (IBAction)newDocument:(id)sender {
+    
+    NSLog(@"new document!");
+    
+    
 }
 
 
@@ -718,6 +726,12 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             
             break;
             
+        case 12:
+            
+            graphType = @"pie";
+            
+            break;
+            
         default:
             
             graphType = @"silhouette";
@@ -776,6 +790,13 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             return HeatMapMode;
             
             break;
+        
+        case 12:
+            
+            return PieMode;
+            
+            break;
+            
         default:
             
             return StackViewMode;
