@@ -387,6 +387,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HCCP;
+				LastTestingUpgradeCheck = 0700;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Ian Brown";
 			};

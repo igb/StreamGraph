@@ -202,8 +202,21 @@
 
 
 - (IBAction)newDocument:(id)sender {
+    NSMutableString* newRow = [[NSMutableString alloc] init];
+    NSMutableString* newDocument = [[NSMutableString alloc] init];
     
-    NSLog(@"new document!");
+    for (int i =0; i < 99; i++) {
+        [newRow appendString:@","];
+    }
+    [newRow appendString:@""];
+    
+    for (int i =0; i < 99; i++) {
+        [newDocument appendString:newRow];
+        [newDocument appendString:@"\n"];
+    }
+    [newDocument appendString:newRow];
+    
+    [myTableView handleString:newDocument];
     
     
 }
@@ -314,7 +327,7 @@
 
 - (IBAction)createGraph:(id)pId {
     if (pId != nil){
-        [myTableView createGraph:[pId tag]];
+        [myTableView createGraph:(int)[pId tag]];
     } else {
         [myTableView createGraph:-1];
     
@@ -326,7 +339,7 @@
 
 - (void)initializeRowBackgroundArray:(NSInteger*)tableSize {
     rowColors = [[NSMutableArray alloc] initWithCapacity:tableSize];
-    for (int i = 0; i < tableSize; i++) {
+    for (int i = 0; i < (int)tableSize; i++) {
         [rowColors addObject:[NSColor redColor]];
     }
 }

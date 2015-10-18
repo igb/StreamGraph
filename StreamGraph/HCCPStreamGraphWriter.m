@@ -41,14 +41,15 @@
     [document appendString:[self colorsToJSArray:colors]];
 
     if (drawGrid) {
-       [document appendString:[NSString stringWithFormat:@"\nfunction make_x_axis() {return d3.svg.axis().scale(x).orient(\"bottom\").ticks(%ld)};\nfunction make_y_axis() { return d3.svg.axis().scale(y).orient(\"left\").ticks(%ld)};\n", xTicks, yTicks]];
+       [document appendString:[NSString stringWithFormat:@"\nfunction make_x_axis() {return d3.svg.axis().scale(x).orient(\"bottom\").ticks(%ld)};\nfunction make_y_axis() { return d3.svg.axis().scale(y).orient(\"left\").ticks(%ld)};\n", (long)xTicks, (long)yTicks]];
     }
     
+    int limit = [super getMaxPositionOfNonZeroData:data :columnOrder];
 
     [document appendString:@"var n ="];
-    [document appendString:[NSString stringWithFormat:@"%li", [data count] -1]]; // number of layers
+    [document appendString:[NSString stringWithFormat:@"%li", (long)limit]]; // number of layers
     [document appendString:@",\nm = "];
-    [document appendString:[NSString stringWithFormat:@"%li",[[data objectAtIndex:0] count] -1]]; // number of samples per layer
+    [document appendString:[NSString stringWithFormat:@"%li", (long)limit]]; // number of samples per layer
 	[document appendString:@",\n"];
     
     

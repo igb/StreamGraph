@@ -78,20 +78,54 @@
     
 }
 
+-(int)getMaxPositionOfNonZeroData:(NSArray*)data :(NSArray*)columnOrder  {
+    
+    int farthestRecordedPosition = 0;
+    
+    
+    // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SKIP HEADERS AND ROW LABELS
+    for (int i = 1; i < [data count]; i++) {
+        
+        NSArray* record = [data objectAtIndex:i];
+        NSLog(@"data row: %@", record);
+        for (int j=1; j < [record count]; j++) {
+            int mappedIndex = [[columnOrder objectAtIndex:j] intValue]; // get index from order column so graph matches column order in view
+            if (!([@"" isEqualTo: [record objectAtIndex:mappedIndex]]  ||  ((int)[record objectAtIndex:mappedIndex]) ==  0 )) {
+                if (farthestRecordedPosition < j) {
+                    farthestRecordedPosition = j;
+                }
+            }
+        }
+    
+    }
+    
+    return farthestRecordedPosition;
+}
+
+
 -(NSString*) dataToJSArray:(NSArray*)data :(NSArray*)columnOrder{
+    
+    
     NSMutableString* document = [[NSMutableString alloc] init];
 
     
     [document appendString:@"\ndata=[\n"];
     
+    
+    int limit = [self getMaxPositionOfNonZeroData:data :columnOrder];
+    
     // SKETCHY HACK STARTING AT 1ST (INSTEAD OF 0TH) INDEX TO SKIP HEADERS AND ROW LABELS
     for (int i = 1; i < [data count]; i++) {
-        NSLog(@"foo");
         [document appendString:@"[\n"];
         NSArray* record = [data objectAtIndex:i];
-        for (int j=1; j < [record count]; j++) {
+        NSLog(@"data row: %@", record);
+        for (int j=1; j < limit + 1; j++) {
             int mappedIndex = [[columnOrder objectAtIndex:j] intValue]; // get index from order column so graph matches column order in view
-            [document appendString:[record objectAtIndex:mappedIndex]];
+            if ([@"" isEqualTo: [record objectAtIndex:mappedIndex]]) {
+                [document appendString:@"0"];
+            } else {
+                [document appendString:[record objectAtIndex:mappedIndex]];
+            }
             if (j < [record count] - 1) {
                 [document appendString:@","];
             }

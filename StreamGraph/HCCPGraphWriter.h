@@ -18,6 +18,8 @@
 -(NSString*) xAxisToJSArray:(NSArray*)data :(NSArray*)columnOrder;
 -(NSString*) colorsToJSArray:(NSArray*)colors;
 -(NSString*) categoriesToJSArray:(NSArray*)data;
+-(int)getMaxPositionOfNonZeroData:(NSArray*)data :(NSArray*)columnOrder;
+
 
 
 

@@ -240,8 +240,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSLog(@"starting handle of file");
    
     NSLog(@"%@", fileUrl);
-    rows = [[NSMutableArray alloc] init];
-    columnOrder = [[NSMutableArray alloc] init];
+   
     
     // add selected document to open recently
        
@@ -251,23 +250,29 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self handleString:fileContents];
 }
 
-    - (void)handleString:(NSString*) dataString {
+
+
+
+- (void)handleString:(NSString*) dataString {
+    
+    rows = [[NSMutableArray alloc] init];
+    columnOrder = [[NSMutableArray alloc] init];
+    
         
         // http://stackoverflow.com/questions/5140391/for-loop-in-objective-c
         NSArray* fileRows = [dataString componentsSeparatedByString:@"\n"];
-    
        [delegate initializeRowBackgroundArray:[fileRows count]];
     
         for (int i=0; i < [fileRows count]; i++) {
              NSString* row = [fileRows objectAtIndex:i];
              NSArray* columns = [row componentsSeparatedByString:@","];
+         
             [rows addObject:columns];
             NSColor* tmpColor =[colorStack pop];
             [colors addObject:tmpColor];
             
             [delegate setSelectedRow:i];
             [delegate setSelectedRowBackground:tmpColor];
-            NSLog(@"adding row");
         }
     
         
@@ -276,7 +281,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     
     NSArray* tableCols = [myTableView tableColumns];
     for (int x=0; x < [tableCols count]; x++) {
-        NSLog(@"removing column");
 
         [myTableView removeTableColumn:[tableCols objectAtIndex:x]];  // i fucked soemthing up here...'myTableView' is needed...self not working right
     }
