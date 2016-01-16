@@ -375,6 +375,6 @@ var g = svg.selectAll(\".arc\")
 g.append(\"path\")
 .attr(\"d\", arc)
 .style(\"fill\", function(d) {
-	console.log(d);return color(d.value); });";
+    colors.reverse(); var color = colors.pop(); colors.reverse(); return color; });";
 
 
