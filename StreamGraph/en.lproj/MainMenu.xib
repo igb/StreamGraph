@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="5056"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -12,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="StreamGraph" id="56">
@@ -497,10 +497,10 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="CsO-qh-yEl" id="8Zb-L0-pre">
-                                                        <rect key="frame" x="0.0" y="0.0" width="496" height="479"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="119" height="19"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
                                                             <tableColumn width="116" minWidth="40" maxWidth="1000" id="PBh-4W-pxD">
@@ -568,15 +568,15 @@
                     <tabView controlSize="mini" id="qBt-Rr-9ZY">
                         <rect key="frame" x="519" y="10" width="227" height="509"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                        <font key="font" size="10" name="LucidaGrande"/>
+                        <font key="font" metaFont="system" size="10"/>
                         <tabViewItems>
                             <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
+                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -702,7 +702,7 @@
                                             <rect key="frame" x="123" y="388" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of X-axis ticks" id="BRe-b1-qc7">
-                                                <font key="font" size="9" name="LucidaGrande"/>
+                                                <font key="font" metaFont="miniSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -711,7 +711,7 @@
                                             <rect key="frame" x="123" y="358" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of Y-axis ticks" id="BkS-cm-YK9">
-                                                <font key="font" size="9" name="LucidaGrande"/>
+                                                <font key="font" metaFont="miniSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -720,7 +720,7 @@
                                             <rect key="frame" x="123" y="327" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="grid color" id="Aac-Ns-3pD">
-                                                <font key="font" size="9" name="LucidaGrande"/>
+                                                <font key="font" metaFont="miniSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -831,6 +831,17 @@
                                             <connections>
                                                 <action selector="toggleHeatMapColorOrder:" target="494" id="LSi-v0-SGi"/>
                                             </connections>
+                                        </button>
+                                        <button hidden="YES" id="CsC-eU-YAA">
+                                            <rect key="frame" x="55" y="417" width="128" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Switch rows / columns" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="xYW-lM-Jhz">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="toggleColumnsRows:" target="494" id="8YD-xK-pSP"/>
+                                                </connections>
+                                            </buttonCell>
                                         </button>
                                     </subviews>
                                 </view>
@@ -1004,6 +1015,7 @@
                 <outlet property="pieChart" destination="fom-5B-uVR" id="8AF-5G-Ho2"/>
                 <outlet property="silStreamChart" destination="1046" id="8cC-5v-BFv"/>
                 <outlet property="tableTabView" destination="652" id="pdy-aL-2KJ"/>
+                <outlet property="useColumnsUseRows" destination="CsC-eU-YAA" id="Fgs-UZ-8ac"/>
                 <outlet property="wiggleStreamChart" destination="1043" id="BM7-mq-HeF"/>
                 <outlet property="window" destination="371" id="532"/>
                 <outlet property="zeroStreamChart" destination="1045" id="d54-3a-fQr"/>

@@ -55,6 +55,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
     BOOL isShowHeatMapLegend;
     long _heatMapBuckets;
     BOOL isHeatMapColorOrderReversed;
+    BOOL useColumns;
 
     BOOL applyBrightnessFilter;
 
@@ -109,6 +110,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSButton *heatMapColorOrderButton;
 @property (assign) IBOutlet NSTextField *heatMapColorLabel;
 
+@property (assign) IBOutlet NSButton *useColumnsUseRows;
+
+
 
 
 @property (assign) IBOutlet NSTextField *brightnessField;
@@ -155,6 +159,11 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)brightnessFilterDialog:(id)sender;
 -(IBAction)brightnessSlider:(id)sender;
 -(IBAction)brightnessField:(id)sender;
+
+
+//pies
+
+-(IBAction)toggleColumnsRows:(id)sender;
 
 
 - (IBAction)newDocument:(id)sender;

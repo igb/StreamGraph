@@ -12,6 +12,10 @@
 #import "HCCPBarGraphWriter.h"
 #import "HCCPHeatMapGraphWriter.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
+
 
 @implementation HCCPAppDelegate
 
@@ -48,6 +52,7 @@
             [self toggleBarControls:NO];
             [self toggleStackControls:YES];
             [self toggleHeatMapControls:YES];
+            [self togglePieControls:YES];
             break;
             
         case StackViewMode:
@@ -56,7 +61,7 @@
             [self toggleBarControls:YES];
             [self toggleStackControls:NO];
             [self toggleHeatMapControls:YES];
-            
+            [self togglePieControls:YES];
 
             
             break;
@@ -65,6 +70,14 @@
             [self toggleBarControls:YES];
             [self toggleStackControls:YES];
             [self toggleHeatMapControls:NO];
+            [self togglePieControls:YES];
+            break;
+            
+        case PieMode:
+            [self toggleBarControls:YES];
+            [self toggleStackControls:YES];
+            [self toggleHeatMapControls:YES];
+            [self togglePieControls:NO];
             break;
             
         default:
@@ -120,6 +133,14 @@
     [[self barSpaceControlSlider] setHidden:toggle];
 
 }
+
+
+-(void)togglePieControls:(BOOL)toggle  {
+    [[self useColumnsUseRows] setHidden:toggle];
+    
+}
+
+
 -(IBAction)graphStack:(id)sender {
     [self setMode:StackViewMode];
     [self displayControls:StackViewMode];
@@ -134,9 +155,17 @@
 }
 
 
+-(IBAction)toggleColumnsRows:(id)sender {
+    useColumns = !useColumns;
+    NSLog(@"use columns is %hhd", useColumns);
+    
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    
+
+    [Fabric with:@[[Crashlytics class]]];
     
    currentGraphId = [[NSProcessInfo processInfo] globallyUniqueString];
     currentGridColor = @"000000";
@@ -151,7 +180,7 @@
     [self setButtonImageById:@"wig" :[self wiggleStreamChart]];
     [self setButtonImageById:@"sil" :[self silStreamChart]];
     [self setButtonImageById:@"bar" :[self barChart]];
-    [self setButtonImageById:@"pie" :[self barChart]];
+    [self setButtonImageById:@"pie" :[self pieChart]];
     [self setButtonImageById:@"grid" :[self gridHeatMapChart]];
 
 
