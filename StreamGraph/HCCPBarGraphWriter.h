@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Ian Brown. All rights reserved.
 //
 
+#import <Security/Security.h>
 #import <Foundation/Foundation.h>
+
 #import "HCCPGraphWriter.h"
 
 

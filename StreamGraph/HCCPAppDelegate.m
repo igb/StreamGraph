@@ -12,9 +12,6 @@
 #import "HCCPBarGraphWriter.h"
 #import "HCCPHeatMapGraphWriter.h"
 
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
-
 
 
 @implementation HCCPAppDelegate
@@ -162,10 +159,16 @@
 }
 
 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 
-    [Fabric with:@[[Crashlytics class]]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
+
+    
+    // TODO: Move this to where you establish a user session
+    [self logUser];
+
     
    currentGraphId = [[NSProcessInfo processInfo] globallyUniqueString];
     currentGridColor = @"000000";
@@ -206,6 +209,15 @@
 
     
 }
+
+
+
+- (void) logUser {
+    // TODO: Use the current user's information
+    // You can call any combination of these three methods
+ 
+}
+
 
 - (BOOL)isHeatMapColorOrderReversed {
     return isHeatMapColorOrderReversed;

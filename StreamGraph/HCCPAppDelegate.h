@@ -166,6 +166,11 @@ typedef NS_ENUM(NSInteger, ModeType) {
 -(IBAction)toggleColumnsRows:(id)sender;
 
 
+
+// crashlytics
+- (IBAction)crashButtonTapped:(id)sender;
+
+
 - (IBAction)newDocument:(id)sender;
 
 -(IBAction)brightnessField:(id)sender;
