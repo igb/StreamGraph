@@ -66,7 +66,7 @@
     for (int j=1; j < [headers count]; j++) { //J=1 so we skip first column
         [xAxis appendString:@"\""];
          int mappedIndex = [[columnOrder objectAtIndex:j] intValue];
-        [xAxis appendString:[headers objectAtIndex:mappedIndex]];
+        [xAxis appendString:[[headers objectAtIndex:mappedIndex] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]  ];
         [xAxis appendString:@"\""];
         if (j < [headers count] - 1) {
             [xAxis appendString:@","];
