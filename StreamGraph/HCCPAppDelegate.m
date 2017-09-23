@@ -203,7 +203,55 @@
     blueSwatch = [self createBlueSwatch];
     redSwatch = [self createRedSwatch];
 
+   
+    NSString* jspath = [[NSBundle mainBundle] pathForResource:@"colorbrewer"
+                                                       ofType:@"txt"];
     
+    NSString* colorBrewer = [NSString stringWithContentsOfFile:jspath
+                                     encoding:NSUTF8StringEncoding
+                                        error:NULL];
+    
+     NSArray *colorBrewerRows = [colorBrewer componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSMutableArray *stackNames = [[NSMutableArray alloc] init];
+    NSMutableArray *colorStacks = [[NSMutableArray alloc] init];
+
+    int i;
+    for (i = 0; i < [colorBrewerRows count]; i++) {
+        id line = [colorBrewerRows objectAtIndex:i];
+        if ([line hasPrefix:@"var"]) {
+            NSArray* parts = [line componentsSeparatedByString:@" = "];
+            NSString* colorArrayName = [[[parts objectAtIndex:0] componentsSeparatedByString:@"var "] objectAtIndex:1];
+            [stackNames addObject:colorArrayName];
+            
+            
+             HCCPColorStack* colorStack = [[HCCPColorStack alloc] init];
+            [colorStacks addObject:colorStack];
+            
+            NSArray* rgbs = [[[[[[parts objectAtIndex:1] componentsSeparatedByString:@"["] objectAtIndex:1] componentsSeparatedByString:@"]"] objectAtIndex:0] componentsSeparatedByString:@"','"];
+            
+            int j;
+            for (j = 0; j < [rgbs count]; j++) {
+                NSArray* colorVals =  [[[[[[rgbs objectAtIndex:j] componentsSeparatedByString:@"rgb("] objectAtIndex:1] componentsSeparatedByString:@")"] objectAtIndex:0] componentsSeparatedByString:@","];
+                
+                int red = [[colorVals objectAtIndex:0] intValue];
+                int green = [[colorVals objectAtIndex:1] intValue];
+                int blue = [[colorVals objectAtIndex:2] intValue];
+
+                [colorStack add:[NSColor colorWithCalibratedRed:(red/255.0f) green:(green/255.0f) blue:(blue/255.0f) alpha:1.0]];
+                
+                
+            }
+            
+                              
+        }
+    }
+    int k=0;
+     for (k = 0; k < [stackNames count]; k++) {
+         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:NULL keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
+         [[self colorSwatcheMenus] addItem:item];
+         NSLog(@"here...");
+     }
+    NSLog(@"title %@", [[self colorSwatcheMenus] title]);
     
     [[self gridXText] setDelegate:self];
 
@@ -659,6 +707,9 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 
 -(IBAction)applySwatch:(id)sender {
+    
+    
+    
     switch ([sender tag])
     
     {

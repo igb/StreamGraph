@@ -85,7 +85,23 @@ text.axis-worktime {
 "section01" = "\" onresize=\"location.reload();\">
 
 <script>
+function getDocHeight() {
+    var D = document;
+    return Math.max(
+    D.body.scrollHeight, D.documentElement.scrollHeight,
+    D.body.offsetHeight, D.documentElement.offsetHeight,
+    D.body.clientHeight, D.documentElement.clientHeight
+    );
+}
 
+function getDocWidth() {
+    var D = document;
+    return Math.max(
+    D.body.scrollWidth, D.documentElement.scrollWidth,
+    D.body.offsetWidth, D.documentElement.offsetWidth,
+    D.body.clientWidth, D.documentElement.clientWidth
+    );
+}
 
 ";
 
@@ -95,8 +111,8 @@ text.axis-worktime {
 
 layers1=stack(  data.map(function(foo) { return foo.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });   })  );
 
-var width = document.width,
-height = document.height;
+var width = getDocWidth(),
+height = getDocHeight();
 
 var x = d3.scale.linear()
 .domain([0, m - 1])
@@ -203,8 +219,8 @@ for (var i=0;i<my_x_axis.length;i++)
 
 
 "barGraphLayoutJS001" = "var margin = {top: 20, right: 30, bottom: 30, left: 40},
-width = document.width - margin.left - margin.right,
-height = document.height - margin.top - margin.bottom;
+width = getDocWidth() - margin.left - margin.right,
+height = getDocHeight() - margin.top - margin.bottom;
 
 
 var y = d3.scale.linear()

@@ -117,6 +117,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 @property (assign) IBOutlet NSTextField *brightnessField;
 
+@property (assign) IBOutlet NSMenu *colorSwatcheMenus;
 
 
 
