@@ -212,8 +212,8 @@
                                         error:NULL];
     
      NSArray *colorBrewerRows = [colorBrewer componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    NSMutableArray *stackNames = [[NSMutableArray alloc] init];
-    NSMutableArray *colorStacks = [[NSMutableArray alloc] init];
+     stackNames = [[NSMutableArray alloc] init];
+     colorStacks = [[NSMutableArray alloc] init];
 
     int i;
     for (i = 0; i < [colorBrewerRows count]; i++) {
@@ -247,7 +247,8 @@
     }
     int k=0;
      for (k = 0; k < [stackNames count]; k++) {
-         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:NULL keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
+         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:@selector(applySwatch:) keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
+         [item setTag:k];
          [[self colorSwatcheMenus] addItem:item];
          NSLog(@"here...");
      }
@@ -709,45 +710,11 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 -(IBAction)applySwatch:(id)sender {
     
     
-    
-    switch ([sender tag])
-    
-    {
-        {case 12:
-            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [rowColors replaceObjectAtIndex:idx withObject:[purpleSwatch pop]];
-            }];
-            break;
-        }
-        {case 13:
-            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [rowColors replaceObjectAtIndex:idx withObject:[greenSwatch pop]];
-            }];
-            break;
-        }
-
-        {case 14:
-            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [rowColors replaceObjectAtIndex:idx withObject:[goldSwatch pop]];
-            }];
-            break;
-        }
-
-        {case 15:
-            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [rowColors replaceObjectAtIndex:idx withObject:[blueSwatch pop]];
-            }];
-            break;
-        }
-            
-        {case 16:
-            [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [rowColors replaceObjectAtIndex:idx withObject:[redSwatch pop]];
-            }];
-            break;
-        }
-    }
-    
+    [currentSelectedRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        HCCPColorStack* colorStack = [colorStacks objectAtIndex:[sender tag]];
+        [rowColors replaceObjectAtIndex:idx withObject:[colorStack pop]];
+         
+    }];
    
 
    

@@ -38,7 +38,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
     HCCPColorStack* blueSwatch;
     HCCPColorStack* redSwatch;
     
-    
+    NSMutableArray *stackNames;
+    NSMutableArray *colorStacks;
     
 
 
