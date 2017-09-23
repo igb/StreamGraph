@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="12120"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -493,11 +494,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="498" height="497"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="GBZ-iF-Lxw">
-                                                <rect key="frame" x="1" y="17" width="496" height="479"/>
+                                                <rect key="frame" x="1" y="0.0" width="496" height="496"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="CsO-qh-yEl" id="8Zb-L0-pre">
-                                                        <rect key="frame" x="0.0" y="0.0" width="119" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="496" height="479"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -523,7 +524,6 @@
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="7aQ-YO-KY5">
                                                 <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -572,11 +572,11 @@
                         <tabViewItems>
                             <tabViewItem label="Color" identifier="4" id="hTm-7T-LSn">
                                 <view key="view" id="2xQ-yJ-xeW">
-                                    <rect key="frame" x="10" y="19" width="207" height="477"/>
+                                    <rect key="frame" x="10" y="28" width="207" height="468"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <colorWell toolTip="Chart Background Color" allowsExpansionToolTips="YES" id="1064">
-                                            <rect key="frame" x="17" y="396" width="44" height="39"/>
+                                            <rect key="frame" x="17" y="387" width="44" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -600,7 +600,7 @@
                                                 </connections>
                                             </sliderCell>
                                         </slider>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ouy-I3-mze">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="Ouy-I3-mze">
                                             <rect key="frame" x="15" y="418" width="85" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bar Spacing:" id="ZFj-c7-Pls">
@@ -609,7 +609,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uS7-If-BPQ">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="uS7-If-BPQ">
                                             <rect key="frame" x="15" y="418" width="85" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Grid:" id="b4q-dq-iaG">
@@ -618,7 +618,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="i3m-vt-lxx">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="i3m-vt-lxx">
                                             <rect key="frame" x="15" y="416" width="85" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Legend:" id="V2x-P6-hTV">
@@ -627,7 +627,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dQz-yo-5WR">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="dQz-yo-5WR">
                                             <rect key="frame" x="15" y="356" width="85" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Buckets:" id="Zrq-7S-waN">
@@ -636,7 +636,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rGZ-SI-Dsu">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="rGZ-SI-Dsu">
                                             <rect key="frame" x="15" y="294" width="85" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colors:" id="wHM-mg-fJC">
@@ -664,7 +664,7 @@
                                                 <action selector="gridTickStepperXYAction:" target="494" id="KLg-zV-Wgq"/>
                                             </connections>
                                         </stepper>
-                                        <textField hidden="YES" verticalHuggingPriority="750" tag="1" id="cl1-xD-9sx">
+                                        <textField hidden="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="NO" id="cl1-xD-9sx">
                                             <rect key="frame" x="78" y="389" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nS6-3V-O3D">
@@ -685,7 +685,7 @@
                                                 <action selector="gridTickStepperXYAction:" target="494" id="66o-dw-RNI"/>
                                             </connections>
                                         </stepper>
-                                        <textField hidden="YES" verticalHuggingPriority="750" tag="2" id="SGi-ZF-eEY">
+                                        <textField hidden="YES" verticalHuggingPriority="750" tag="2" allowsCharacterPickerTouchBarItem="NO" id="SGi-ZF-eEY">
                                             <rect key="frame" x="78" y="358" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="0" drawsBackground="YES" id="0cd-n4-LJI">
@@ -698,7 +698,7 @@
                                                 <outlet property="delegate" destination="494" id="ksO-6w-V03"/>
                                             </connections>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nJK-Te-k5m">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="nJK-Te-k5m">
                                             <rect key="frame" x="123" y="388" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of X-axis ticks" id="BRe-b1-qc7">
@@ -707,7 +707,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="z01-WD-ZZb">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="z01-WD-ZZb">
                                             <rect key="frame" x="123" y="358" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of Y-axis ticks" id="BkS-cm-YK9">
@@ -716,7 +716,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jEE-UC-4Rd">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="jEE-UC-4Rd">
                                             <rect key="frame" x="123" y="327" width="80" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="grid color" id="Aac-Ns-3pD">
@@ -803,7 +803,7 @@
                                                 </connections>
                                             </popUpButtonCell>
                                         </popUpButton>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="p5I-vO-esE">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="p5I-vO-esE">
                                             <rect key="frame" x="27" y="226" width="45" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Low" id="LeX-Rp-IoS">
@@ -812,7 +812,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rIP-PK-0sN">
+                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="rIP-PK-0sN">
                                             <rect key="frame" x="149" y="226" width="34" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="High" id="Zc9-bZ-XEb">
@@ -928,7 +928,7 @@
                                                 <action selector="selectLastTabViewItem:" target="651" id="G0t-he-p5W"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="29K-SS-3YM">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="29K-SS-3YM">
                                             <rect key="frame" x="1" y="334" width="115" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stacks &amp; Streams:" id="Jbg-sX-iNP">
@@ -937,7 +937,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GKm-R2-gSk">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="GKm-R2-gSk">
                                             <rect key="frame" x="1" y="418" width="35" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bars:" id="K4a-qA-D3o">
@@ -946,7 +946,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zM3-fa-ape">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="zM3-fa-ape">
                                             <rect key="frame" x="1" y="242" width="71" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Heatmaps:" id="ZRy-WX-L4h">
@@ -955,7 +955,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9iP-WG-tUj">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="9iP-WG-tUj">
                                             <rect key="frame" x="1" y="150" width="77" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pies &amp; Arcs:" id="3o7-Up-mff">
@@ -988,6 +988,7 @@
                 <outlet property="barSpaceControlSlider" destination="QTV-ts-4Um" id="kva-AU-pA3"/>
                 <outlet property="brightnessField" destination="A16-iy-5WF" id="DIv-2r-hEu"/>
                 <outlet property="brightnessPanel" destination="f81-r4-pcm" id="IF2-jl-Iiz"/>
+                <outlet property="colorSwatcheMenus" destination="497" id="nXJ-iW-TUx"/>
                 <outlet property="display" destination="940" id="948"/>
                 <outlet property="expandStreamChart" destination="1041" id="dxc-Rb-gN2"/>
                 <outlet property="graphTabView" destination="653" id="Yya-mo-EHh"/>
@@ -1043,7 +1044,7 @@
                             </connections>
                         </sliderCell>
                     </slider>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yrT-45-MQf">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="yrT-45-MQf">
                         <rect key="frame" x="18" y="57" width="69" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Brightness" id="GPM-X8-l0i">
@@ -1077,7 +1078,7 @@ Gw
                             <action selector="cancelBrightness:" target="494" id="PAi-ww-kPJ"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="A16-iy-5WF">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="A16-iy-5WF">
                         <rect key="frame" x="250" y="52" width="51" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8lp-GA-XnO">
