@@ -378,40 +378,7 @@
                         <items>
                             <menuItem title="Apply Color Swatch" id="496">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Apply Color Swatch" id="497">
-                                    <items>
-                                        <menuItem title="Purple" tag="12" id="498">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="applySwatch:" target="494" id="Sw5-bA-PRH"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Green" tag="13" id="dK0-6J-uUV">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="applySwatch:" target="494" id="F5i-h8-oqB"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Gold" tag="14" id="c6V-Br-zeR">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="applySwatch:" target="494" id="KWN-ku-QM4"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Blue" tag="15" id="m74-lf-U21">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="applySwatch:" target="494" id="Ks9-lx-osw"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Red" tag="16" id="hEz-KI-5M7">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="applySwatch:" target="494" id="4pj-NW-wYg"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                                <menu key="submenu" title="Apply Color Swatch" id="497"/>
                             </menuItem>
                         </items>
                     </menu>
