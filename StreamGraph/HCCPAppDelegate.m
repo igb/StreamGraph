@@ -249,6 +249,15 @@
      for (k = 0; k < [stackNames count]; k++) {
          NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:@selector(applySwatch:) keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
          [item setTag:k];
+         
+         NSString* itemImagePath = [[NSBundle mainBundle] pathForResource:[stackNames objectAtIndex:k]
+                                                                  ofType:@"tiff"];
+         
+         NSImage* itemImage = [[NSImage alloc] initWithContentsOfFile:itemImagePath];
+         [item setImage:itemImage];
+
+         
+         
          [[self colorSwatcheMenus] addItem:item];
          NSLog(@"here...");
      }
