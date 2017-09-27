@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="17A365" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -471,7 +471,7 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
-                                                            <tableColumn width="116" minWidth="40" maxWidth="1000" id="PBh-4W-pxD">
+                                                            <tableColumn identifier="" width="116" minWidth="40" maxWidth="1000" id="PBh-4W-pxD">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -810,6 +810,17 @@
                                                 </connections>
                                             </buttonCell>
                                         </button>
+                                        <button misplaced="YES" id="nbe-99-JNp">
+                                            <rect key="frame" x="63" y="297" width="74" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Plateaus" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KEm-j5-oVN">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="usePlateausCheck:" target="494" id="wUr-km-qyb"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -947,6 +958,7 @@
                     </tabView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="140" y="161.5"/>
         </window>
         <customObject id="494" customClass="HCCPAppDelegate">
             <connections>
@@ -981,6 +993,7 @@
                 <outlet property="heatMapLegendlabel" destination="i3m-vt-lxx" id="HxN-0Z-ToK"/>
                 <outlet property="mainTabView" destination="651" id="UkW-Ut-0Lr"/>
                 <outlet property="pieChart" destination="fom-5B-uVR" id="8AF-5G-Ho2"/>
+                <outlet property="plateauCheck" destination="nbe-99-JNp" id="EjV-ky-XuJ"/>
                 <outlet property="silStreamChart" destination="1046" id="8cC-5v-BFv"/>
                 <outlet property="tableTabView" destination="652" id="pdy-aL-2KJ"/>
                 <outlet property="useColumnsUseRows" destination="CsC-eU-YAA" id="Fgs-UZ-8ac"/>

@@ -103,6 +103,8 @@
     [[self gridYlabel] setHidden:toggle];
     [[self gridColorChooser] setHidden:toggle];
     [[self gridColorLabel] setHidden:toggle];
+    [[self plateauCheck] setHidden:toggle];
+
 
     
 }
@@ -197,24 +199,28 @@
    // [self displayControls:GraphViewMode];
     _barGap=5;
     
-    purpleSwatch = [self createPurpleSwatch];
-    greenSwatch = [self createGreenSwatch];
-    goldSwatch = [self createGoldSwatch];
-    blueSwatch = [self createBlueSwatch];
-    redSwatch = [self createRedSwatch];
 
-   
+    [self initApplySwatchMenu];
+    
+    [[self gridXText] setDelegate:self];
+
+    
+}
+
+- (void) initApplySwatchMenu {
+    
+    
     NSString* jspath = [[NSBundle mainBundle] pathForResource:@"colorbrewer"
                                                        ofType:@"txt"];
     
     NSString* colorBrewer = [NSString stringWithContentsOfFile:jspath
-                                     encoding:NSUTF8StringEncoding
-                                        error:NULL];
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:NULL];
     
-     NSArray *colorBrewerRows = [colorBrewer componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-     stackNames = [[NSMutableArray alloc] init];
-     colorStacks = [[NSMutableArray alloc] init];
-
+    NSArray *colorBrewerRows = [colorBrewer componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    stackNames = [[NSMutableArray alloc] init];
+    colorStacks = [[NSMutableArray alloc] init];
+    
     int i;
     for (i = 0; i < [colorBrewerRows count]; i++) {
         id line = [colorBrewerRows objectAtIndex:i];
@@ -224,7 +230,7 @@
             [stackNames addObject:colorArrayName];
             
             
-             HCCPColorStack* colorStack = [[HCCPColorStack alloc] init];
+            HCCPColorStack* colorStack = [[HCCPColorStack alloc] init];
             [colorStacks addObject:colorStack];
             
             NSArray* rgbs = [[[[[[parts objectAtIndex:1] componentsSeparatedByString:@"["] objectAtIndex:1] componentsSeparatedByString:@"]"] objectAtIndex:0] componentsSeparatedByString:@"','"];
@@ -236,39 +242,36 @@
                 int red = [[colorVals objectAtIndex:0] intValue];
                 int green = [[colorVals objectAtIndex:1] intValue];
                 int blue = [[colorVals objectAtIndex:2] intValue];
-
+                
                 [colorStack add:[NSColor colorWithCalibratedRed:(red/255.0f) green:(green/255.0f) blue:(blue/255.0f) alpha:1.0]];
                 
                 
             }
             
-                              
+            
         }
     }
     int k=0;
-     for (k = 0; k < [stackNames count]; k++) {
-         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:@selector(applySwatch:) keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
-         [item setTag:k];
-         
-         NSString* itemImagePath = [[NSBundle mainBundle] pathForResource:[stackNames objectAtIndex:k]
+    for (k = 0; k < [stackNames count]; k++) {
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[stackNames objectAtIndex:k] action:@selector(applySwatch:) keyEquivalent:[[NSString alloc] initWithFormat:@"swatch %d", k]];
+        [item setTag:k];
+        
+        NSString* itemImagePath = [[NSBundle mainBundle] pathForResource:[stackNames objectAtIndex:k]
                                                                   ofType:@"tiff"];
-         
-         NSImage* itemImage = [[NSImage alloc] initWithContentsOfFile:itemImagePath];
-         [item setImage:itemImage];
+        
+        NSImage* itemImage = [[NSImage alloc] initWithContentsOfFile:itemImagePath];
+        [item setImage:itemImage];
+        
+        
+        
+        [[self colorSwatcheMenus] addItem:item];
+    }
 
-         
-         
-         [[self colorSwatcheMenus] addItem:item];
-         NSLog(@"here...");
-     }
-    NSLog(@"title %@", [[self colorSwatcheMenus] title]);
     
-    [[self gridXText] setDelegate:self];
-
+    
+    
     
 }
-
-
 
 - (void) logUser {
     // TODO: Use the current user's information
@@ -984,6 +987,51 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
     [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
     [myWebView reload:self];
+    
+}
+
+
+
+-(IBAction)usePlateausCheck:(id)pId {
+    NSButton* plateaucheck = pId;
+    NSLog(@"grid checkbox state %ld", [plateaucheck state]);
+    usePlateaus = [plateaucheck state];
+    if (usePlateaus) {
+        NSArray* plateauedData = [self cloneDataWithPlateaus: [myTableView getData]];
+        NSArray* plateauedColumnOrder = [self addPlateaus:[myTableView getColumnOrder]];
+        
+        HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+        [writer writeToHtml:plateauedData:plateauedColumnOrder:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
+        [myWebView reload:self];
+    }
+    
+
+}
+
+-(NSArray*)cloneDataWithPlateaus:(NSArray*)data {
+    
+    NSMutableArray* plateauedData = [[NSMutableArray alloc] init];
+    int rowCount = [data count];
+    for (int i=0; i < rowCount; i++) {
+        NSArray* row = [data objectAtIndex:i];
+        [plateauedData addObject:[self addPlateaus:row]];
+    }
+    return plateauedData;
+}
+    
+-(NSArray*)addPlateaus:(NSArray*)row {
+    NSMutableArray* plateauedRow = [[NSMutableArray alloc] init];
+    [plateauedRow addObject:[row objectAtIndex:0]];
+    
+    //assume we skip the first field
+    int colCount = [row count];
+    for (int i=1; i < colCount; i++) {
+        for (int loop=0; loop < 2; loop++) {
+            [plateauedRow addObject:[row objectAtIndex:i]];
+        }
+        
+    }
+    return plateauedRow;
     
 }
 

@@ -57,6 +57,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
     long _heatMapBuckets;
     BOOL isHeatMapColorOrderReversed;
     BOOL useColumns;
+    
+    BOOL usePlateaus;
+
 
     BOOL applyBrightnessFilter;
 
@@ -100,6 +103,9 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSButton *gridCheck;
 @property (assign) IBOutlet NSColorWell *gridColorChooser;
 @property (assign) IBOutlet NSTextField *gridColorLabel;
+
+@property (assign) IBOutlet NSButton *plateauCheck;
+
 
 @property (assign) IBOutlet NSTextField *heatMapLegendlabel;
 @property (assign) IBOutlet NSButton *heatMapLegendCheck;
@@ -150,6 +156,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 
 -(IBAction)gridTickStepperXYAction:(id)pId;
 -(IBAction)gridTickerCheck:(id)pId;
+
+-(IBAction)usePlateausCheck:(id)pId;
 
 
 -(IBAction)heatMapLegendCheck:(id)pId;
