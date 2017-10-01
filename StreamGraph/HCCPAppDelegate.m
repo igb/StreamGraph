@@ -994,18 +994,26 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 -(IBAction)usePlateausCheck:(id)pId {
     NSButton* plateaucheck = pId;
-    NSLog(@"grid checkbox state %ld", [plateaucheck state]);
     usePlateaus = [plateaucheck state];
-    if (usePlateaus) {
-        NSArray* plateauedData = [self cloneDataWithPlateaus: [myTableView getData]];
-        NSArray* plateauedColumnOrder = [self addPlateaus:[myTableView getColumnOrder]];
-        
-        HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:plateauedData:plateauedColumnOrder:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
-        [myWebView reload:self];
-    }
     
 
+    
+    HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
+
+    
+    
+    NSArray* tableData = [myTableView getData];
+    NSArray* columnData = [myTableView getColumnOrder];
+    if (usePlateaus) {
+        tableData = [self cloneDataWithPlateaus:[myTableView getData]];
+        columnData = [self offsetColumnOrderForPlateaus: [myTableView getColumnOrder]];
+        
+    }
+    
+    [[self gridXText] setIntValue:[columnData count]];
+    
+    [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
+    [myWebView reload:self];
 }
 
 -(NSArray*)cloneDataWithPlateaus:(NSArray*)data {
@@ -1028,12 +1036,36 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     for (int i=1; i < colCount; i++) {
         for (int loop=0; loop < 2; loop++) {
             [plateauedRow addObject:[row objectAtIndex:i]];
-        }
+         }
         
     }
+  
     return plateauedRow;
     
 }
+
+
+-(NSArray*)offsetColumnOrderForPlateaus:(NSArray*)row {
+    NSMutableArray* plateauedRow = [[NSMutableArray alloc] init];
+    
+    //assume we skip the first field
+    int colCount = [row count];
+    for (int i=0; i < colCount; i++) {
+        for (int loop=0; loop < 2; loop++) {
+            NSString* col = [row objectAtIndex:i];
+            [plateauedRow addObject:[NSString stringWithFormat:@"%d", (2 * col.intValue) + loop]];
+       }
+        
+    }
+  
+   
+    return plateauedRow;
+    
+}
+
+
+
+
 
 -(void)refreshChart {
     
@@ -1050,7 +1082,15 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]:[self getBrightness]];
+
+        NSArray* tableData = [myTableView getData];
+        NSArray* columnData = [myTableView getColumnOrder];
+        if (usePlateaus) {
+            tableData = [self cloneDataWithPlateaus: [myTableView getData]];
+            columnData = [self offsetColumnOrderForPlateaus:[myTableView getColumnOrder]];
+        }
+        
+        [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]:[self getBrightness]];
         
     }
     
@@ -1059,6 +1099,9 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
 }
 
+-(BOOL) isUsePlateaus {
+    return usePlateaus;
+}
 
 -(IBAction)setHeatMapColorSelection:(id)sender {
     

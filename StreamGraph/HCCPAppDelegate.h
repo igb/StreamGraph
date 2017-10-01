@@ -202,6 +202,11 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (long) getBarGap;
 - (long) getHeatMapBucketCount;
 
+-(NSArray*)cloneDataWithPlateaus:(NSArray*)data;
+-(NSArray*)addPlateaus:(NSArray*)row;
+-(NSArray*)offsetColumnOrderForPlateaus:(NSArray*)row;
+
+
 - (NSTabView*) getTabView;
 
 - (float) getBrightness;
@@ -230,6 +235,7 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (BOOL)getIsShowHeatMapLegend;
 -(NSString*)getHeatMapPalette;
 - (BOOL)isHeatMapColorOrderReversed;
+- (BOOL)isUsePlateaus;
 
 
 @property (assign) IBOutlet NSView* mainView;

@@ -46,7 +46,17 @@ HCCPAppDelegate* delegate;
     else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]:[delegate getBrightness]];
+        
+        NSArray* tableData = rows;
+        NSArray* columnData = columnOrder;
+        if ([delegate isUsePlateaus]) {
+            tableData = [delegate cloneDataWithPlateaus:rows];
+            columnData = [delegate offsetColumnOrderForPlateaus:columnOrder];
+        }
+        
+
+        
+        [writer writeToHtml:tableData:columnData:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]:[delegate getBrightness]];
         
     }
 
