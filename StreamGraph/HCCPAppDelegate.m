@@ -104,6 +104,8 @@
     [[self gridColorChooser] setHidden:toggle];
     [[self gridColorLabel] setHidden:toggle];
     [[self plateauCheck] setHidden:toggle];
+    [[self showLegend] setHidden:toggle];
+    
 
 
     
@@ -130,6 +132,8 @@
 -(void)toggleBarControls:(BOOL)toggle  {
     [[self barSpaceControlLabel] setHidden:toggle];
     [[self barSpaceControlSlider] setHidden:toggle];
+    [[self showLegend] setHidden:toggle];
+
 
 }
 
@@ -158,6 +162,11 @@
     useColumns = !useColumns;
     NSLog(@"use columns is %hhd", useColumns);
     
+}
+
+-(IBAction)showLegend:(id)pId; {
+    isShowLegend = !isShowLegend;
+    [self refreshChart];
 }
 
 
@@ -985,7 +994,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     NSLog(@"draw grid state: %@", drawGrid);
  
     HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
-    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness:isShowLegend];
     [myWebView reload:self];
     
 }
@@ -1012,7 +1021,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
     [[self gridXText] setIntValue:[columnData count]];
     
-    [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness];
+    [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:[self getCurrentGraphType]:[self getCurrentGraphBackground]:drawGrid:[[self gridXText] integerValue]:[[self gridYText] integerValue]:currentGridColor:brightness:isShowLegend];
     [myWebView reload:self];
 }
 
@@ -1090,7 +1099,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
             columnData = [self offsetColumnOrderForPlateaus:[myTableView getColumnOrder]];
         }
         
-        [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]:[self getBrightness]];
+        [writer writeToHtml:tableData:columnData:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getDrawGrid]:[[self gridXText] integerValue]:[[self gridYText] integerValue]:[self getCurrentGridColor]:[self getBrightness]:isShowLegend];
         
     }
     
@@ -1101,6 +1110,10 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 -(BOOL) isUsePlateaus {
     return usePlateaus;
+}
+
+-(BOOL) getIsShowLegend {
+    return isShowLegend;
 }
 
 -(IBAction)setHeatMapColorSelection:(id)sender {

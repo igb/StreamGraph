@@ -23,6 +23,14 @@
                                                 error:NULL];
 }
 
+-(NSString*) getD3Legendjs {
+    NSString* d3Legendpath = [[NSBundle mainBundle] pathForResource:@"d3-legend"
+                                                       ofType:@"txt"];
+    return [NSString stringWithContentsOfFile:d3Legendpath
+                                     encoding:NSUTF8StringEncoding
+                                        error:NULL];
+}
+
 
 -(NSString*) getColorBrewerJs {
     NSString* jspath = [[NSBundle mainBundle] pathForResource:@"colorbrewer"

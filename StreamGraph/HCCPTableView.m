@@ -56,7 +56,7 @@ HCCPAppDelegate* delegate;
         
 
         
-        [writer writeToHtml:tableData:columnData:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]:[delegate getBrightness]];
+        [writer writeToHtml:tableData:columnData:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getDrawGrid]:[[delegate gridXText] integerValue]:[[delegate gridYText] integerValue]:[delegate getCurrentGridColor]:[delegate getBrightness]:[delegate getIsShowLegend]];
         
     }
 
@@ -219,7 +219,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         
     } else {
       //  NSLog(@"row: %d of %d tabl col id: %d", row, [rows count], [[tableColumn identifier] intValue]);
-       
+        NSTextFieldCell* cell = [tableColumn dataCellForRow:row];
+        NSColor* cellColor=[delegate getRowBackground:row];
+        [cell setDrawsBackground:true];
+
+        [cell setBackgroundColor:cellColor];
         return [[rows objectAtIndex:row] objectAtIndex:[[tableColumn identifier] intValue]];
   
     }
@@ -292,7 +296,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSArray* tableCols = [myTableView tableColumns];
     for (int x=0; x < [tableCols count]; x++) {
 
-        [myTableView removeTableColumn:[tableCols objectAtIndex:x]];  // i fucked soemthing up here...'myTableView' is needed...self not working right
+        [myTableView removeTableColumn:[tableCols objectAtIndex:x]];  // i fucked something up here...'myTableView' is needed...self not working right
     }
     
     if ([rows count] > 0) {
@@ -351,6 +355,12 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (void)moveColumn:(NSInteger)columnIndex toColumn:(NSInteger)newIndex {
     [myTableView moveColumn:columnIndex toColumn:newIndex];
 }
+
+
+- (void)switchRowsAndColumns {
+    
+}
+
 
 -(void)updateColumnHeaders {
     NSArray* columns = [myTableView tableColumns];

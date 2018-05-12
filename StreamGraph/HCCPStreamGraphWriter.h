@@ -12,6 +12,6 @@
 
 @interface HCCPStreamGraphWriter : HCCPGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid :(int)xTicks :(int)yTicks:(NSString*)gridColor:(float)brightness;
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)drawGrid :(int)xTicks :(int)yTicks:(NSString*)gridColor:(float)brightness :(BOOL)drawLegend;
 
 @end
