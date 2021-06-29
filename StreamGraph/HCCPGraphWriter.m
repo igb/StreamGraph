@@ -32,6 +32,56 @@
 }
 
 
+-(NSString*) getD3LegendjsHeaders {
+    NSMutableString* jsHeaders = [[NSMutableString alloc] init];
+    
+    [jsHeaders appendString:@"\n\n\n<!-- D3 Legend -->\n\n\n"];
+    
+    //CSS
+    [jsHeaders appendString:@"\n<style type=\"text/css\">\n"];
+    [jsHeaders appendString:@"\n.legendLinear {\n"];
+    [jsHeaders appendString:@"\nfont-size:8pt;\n"];
+    [jsHeaders appendString:@"\n}\n"];
+    [jsHeaders appendString:@"\n</style>\n"];
+    
+    //D3 LEGEND JS
+    [jsHeaders appendString:@"\n<script>\n"];
+    [jsHeaders appendString:[self getD3Legendjs]];
+    [jsHeaders appendString:@"</script>\n\n\n"];
+    
+    return jsHeaders;
+}
+
+-(NSString*) getD3LegendContent:(NSArray *)data {
+    
+    
+    
+    
+    NSMutableString* legendContent = [[NSMutableString alloc] init];
+    [legendContent appendString:@"names = ["];
+    
+    int i;
+    for (i = 1; i < [data count]; i++) {
+        id myRow = [data objectAtIndex:i];
+        [legendContent appendString:[NSString stringWithFormat:@"\"%@\"", myRow[0]]];
+        if (i < [data count] - 1) {
+            [legendContent appendString:@","];
+        }
+    }
+    
+    [legendContent appendString:@"];\n"];
+    
+    
+    [legendContent appendString:@"var ordinal = d3.scale.ordinal().domain(names.reverse()).range(colors.reverse());\n"];
+    
+    [legendContent appendString:@"svg.append(\"g\").attr(\"class\", \"legendLinear\").attr(\"transform\", \"translate(\" + (width - 100) + \", 10)\");\n"];
+    [legendContent appendString:@"var legendLinear = d3.legend.color().shapeWidth(10).shapeHeight(10).useClass(\"legend\").orient('vertical').scale(ordinal).shapePadding(3);\n"];
+    [legendContent appendString:@"svg.select(\".legendLinear\").call(legendLinear);\n"];
+    
+    return legendContent;
+}
+
+
 -(NSString*) getColorBrewerJs {
     NSString* jspath = [[NSBundle mainBundle] pathForResource:@"colorbrewer"
                                                        ofType:@"txt"];

@@ -11,6 +11,8 @@
 #import "HCCPStreamGraphWriter.h"
 #import "HCCPBarGraphWriter.h"
 #import "HCCPHeatMapGraphWriter.h"
+#import "HCCPPieGraphWriter.h"
+
 
 
 
@@ -18,9 +20,14 @@
 
 - (id) init
 {
-    NSLog(@"my deegate has been inititalized...");
-    brightness = 1.0f;
-    return [super init];
+    self = [super init];
+    if (self != nil) {
+        
+        NSLog(@"my deegate has been inititalized...");
+        brightness = 1.0f;
+    }
+    
+    return self;
 }
 
 
@@ -140,6 +147,9 @@
 
 -(void)togglePieControls:(BOOL)toggle  {
     [[self useColumnsUseRows] setHidden:toggle];
+    [[self labelSlicesButton] setHidden:toggle];
+    [[self sliceLabelThreshold] setHidden:toggle];
+    [[self sliceLabelFontSize] setHidden:toggle];
     
 }
 
@@ -161,6 +171,13 @@
 -(IBAction)toggleColumnsRows:(id)sender {
     useColumns = !useColumns;
     NSLog(@"use columns is %hhd", useColumns);
+    
+}
+
+
+-(IBAction)labelSlices:(id)sender {
+     labelSlices= !labelSlices;
+    NSLog(@"label slices is %hhd", labelSlices);
     
 }
 
@@ -697,7 +714,7 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     [[self chartAndTableTabView] selectLastTabViewItem:sender];
     
     HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
-    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:@"bar":[self getCurrentGraphBackground]:[self getBarGap]];
+    [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:@"bar":[self getCurrentGraphBackground]:[self getBarGap] :[self getIsShowLegend]];
     [myWebView reload:self];
     
 }
@@ -1082,10 +1099,15 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     
     if ([graphType isEqualToString:@"bar"]) {
         HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
-        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getBarGap]];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self getBarGap]:[self getIsShowLegend]];
     } else if ([graphType isEqualToString:@"heatmap"]) {
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
         [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:YES:YES:YES:[self getIsShowHeatMapLegend]:[self getHeatMapBucketCount]:[self getHeatMapPalette]:[self isHeatMapColorOrderReversed]];
+        
+        
+    } else if ([graphType isEqualToString:@"pie"]) {
+        HCCPPieGraphWriter* writer = [[HCCPPieGraphWriter alloc] init];
+        [writer writeToHtml:[myTableView getData]:[myTableView getColumnOrder]:[self getDocumentColors]:[self getCurrentGraphUrl]:graphType:[self getCurrentGraphBackground]:[self isUseColumns]:[self getLabelSlices]];
         
         
     } else {
@@ -1114,6 +1136,14 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
 
 -(BOOL) getIsShowLegend {
     return isShowLegend;
+}
+
+
+- (BOOL)isUseColumns {
+    return useColumns;
+}
+- (BOOL)getLabelSlices {
+    return labelSlices;
 }
 
 -(IBAction)setHeatMapColorSelection:(id)sender {
@@ -1150,7 +1180,9 @@ NSLog(@"saving to? %@", [dataSavePanel URL]);
     return currentGraphType;
 }
 - (void)setCurrentGraphType:(NSString*)curGraphType {
-    currentGraphType=curGraphType;
+   // NSLog(@"murrebt graph type %@", [self getCurrentGraphType]);
+    NSLog(@"what is this %@", self);
+    currentGraphType=@"x";
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {

@@ -10,7 +10,7 @@
 
 @implementation HCCPBarGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap{
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap :(BOOL)drawLegend {
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -24,11 +24,21 @@
     
     
     [self writeStringToStream:stream :[self getSection:@"header"]];
+    
+   
+    
+    
     [self writeStringToStream:stream :@"<svg class=\"chart\"></svg>"];
 
     [self writeStringToStream:stream :@"<script>"];
     [self writeStringToStream:stream :[self getD3js]];
     [self writeStringToStream:stream :@"</script>"];
+    
+    if (drawLegend)  {
+        
+        [self writeStringToStream:stream :[self getD3LegendjsHeaders]];
+    }
+    
     [self writeStringToStream:stream :[self getSection:@"section0"]];
     [self writeStringToStream:stream :graphBackground];
     [self writeStringToStream:stream :[self getSection:@"section01"]];
@@ -59,6 +69,12 @@
      [self writeStringToStream:stream :[self generateXAxis:barGap]];
     
     [self writeStringToStream:stream :[self getSection:@"barGraphLayoutJS002"]];
+    
+    
+    if(drawLegend) {
+        [self writeStringToStream:stream :[self getD3LegendContent:data]];
+    }
+    
 
     [self writeStringToStream:stream :@"\n</script>\n</body>\n</html>"];
     [stream close];

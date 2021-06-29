@@ -14,6 +14,7 @@
 -(void)writeStringToStream:(NSOutputStream*)stream :(NSString*)string;
 -(NSString*) getD3js;
 -(NSString*) getD3Legendjs;
+-(NSString*) getD3LegendContent:(NSArray*)data;
 
 -(NSString*) getColorBrewerJs;
 -(NSString*) getSection:(NSString*)section;
@@ -22,6 +23,7 @@
 -(NSString*) colorsToJSArray:(NSArray*)colors;
 -(NSString*) categoriesToJSArray:(NSArray*)data;
 -(int)getMaxPositionOfNonZeroData:(NSArray*)data :(NSArray*)columnOrder;
+-(NSString*) getD3LegendjsHeaders;
 
 
 

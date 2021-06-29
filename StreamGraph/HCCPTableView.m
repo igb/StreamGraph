@@ -24,6 +24,7 @@ HCCPAppDelegate* delegate;
     NSLog(@"create graph called %ld", graphTypeId);
     NSString* graphType = [[NSString alloc] init];
     graphType = [delegate getGraphType:graphTypeId];
+    NSLog(@"Graph type:%@", graphType );
     [delegate setCurrentGraphType:graphType];
     
     HCCPAppDelegate* delegate = [[NSApplication sharedApplication] delegate];
@@ -31,7 +32,7 @@ HCCPAppDelegate* delegate;
 
     if ([graphType isEqualToString:@"bar"]) {
         HCCPBarGraphWriter* writer = [[HCCPBarGraphWriter alloc] init];
-        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap] :[delegate getIsShowLegend]];
     } else if ([graphType isEqualToString:@"heatmap"]) {
         HCCPHeatMapGraphWriter* writer = [[HCCPHeatMapGraphWriter alloc] init];
         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:YES:YES:YES:[delegate getIsShowHeatMapLegend]:[delegate getHeatMapBucketCount]:[delegate getHeatMapPalette]:[delegate isHeatMapColorOrderReversed]];
@@ -39,11 +40,10 @@ HCCPAppDelegate* delegate;
         
     } else if ([graphType isEqualToString:@"pie"]) {
         HCCPPieGraphWriter* writer = [[HCCPPieGraphWriter alloc] init];
-         [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate getBarGap]];
+        [writer writeToHtml:rows:columnOrder:[delegate getDocumentColors]:[delegate getCurrentGraphUrl]:graphType:[delegate getCurrentGraphBackground]:[delegate isUseColumns]:[delegate getLabelSlices]];
         
         
-    }
-    else {
+    } else {
         
         HCCPStreamGraphWriter* writer = [[HCCPStreamGraphWriter alloc] init];
         

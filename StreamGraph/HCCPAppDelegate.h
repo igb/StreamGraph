@@ -61,6 +61,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
     BOOL usePlateaus;
 
     BOOL switchRowsAndColumns;
+    BOOL labelSlices;
+
     
     BOOL isShowLegend;
     
@@ -125,6 +127,12 @@ typedef NS_ENUM(NSInteger, ModeType) {
 @property (assign) IBOutlet NSTextField *heatMapColorLabel;
 
 @property (assign) IBOutlet NSButton *useColumnsUseRows;
+@property (assign) IBOutlet NSButton *labelSlicesButton;
+@property (assign) IBOutlet NSSlider *sliceLabelThreshold;
+@property (assign) IBOutlet NSSlider *sliceLabelFontSize;
+
+
+
 
 
 
@@ -185,6 +193,8 @@ typedef NS_ENUM(NSInteger, ModeType) {
 //pies
 
 -(IBAction)toggleColumnsRows:(id)sender;
+-(IBAction)toggleLabelSlices:(id)sender;
+
 
 
 
@@ -248,6 +258,10 @@ typedef NS_ENUM(NSInteger, ModeType) {
 - (BOOL)isHeatMapColorOrderReversed;
 - (BOOL)isUsePlateaus;
 - (BOOL)getIsShowLegend;
+
+//pie
+- (BOOL)isUseColumns;
+- (BOOL)getLabelSlices;
 
 
 @property (assign) IBOutlet NSView* mainView;

@@ -357,8 +357,8 @@ legend.append(\"text\")
 
 
 
-"pieChart001" = "var width = document.width,\n
-height = document.height,\n radius = Math.min(width, height) / 2;
+"pieChart001" = "var width = getDocWidth(),\n
+height = getDocHeight(),\n radius = Math.min(width, height) / 2;
 
 var arc = d3.svg.arc()
 .outerRadius(radius - 10)
@@ -394,3 +394,13 @@ g.append(\"path\")
     colors.reverse(); var color = colors.pop(); colors.reverse(); return color; });";
 
 
+"pieChart003" = "svg
+.selectAll(\".labels\")
+.data(pie(data))
+.enter()
+.append(\"text\")
+//.text(function(d){ return d.value > 5000 ?  d.value : \"\"})
+.text(function(d){ return d.value })
+.attr(\"transform\", function(d) { return \"translate(\" + arc.centroid(d) + \")\";  })
+.style(\"text-anchor\", \"middle\")
+.style(\"font-size\", 3);";

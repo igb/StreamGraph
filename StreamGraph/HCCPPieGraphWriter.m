@@ -12,7 +12,7 @@
 
 
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(long)barGap{
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)switchColumnsAndRows :(BOOL)labelSlices{
     
     
     NSOutputStream *stream = [[NSOutputStream alloc]  initWithURL:fileUrl append:NO];
@@ -54,7 +54,11 @@
     [self writeStringToStream:stream :document];
     
     [self writeStringToStream:stream :[self getSection:@"pieChart002"]];
-
+    
+    
+    if (labelSlices) {
+        [self writeStringToStream:stream :[self getSection:@"pieChart003"]];
+    }
     
     [self writeStringToStream:stream :@"\n</script>\n</body>\n</html>"];
     [stream close];

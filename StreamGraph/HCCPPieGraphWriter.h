@@ -10,7 +10,7 @@
 
 @interface HCCPPieGraphWriter : HCCPGraphWriter
 
--(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)switchColumnsAndRows;
+-(void)writeToHtml:(NSArray*)data :(NSArray*)columnOrder :(NSArray*)colors :(NSURL*)fileUrl :(NSString*)graphType :(NSString*)graphBackground :(BOOL)switchColumnsAndRows :(BOOL)labelSlices;
 
 
 @end

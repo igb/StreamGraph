@@ -30,20 +30,8 @@
     [self writeStringToStream:stream :@"</script>"];
     
     if (drawLegend)  {
-        [self writeStringToStream:stream :@"\n\n\n<!-- D3 Legend -->\n\n\n"];
-        
-        //CSS
-        [self writeStringToStream:stream :@"\n<style type=\"text/css\">\n"];
-        [self writeStringToStream:stream :@"\n.legendLinear {\n"];
-        [self writeStringToStream:stream :@"\nfont-size:8pt;\n"];
-        [self writeStringToStream:stream :@"\n}\n"];
-        [self writeStringToStream:stream :@"\n</style>\n"];
-
-        //D3 LEGEND JS
-        [self writeStringToStream:stream :@"\n<script>\n"];
-        [self writeStringToStream:stream :[self getD3Legendjs]];
-        [self writeStringToStream:stream :@"</script>\n\n\n"];
-
+     
+        [self writeStringToStream:stream :[self getD3LegendjsHeaders]];
     }
     
 
@@ -100,31 +88,7 @@
     }
     
     if(drawLegend) {
-        
-        
-        
-        
-        NSMutableString* legendNames = [[NSMutableString alloc] init];
-        [legendNames appendString:@"names = ["];
-
-        int i;
-        for (i = 1; i < [data count]; i++) {
-            id myRow = [data objectAtIndex:i];
-            [legendNames appendString:[NSString stringWithFormat:@"\"%@\"", myRow[0]]];
-            if (i < [data count] - 1) {
-                [legendNames appendString:@","];
-            }
-        }
-        
-          [legendNames appendString:@"];\n"];
-        
-        [document appendString:legendNames];
-        
-        [document appendString:@"var ordinal = d3.scale.ordinal().domain(names.reverse()).range(colors.reverse());\n"];
-        
-        [document appendString:@"svg.append(\"g\").attr(\"class\", \"legendLinear\").attr(\"transform\", \"translate(\" + (width - 100) + \", 10)\");\n"];
-        [document appendString:@"var legendLinear = d3.legend.color().shapeWidth(10).shapeHeight(10).useClass(\"legend\").orient('vertical').scale(ordinal).shapePadding(3);\n"];
-        [document appendString:@"svg.select(\".legendLinear\").call(legendLinear);\n"];
+        [document appendString:[self getD3LegendContent:data]];
     }
     
     

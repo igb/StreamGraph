@@ -25,7 +25,8 @@ HCCPAppDelegate* delegate;
 }
 
 -(void) awakeFromNib {
-    NSLog(@"awake!");
+    NSLog(@"awake in tab view!");
+    NSLog(@"delegate is %@", delegate);
     delegate = [[NSApplication sharedApplication] delegate];
     [delegate setTabView:self];
     
